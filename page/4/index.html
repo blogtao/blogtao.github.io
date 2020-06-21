@@ -124,18 +124,15 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2018/09/21/nscopying/" title="深拷贝与浅拷贝(iOS 篇)" itemprop="url">
+    <a href="/2018/09/21/mobilevlckit-usages/" title="定制 MobileVLCKit 播放开发" itemprop="url">
   
-    <h1 itemprop="name">深拷贝与浅拷贝(iOS 篇)</h1>
+    <h1 itemprop="name">定制 MobileVLCKit 播放开发</h1>
     
      
            <p itemprop="description" >前言
-
-关于拷贝，小到面试题，大到找不出 Bugs。
-
-在 iOS 中分为 浅拷贝 和 深拷贝，对应 Foundation 中的基本数据类型，系统已经实现和遵循了 NSCopying 协议和方法。下面大家来了解一下。
-深拷贝与浅拷贝
-1234567891011@protocol </p>
+集成
+集成的方法大约分为 2 种，一种是自己通过 vlckit 源码编译的类库，另一个是官方给出的类库。
+对于自己合成的库，在引入项目中后，需要添加所需的其他类库。一定不要忘记添加 libc++ 类库，可能会出现 not found for architecture x86</p>
         
     
     <time datetime="2018-09-21T13:49:25.000Z" itemprop="datePublished">2018-09-21</time>
@@ -150,15 +147,18 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2018/09/21/mobilevlckit-usages/" title="定制 MobileVLCKit 播放开发" itemprop="url">
+    <a href="/2018/09/21/nscopying/" title="深拷贝与浅拷贝(iOS 篇)" itemprop="url">
   
-    <h1 itemprop="name">定制 MobileVLCKit 播放开发</h1>
+    <h1 itemprop="name">深拷贝与浅拷贝(iOS 篇)</h1>
     
      
            <p itemprop="description" >前言
-集成
-集成的方法大约分为 2 种，一种是自己通过 vlckit 源码编译的类库，另一个是官方给出的类库。
-对于自己合成的库，在引入项目中后，需要添加所需的其他类库。一定不要忘记添加 libc++ 类库，可能会出现 not found for architecture x86</p>
+
+关于拷贝，小到面试题，大到找不出 Bugs。
+
+在 iOS 中分为 浅拷贝 和 深拷贝，对应 Foundation 中的基本数据类型，系统已经实现和遵循了 NSCopying 协议和方法。下面大家来了解一下。
+深拷贝与浅拷贝
+1234567891011@protocol </p>
         
     
     <time datetime="2018-09-21T13:49:25.000Z" itemprop="datePublished">2018-09-21</time>

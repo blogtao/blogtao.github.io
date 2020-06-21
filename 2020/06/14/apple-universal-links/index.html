@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://blog.devhitao.com/images/universal-links/acssociated-domains.png">
 <meta property="og:image" content="https://blog.devhitao.com/images/universal-links/appsearch-validation-tool-url.jpg">
 <meta property="og:image" content="https://blog.devhitao.com/images/universal-links/safari-app-link.png">
-<meta property="og:updated_time" content="2020-06-21T07:59:18.322Z">
+<meta property="og:updated_time" content="2020-06-21T08:17:13.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="苹果通用链接（Universal Links）配置方法">
 <meta name="twitter:description" content="前言  Seamlessly link to content inside your app, or on your website in iOS 9 or later. With universal links, you can always give users the most integrated mobile experience, even when your app isn’t in">
@@ -107,22 +107,22 @@
 <blockquote>
 <p>Seamlessly link to content inside your app, or on your website in iOS 9 or later. With universal links, you can always give users the most integrated mobile experience, even when your app isn’t installed on their device.</p>
 </blockquote>
-<p>什么是通用链接：<br>点击某个 https 链接时，若该手机已安装关联此域名的 App , 则点击链接跳转到 App 。否则通过 Safari 浏览器打开。</p>
+<p>什么是通用链接：<br>点击某个 https 链接时，若该手机已安装关联此域名的 App , 则点击链接跳转到 App ，反之通过 Safari 浏览器打开。</p>
 <h3 id="App"><a href="#App" class="headerlink" title="App"></a>App</h3><hr>
-<p>1、在 App 中添加指定的域名，支持通配符域名，特定域名不超过 20 - 30 个，例如：</p>
-<center><img src="/images/universal-links/acssociated-domains.png" width="80%" height="80%" alt="关联域名链接"><br>关联域名链接<br></center>
+<p>1、在 App 中添加要关联的域名，支持通配符域名，特定域名不超过 20 - 30 个，例如：</p>
+<center><img src="/images/universal-links/acssociated-domains.png" width="80%" height="80%" alt="关联域名链接"><br>关联域名<br></center>
 
 <p>2、在 <code>application:continueUserActivity:restorationHandler:</code> 方法中对其请求进行处理，若符合 App 要求直接进行处理，若不符合，给出其提示。</p>
 <h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><hr>
 <p>将创建好的 <code>apple-app-site-association</code> 文件上传到 HTTPS Web 服务器根目录下或者其 <code>.well-known</code> 子目录下。上传后能够通过 url 直接访问到而不经过转发或重写，比如：<a href="https://blog.devhitao.com/apple-app-site-association">https://blog.devhitao.com/apple-app-site-association</a> 或 <a href="https://blog.devhitao.com/.well-known/apple-app-site-association">https://blog.devhitao.com/.well-known/apple-app-site-association</a></p>
 <p>apple-app-site-association 文件内容(JSON)格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;applinks&quot;: &#123;</span><br><span class="line">        &quot;apps&quot;: [],</span><br><span class="line">        &quot;details&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;appID&quot;: &quot;teamid.com.devhitao.blog&quot;,</span><br><span class="line">                &quot;paths&quot;: [ &quot;/*&quot;, &quot;/m/*&quot;, &quot;NOT /resume/*&quot;]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;appID&quot;: &quot;teamid.com.devhitao.app&quot;,</span><br><span class="line">                &quot;paths&quot;: [ &quot;*&quot; ]</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><hr>
-<p>完成上述配置之后，需要验证是否能够工作，验证方式：先各自验证，然后在联合验证。</p>
-<p>首先从 App 端开始验证，在 备忘录 中输入关联的链接（<a href="https://blog.devhitao.com/），验证是否能够直接打开">https://blog.devhitao.com/），验证是否能够直接打开</a> App ，若打开网页，则说明 App 端配置有误。</p>
+<p>完成上述配置之后，需要验证是否能够工作，验证方式：先各自验证，然后再联合验证。</p>
+<p>首先从 App 端开始验证，在 备忘录 中输入关联的链接，比如：<a href="https://blog.devhitao.com/">https://blog.devhitao.com/</a>，验证是否能够直接打开 App ，若打开网页，则说明 App 端配置有误。</p>
 <p>然后验证 Server 端是否配置成功，可以通过 <a href="https://search.developer.apple.com/appsearch-validation-tool" target="_blank" rel="noopener">App Search API Validation Tool</a> 网站验证 Server 端配置文件是否生效，在输入框中直接输入 apple-app-site-association 文件所在路径，比如：</p>
 <center><img src="/images/universal-links/appsearch-validation-tool-url.jpg" width="80%" height="80%" alt="验证配置文件是否正常"><br>验证配置文件是否正常<br></center>
 
-<p>若提示 <code>Error no apps with domain entitlements</code> 此错误，说明 Apple 能够解析到服务端内容，但并未发现关联此域名的 App ，则可以忽略。</p>
+<p>若提示 <code>Error no apps with domain entitlements</code> 此错误，说明 Apple 能够解析到服务端内容，但并未发现关联此域名的 App ，则可以忽略，需要在 App 端关联该域名。</p>
 <p>最后若服务端和 App 端配置正确，在 Safari 中打开关联的网址，顶部会提示“在 xxx App中打开”，例如：</p>
 <center><img src="/images/universal-links/safari-app-link.png" width="50%" height="50%" alt="在 Safari 中打开"><br>在 Safari 中打开，会提示“在“郭工笔记”App中打开”<br></center>
 

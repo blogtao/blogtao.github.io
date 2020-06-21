@@ -1,0 +1,17 @@
+# 该文件存放在根目录下，eg: http://blog.devhitao.com/robots.txt
+# 阻止爬取 page、archives、tags、categories 文件和目录
+
+User-agent: *
+Disallow: /page*
+Disallow: /page/
+Disallow: /archives*
+Disallow: /archives/
+Disallow: /tags*
+Disallow: /tags/
+Disallow: /categories*
+Disallow: /categories/
+Disallow: /privacy*
+Disallow: /link/
+Disallow: /site/
+Disallow: /baidu_verify_IH05gTwXFo.html
+Disallow: /googlecb9885b940fa1d4b.html

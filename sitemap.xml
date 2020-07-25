@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/2020/07/15/android-debug-bridge/</loc>
+    
+    <lastmod>2020-07-25T03:44:15.646Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.devhitao.com/2020/02/02/python-proxy/</loc>
+    
+    <lastmod>2020-07-17T14:16:24.665Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/2020/06/14/apple-universal-links/</loc>
     
     <lastmod>2020-06-21T08:17:13.987Z</lastmod>
@@ -138,13 +152,6 @@
     <loc>https://blog.devhitao.com/2020/01/23/flask-restful-usage/</loc>
     
     <lastmod>2020-02-08T12:07:56.611Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2020/02/02/python-proxy/</loc>
-    
-    <lastmod>2020-02-04T07:29:30.597Z</lastmod>
     
   </url>
   

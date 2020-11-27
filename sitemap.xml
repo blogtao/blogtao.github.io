@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/2020/09/20/go2shell/</loc>
+    
+    <lastmod>2020-11-27T13:37:06.151Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.devhitao.com/2019/12/18/pip-guide/</loc>
+    
+    <lastmod>2020-11-16T15:47:14.183Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.devhitao.com/2020/10/07/supervisor/</loc>
+    
+    <lastmod>2020-10-07T03:38:16.358Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/2020/09/12/transporter-guide/</loc>
     
     <lastmod>2020-10-05T00:52:44.382Z</lastmod>
@@ -194,13 +215,6 @@
     <loc>https://blog.devhitao.com/2019/02/16/cloudflare-usage/</loc>
     
     <lastmod>2020-01-31T12:43:11.559Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2019/12/18/pip-guide/</loc>
-    
-    <lastmod>2020-01-31T12:38:49.167Z</lastmod>
     
   </url>
   

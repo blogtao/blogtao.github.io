@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.devhitao.com/2020/09/20/go2shell/</loc>
+    <loc>https://blog.devhitao.com/2020/11/27/go2shell/</loc>
     
-    <lastmod>2020-11-27T13:52:36.177Z</lastmod>
+    <lastmod>2020-11-28T00:12:10.707Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.devhitao.com/2020/01/31/python-virtual-venv/</loc>
+    
+    <lastmod>2020-11-27T15:06:37.284Z</lastmod>
     
   </url>
   
@@ -194,13 +201,6 @@
     <loc>https://blog.devhitao.com/2020/01/23/flask-restful-usage/</loc>
     
     <lastmod>2020-02-08T12:07:56.611Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2020/01/31/python-virtual-venv/</loc>
-    
-    <lastmod>2020-02-01T00:44:14.014Z</lastmod>
     
   </url>
   

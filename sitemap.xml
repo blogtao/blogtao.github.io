@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/2015/04/07/git-terminal-command/</loc>
+    
+    <lastmod>2020-12-03T14:57:38.614Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.devhitao.com/2015/03/23/xcode-project-pbxproj-fqa/</loc>
+    
+    <lastmod>2020-12-03T13:56:18.605Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/2020/11/27/go2shell/</loc>
     
     <lastmod>2020-11-28T00:26:16.126Z</lastmod>
@@ -264,13 +278,6 @@
     <loc>https://blog.devhitao.com/2019/10/20/reset-mysql-root-password/</loc>
     
     <lastmod>2019-12-14T04:32:50.075Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2015/03/23/The-working-copy-has-uncommitted-changes/</loc>
-    
-    <lastmod>2019-10-02T11:39:23.720Z</lastmod>
     
   </url>
   

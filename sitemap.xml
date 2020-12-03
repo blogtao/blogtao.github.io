@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/2015/03/16/git-for-xcode/</loc>
+    
+    <lastmod>2020-12-03T15:11:47.349Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/2015/04/07/git-terminal-command/</loc>
     
     <lastmod>2020-12-03T15:05:11.842Z</lastmod>
@@ -607,13 +614,6 @@
     <loc>https://blog.devhitao.com/site/superplayer-itunes.html</loc>
     
     <lastmod>2018-10-20T08:34:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2015/03/16/git-for-xcode/</loc>
-    
-    <lastmod>2018-10-19T14:14:46.000Z</lastmod>
     
   </url>
   

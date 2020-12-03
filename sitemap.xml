@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/2016/02/14/react-native-faq/</loc>
+    
+    <lastmod>2020-12-03T23:29:20.187Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.devhitao.com/2018/08/20/search-skills/</loc>
+    
+    <lastmod>2020-12-03T15:48:58.185Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/2016/06/30/macos-clean-store-space/</loc>
     
     <lastmod>2020-12-03T15:44:12.567Z</lastmod>
@@ -117,13 +131,6 @@
     <loc>https://blog.devhitao.com/2020/03/20/heroku-guide/</loc>
     
     <lastmod>2020-06-09T12:47:05.514Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2018/08/20/search-skills/</loc>
-    
-    <lastmod>2020-05-01T15:23:43.252Z</lastmod>
     
   </url>
   
@@ -327,13 +334,6 @@
     <loc>https://blog.devhitao.com/2018/08/23/mac-terminal-proxy/</loc>
     
     <lastmod>2019-10-02T11:38:49.201Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2016/02/14/Lunch-Watchman-no-pretty-info/</loc>
-    
-    <lastmod>2019-10-02T11:38:39.657Z</lastmod>
     
   </url>
   

@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/2020/11/27/go2shell/</loc>
+    
+    <lastmod>2020-12-03T15:27:57.068Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.devhitao.com/2019/04/05/realm-database/</loc>
+    
+    <lastmod>2020-12-03T15:26:16.741Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/2015/04/07/git-terminal-command/</loc>
     
     <lastmod>2020-12-03T15:22:30.802Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>https://blog.devhitao.com/2015/03/23/xcode-project-pbxproj-fqa/</loc>
     
     <lastmod>2020-12-03T13:56:18.605Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2020/11/27/go2shell/</loc>
-    
-    <lastmod>2020-11-28T00:26:16.126Z</lastmod>
     
   </url>
   
@@ -124,13 +131,6 @@
     <loc>https://blog.devhitao.com/2015/03/21/ssh-usage/</loc>
     
     <lastmod>2020-04-28T13:14:38.300Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2019/04/05/realm-database/</loc>
-    
-    <lastmod>2020-04-10T12:31:53.831Z</lastmod>
     
   </url>
   

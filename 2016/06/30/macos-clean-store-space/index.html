@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>NULL、nil、Nil、NSNull区别 - 郭工笔记</title>
+    <title>清理 macOS 缓存，释放存储空间 - 郭工笔记</title>
     <!--  <meta name="robots" content="nofollow" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
@@ -12,18 +12,18 @@
     
 
     
-    <meta name="description" content="前言 1.NULL 基本类型的指针为空1int *p = NULL; 2.nil对象类型指针为空12NSString * str = nil;id obj = nil; 3.Nil 类的类型为空Class类型12Class cl = [NSString class];	   cl = Nil; 4.空对象1[NSNull null]; 5.空对象可以用来占位12NSArray * arr = @[">
-<meta name="keywords" content="nil">
+    <meta name="description" content="前言 清除 macOS 不常用的软件或文件，释放存储空间 Xcode Provisioning Profiles 配置文件位置：1~/Library/MobileDevice/Provisioning\ Profiles 真机系统缓存模拟1~/Library/Developer/Xcode/iOS\ DeviceSupport 项目运行目录1~/Library/Developer/Xcode/De">
+<meta name="keywords" content="macOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NULL、nil、Nil、NSNull区别">
-<meta property="og:url" content="https://blog.devhitao.com/2016/08/20/NULL-nil-Nil-NSNull-null/index.html">
+<meta property="og:title" content="清理 macOS 缓存，释放存储空间">
+<meta property="og:url" content="https://blog.devhitao.com/2016/06/30/macos-clean-store-space/index.html">
 <meta property="og:site_name" content="郭工笔记">
-<meta property="og:description" content="前言 1.NULL 基本类型的指针为空1int *p = NULL; 2.nil对象类型指针为空12NSString * str = nil;id obj = nil; 3.Nil 类的类型为空Class类型12Class cl = [NSString class];	   cl = Nil; 4.空对象1[NSNull null]; 5.空对象可以用来占位12NSArray * arr = @[">
+<meta property="og:description" content="前言 清除 macOS 不常用的软件或文件，释放存储空间 Xcode Provisioning Profiles 配置文件位置：1~/Library/MobileDevice/Provisioning\ Profiles 真机系统缓存模拟1~/Library/Developer/Xcode/iOS\ DeviceSupport 项目运行目录1~/Library/Developer/Xcode/De">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-17T12:35:51.437Z">
+<meta property="og:updated_time" content="2020-12-03T15:44:12.567Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NULL、nil、Nil、NSNull区别">
-<meta name="twitter:description" content="前言 1.NULL 基本类型的指针为空1int *p = NULL; 2.nil对象类型指针为空12NSString * str = nil;id obj = nil; 3.Nil 类的类型为空Class类型12Class cl = [NSString class];	   cl = Nil; 4.空对象1[NSNull null]; 5.空对象可以用来占位12NSArray * arr = @[">
+<meta name="twitter:title" content="清理 macOS 缓存，释放存储空间">
+<meta name="twitter:description" content="前言 清除 macOS 不常用的软件或文件，释放存储空间 Xcode Provisioning Profiles 配置文件位置：1~/Library/MobileDevice/Provisioning\ Profiles 真机系统缓存模拟1~/Library/Developer/Xcode/iOS\ DeviceSupport 项目运行目录1~/Library/Developer/Xcode/De">
 
     
     <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
@@ -82,11 +82,11 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/08/20/NULL-nil-Nil-NSNull-null/" title="NULL、nil、Nil、NSNull区别" itemprop="url">NULL、nil、Nil、NSNull区别</a>
+      <a href="/2016/06/30/macos-clean-store-space/" title="清理 macOS 缓存，释放存储空间" itemprop="url">清理 macOS 缓存，释放存储空间</a>
   </h1>
   
   <p class="article-time">
-    <time datetime="2016-08-20T13:49:25.000Z" itemprop="datePublished"> 发表于 2016-08-20</time>
+    <time datetime="2016-06-30T13:49:25.000Z" itemprop="datePublished"> 发表于 2016-06-30</time>
     
   </p>
 </header>
@@ -95,17 +95,18 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">2.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">3.</span> <span class="toc-text">文档信息</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Xcode"><span class="toc-number">1.1.</span> <span class="toc-text">Xcode</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">2.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">3.</span> <span class="toc-text">文档信息</span></a></li></ol>
 		
 		</div>
 		
 		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><hr>
-<p>1.NULL 基本类型的指针为空<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int *p = NULL;</span><br></pre></td></tr></table></figure></p>
-<p>2.nil对象类型指针为空<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSString * str = nil;</span><br><span class="line">id obj = nil;</span><br></pre></td></tr></table></figure></p>
-<p>3.Nil 类的类型为空Class类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class cl = [NSString class];</span><br><span class="line">	   cl = Nil;</span><br></pre></td></tr></table></figure></p>
-<p>4.空对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NSNull null];</span><br></pre></td></tr></table></figure></p>
-<p>5.空对象可以用来占位<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSArray * arr = @[@&quot;1&quot;,@&quot;2&quot;,[NSNull null]];</span><br><span class="line">NSArray * arr1 = [[NSArray alloc]initWithObjects:@&quot;2&quot;,&quot;3&quot;,[NSNull null],nil];</span><br></pre></td></tr></table></figure></p>
-<p>6.判断对象指针是不是指向空对象 返回值为BOOL类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(id)str == [NSNull null]</span><br></pre></td></tr></table></figure></p>
+<p>清除 macOS 不常用的软件或文件，释放存储空间</p>
+<h4 id="Xcode"><a href="#Xcode" class="headerlink" title="Xcode"></a>Xcode</h4><hr>
+<p>Provisioning Profiles 配置文件位置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Library/MobileDevice/Provisioning\ Profiles</span><br></pre></td></tr></table></figure></p>
+<p>真机系统缓存模拟<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Library/Developer/Xcode/iOS\ DeviceSupport</span><br></pre></td></tr></table></figure></p>
+<p>项目运行目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Library/Developer/Xcode/DerivedData</span><br></pre></td></tr></table></figure></p>
+<p>编译打包产生目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Library/Developer/Xcode/Archives</span><br></pre></td></tr></table></figure></p>
+<p>删除多版本系统模拟器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Library/Developer/CoreSimulator/Profiles/Runtimes</span><br></pre></td></tr></table></figure></p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><hr>
 <h3 id="文档信息"><a href="#文档信息" class="headerlink" title="文档信息"></a>文档信息</h3><hr>
 <ul>
@@ -118,20 +119,20 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  <a class="article-category-link" href="/categories/macOS/">macOS</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/nil/">nil</a>
+  <span></span> <a href="/tags/macOS/">macOS</a>
   </div>
 
 </div>
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://blog.devhitao.com/2016/08/20/NULL-nil-Nil-NSNull-null/" data-title="NULL、nil、Nil、NSNull区别 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  <div data-url="https://blog.devhitao.com/2016/06/30/macos-clean-store-space/" data-title="清理 macOS 缓存，释放存储空间 | 郭工笔记" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -145,18 +146,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/09/25/UI-Shadows-Effect/" title="UI控件上阴影效果">
+ <a href="/2016/08/07/github-pages/" title="GitHub Pages 说明">
   <strong>上一篇：</strong><br/>
   <span>
-  UI控件上阴影效果</span>
+  GitHub Pages 说明</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/08/17/ios-wxpay/"  title="iOS 集成微信支付（WxPay）">
+<a href="/2016/06/10/afnetworking/"  title="AFNetworking 使用">
  <strong>下一篇：</strong><br/> 
- <span>iOS 集成微信支付（WxPay）
+ <span>AFNetworking 使用
 </span>
 </a>
 </div>
@@ -172,7 +173,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">2.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">3.</span> <span class="toc-text">文档信息</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Xcode"><span class="toc-number">1.1.</span> <span class="toc-text">Xcode</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">2.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">3.</span> <span class="toc-text">文档信息</span></a></li></ol>
  
   </div>
 

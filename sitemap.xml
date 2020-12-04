@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/2016/11/07/ssl-https/</loc>
+    
+    <lastmod>2020-12-04T15:30:40.472Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/2015/04/05/git-basics/</loc>
     
     <lastmod>2020-12-04T15:15:31.326Z</lastmod>
@@ -149,7 +156,7 @@
   </url>
   
   <url>
-    <loc>https://blog.devhitao.com/2015/03/25/learn-svn-use/</loc>
+    <loc>https://blog.devhitao.com/2015/03/25/svn-usage/</loc>
     
     <lastmod>2020-04-30T13:48:53.336Z</lastmod>
     
@@ -744,7 +751,7 @@
   </url>
   
   <url>
-    <loc>https://blog.devhitao.com/2016/03/26/How-obtain-UDID/</loc>
+    <loc>https://blog.devhitao.com/2016/03/26/how-obtain-udid/</loc>
     
     <lastmod>2017-03-27T05:58:47.000Z</lastmod>
     
@@ -807,13 +814,6 @@
   </url>
   
   <url>
-    <loc>https://blog.devhitao.com/2016/11/07/SSL-HTTPS/</loc>
-    
-    <lastmod>2017-01-03T14:14:06.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.devhitao.com/googlecb9885b940fa1d4b.html</loc>
     
     <lastmod>2017-01-02T09:20:55.000Z</lastmod>
@@ -852,13 +852,6 @@
     <loc>https://blog.devhitao.com/2016/09/25/UI-Shadows-Effect/</loc>
     
     <lastmod>2016-10-24T14:58:10.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2014/09/10/imporve-iOS/</loc>
-    
-    <lastmod>2016-09-20T15:04:10.000Z</lastmod>
     
   </url>
   

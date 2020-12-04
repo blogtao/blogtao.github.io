@@ -21,7 +21,7 @@
 <meta property="og:description" content="引言 版本控制源代码管理工具：CVS 、 SVN（集中式） 、Git（分布式）, .svn 文件被隐藏。  Subversion  is  a version control system, which allows you to keep old versions of files and directories (usually source code), keep a log of who,">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog.devhitao.com/images/SVN/cornerstone-set-ignore-file.png">
-<meta property="og:updated_time" content="2020-04-30T13:48:53.336Z">
+<meta property="og:updated_time" content="2020-12-04T15:36:36.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVN 版本控制">
 <meta name="twitter:description" content="引言 版本控制源代码管理工具：CVS 、 SVN（集中式） 、Git（分布式）, .svn 文件被隐藏。  Subversion  is  a version control system, which allows you to keep old versions of files and directories (usually source code), keep a log of who,">
@@ -122,7 +122,7 @@
 <h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><hr>
 <p>0、创建一个名为 project 的文件夹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir project</span><br></pre></td></tr></table></figure></p>
 <p>1、接着在 project 目录下创建一个名为 myproject 的仓库，project 文件夹可存储多个仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ svnadmin create ~/路径/project/myproject</span><br></pre></td></tr></table></figure></p>
-<p>2、国内为开发者提供代码托管仓库的网站<br><a href="https://coding.net/" target="_blank" rel="noopener">Coding</a> 、<a href="https://git.oschina.net/" target="_blank" rel="noopener">OSChina码云</a>、<a href="https://code.csdn.net/" target="_blank" rel="noopener">CODE CSDN</a></p>
+<p>2、国内为开发者提供代码托管仓库的网站 <a href="https://coding.net/" target="_blank" rel="noopener">Coding.net</a> 、<a href="https://git.oschina.net/" target="_blank" rel="noopener">OSChina码云</a>、<a href="https://code.csdn.net/" target="_blank" rel="noopener">CODE CSDN</a></p>
 <h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><hr>
 <p>命令心法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ svn command [options] [args] // 命令样式</span><br><span class="line">$ svn --help // 查看所有命令</span><br><span class="line">$ svn help update //获取特定命令的用法</span><br><span class="line">$ svn log [特定文件名] // svn log fileName@version</span><br><span class="line">$ svn status</span><br></pre></td></tr></table></figure></p>
 <p>0、从本地导入代码到 Server 端（注：第一次导入为初始化）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ svn import 路径/myproject svn://IP(domain)/project/myproject --username=itao --password=itao -m &quot;初始化导入(注释)&quot;</span><br></pre></td></tr></table></figure></p>
@@ -146,7 +146,10 @@
 <li><a href="https://pan.baidu.com/s/1bpdUKiV" target="_blank" rel="noopener">自己珍藏工具集</a> 密码: <code>u7td</code></li>
 </ul>
 <h4 id="Cornerstone"><a href="#Cornerstone" class="headerlink" title="Cornerstone"></a>Cornerstone</h4><hr>
-<p>不要删除xcuserdata文件夹.只需要删除内部文件 or 将其忽略即可.<br>设置全局忽略的文件<br><img src="/images/SVN/cornerstone-set-ignore-file.png" width="50%" height="50%" alt="cornerstone-set-ignore-file"><br>回退版本：点击 discard 放弃修改，未提交 server，revert 本地信息消失。</p>
+<p>不要删除xcuserdata文件夹.只需要删除内部文件 or 将其忽略即可.</p>
+<center><img src="/images/SVN/cornerstone-set-ignore-file.png" width="50%" height="50%" alt="cornerstone-set-ignore-file"><br>设置全局忽略的文件<br></center>
+
+<p>回退版本：点击 discard 放弃修改，未提交 server，revert 本地信息消失。</p>
 <h5 id="忽略配置"><a href="#忽略配置" class="headerlink" title="忽略配置"></a>忽略配置</h5><hr>
 <p>iOS 开发<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*.o,*.lo,*.la,*.al,.libs,*.so,*.so.[0-9]*,*.pyc,*.pyo,*.rej,*~,#*#,.#*,.*.swp,.DS_Store,.git,.gitignore,build,DerivedData,*.pbxuser,!default.pbxuser,*.mode1v3,!default.mode1v3,*.mode2v3,!default.mode2v3,*.perspectivev3,!default.perspectivev3,xcuserdata,*.moved-aside,*.xccheckout,*.xcscmblueprint,*.hmap,*.ipa,*.dSYM.zip,*.dSYM,*.zip,Pods,Carthage/Build,fastlane,iOSInjectionProject</span><br></pre></td></tr></table></figure></p>
 <h3 id="代码冲突"><a href="#代码冲突" class="headerlink" title="代码冲突"></a>代码冲突</h3><hr>

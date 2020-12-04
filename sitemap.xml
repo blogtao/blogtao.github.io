@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/2015/03/01/git-usage/</loc>
+    
+    <lastmod>2020-12-04T14:59:01.526Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/2015/04/07/git-terminal-command/</loc>
     
     <lastmod>2020-12-04T14:52:48.321Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://blog.devhitao.com/2015/04/05/git-basics/</loc>
     
     <lastmod>2020-12-04T14:51:17.004Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2015/03/01/git-usage/</loc>
-    
-    <lastmod>2020-12-04T14:47:38.146Z</lastmod>
     
   </url>
   

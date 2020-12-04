@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/2015/04/07/git-branch/</loc>
+    
+    <lastmod>2020-12-04T14:11:29.191Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/2016/02/14/react-native-faq/</loc>
     
     <lastmod>2020-12-03T23:29:20.187Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>https://blog.devhitao.com/2019/04/05/realm-database/</loc>
     
     <lastmod>2020-12-03T15:26:16.741Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2015/04/07/git-terminal-command/</loc>
-    
-    <lastmod>2020-12-03T15:22:30.802Z</lastmod>
     
   </url>
   

@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/2020/07/15/android-debug-bridge/</loc>
+    
+    <lastmod>2020-12-05T02:07:22.122Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/2020/09/12/transporter-guide/</loc>
     
-    <lastmod>2020-12-05T01:57:30.251Z</lastmod>
+    <lastmod>2020-12-05T02:03:05.470Z</lastmod>
     
   </url>
   
@@ -131,13 +138,6 @@
     <loc>https://blog.devhitao.com/2018/10/20/developer-discover-design-develop-distribure/</loc>
     
     <lastmod>2020-07-26T02:51:15.737Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2020/07/15/android-debug-bridge/</loc>
-    
-    <lastmod>2020-07-25T03:44:15.646Z</lastmod>
     
   </url>
   

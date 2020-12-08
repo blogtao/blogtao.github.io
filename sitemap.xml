@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/2015/04/07/git-branch/</loc>
+    
+    <lastmod>2020-12-08T23:53:48.345Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/2015/02/26/install-use-uninstall-upgrade-fastlane-on-mac/</loc>
     
-    <lastmod>2020-12-08T15:17:30.219Z</lastmod>
+    <lastmod>2020-12-08T15:18:29.415Z</lastmod>
     
   </url>
   
@@ -26,13 +33,6 @@
     <loc>https://blog.devhitao.com/2020/01/18/homebrew-usage/</loc>
     
     <lastmod>2020-12-05T01:53:06.484Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2015/04/07/git-branch/</loc>
-    
-    <lastmod>2020-12-05T00:55:02.266Z</lastmod>
     
   </url>
   

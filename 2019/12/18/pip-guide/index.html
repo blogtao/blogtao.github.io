@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="郭工笔记">
 <meta property="og:description" content="前言  pip is the package installer for Python. You can use pip to install packages from the Python Package Index and other indexes.  因为 macOS 系统中自带 Python 工具，同时也可能带有 pip 工具，为了避免冲突，我们不会对 pip 进行软连接，会使用 pi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-11-16T15:47:14.183Z">
+<meta property="og:updated_time" content="2020-12-14T13:00:36.981Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pip 基本用法">
 <meta name="twitter:description" content="前言  pip is the package installer for Python. You can use pip to install packages from the Python Package Index and other indexes.  因为 macOS 系统中自带 Python 工具，同时也可能带有 pip 工具，为了避免冲突，我们不会对 pip 进行软连接，会使用 pi">
@@ -130,6 +130,8 @@
 <h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><hr>
 <p>搜索包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 search appscript</span><br></pre></td></tr></table></figure></p>
 <p>显示已安装包的详情信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 show gunicorn</span><br></pre></td></tr></table></figure></p>
+<p>将用到的库放到 requirements.txt 文件中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip3 freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure></p>
+<p>通过 requirements.txt 文件安装库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip3 install -r requirements.txt</span><br></pre></td></tr></table></figure></p>
 <h3 id="FQA"><a href="#FQA" class="headerlink" title="FQA"></a>FQA</h3><hr>
 <p>Q: 若遇到这样类似的情况：<code>socket.timeout: _ssl.c:1059: The handshake operation timed out</code> or <code>ERROR: No matching distribution found for Pillow</code> or <code>ERROR: Could not find a version that satisfies the requirement Pillow (from versions: none)</code>。</p>
 <p>A: 请切换一下电脑网络类型。</p>
@@ -233,7 +235,7 @@
 		  
 		
 		  
-			<li><a href="/categories/Python/" title="Python">Python<sup>8</sup></a></li>
+			<li><a href="/categories/Python/" title="Python">Python<sup>9</sup></a></li>
 		  
 		
 		  

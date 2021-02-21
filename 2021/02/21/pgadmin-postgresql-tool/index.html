@@ -12,21 +12,21 @@
     
 
     
-    <meta name="description" content="前言 pgAdmin 是什么？pgAdmin 是 PostgreSQL 中最受欢迎和功能最丰富的开源可视化GUI软件，可在 Linux、Unix、macOS 和 Windows 平台上安装和使用。 what is pgAdmin?  pgAdmin is the most popular and feature rich Open Source administration and develop">
+    <meta name="description" content="前言 pgAdmin 是什么？pgAdmin 是 PostgreSQL 中最受欢迎和功能最丰富的开源可视化GUI软件，可在 Linux、Unix、macOS 和 Windows 平台上安装和使用。 What is pgAdmin?  pgAdmin is the most popular and feature rich Open Source administration and develop">
 <meta name="keywords" content="pgadmin,postgresql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PostgreSQL 可视化工具 pgAdmin 的下载、安装和使用">
 <meta property="og:url" content="https://blog.devhitao.com/2021/02/21/pgadmin-postgresql-tool/index.html">
 <meta property="og:site_name" content="郭工笔记">
-<meta property="og:description" content="前言 pgAdmin 是什么？pgAdmin 是 PostgreSQL 中最受欢迎和功能最丰富的开源可视化GUI软件，可在 Linux、Unix、macOS 和 Windows 平台上安装和使用。 what is pgAdmin?  pgAdmin is the most popular and feature rich Open Source administration and develop">
+<meta property="og:description" content="前言 pgAdmin 是什么？pgAdmin 是 PostgreSQL 中最受欢迎和功能最丰富的开源可视化GUI软件，可在 Linux、Unix、macOS 和 Windows 平台上安装和使用。 What is pgAdmin?  pgAdmin is the most popular and feature rich Open Source administration and develop">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog.devhitao.com/images/pgadmin/pgadmin-download.png">
 <meta property="og:image" content="https://blog.devhitao.com/images/pgadmin/user-language.png">
 <meta property="og:image" content="https://blog.devhitao.com/images/pgadmin/add-server.png">
-<meta property="og:updated_time" content="2021-02-21T04:28:46.037Z">
+<meta property="og:updated_time" content="2021-02-21T04:41:27.295Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PostgreSQL 可视化工具 pgAdmin 的下载、安装和使用">
-<meta name="twitter:description" content="前言 pgAdmin 是什么？pgAdmin 是 PostgreSQL 中最受欢迎和功能最丰富的开源可视化GUI软件，可在 Linux、Unix、macOS 和 Windows 平台上安装和使用。 what is pgAdmin?  pgAdmin is the most popular and feature rich Open Source administration and develop">
+<meta name="twitter:description" content="前言 pgAdmin 是什么？pgAdmin 是 PostgreSQL 中最受欢迎和功能最丰富的开源可视化GUI软件，可在 Linux、Unix、macOS 和 Windows 平台上安装和使用。 What is pgAdmin?  pgAdmin is the most popular and feature rich Open Source administration and develop">
 <meta name="twitter:image" content="https://blog.devhitao.com/images/pgadmin/pgadmin-download.png">
 
     
@@ -105,28 +105,31 @@
 		
 		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><hr>
 <p>pgAdmin 是什么？<br>pgAdmin 是 PostgreSQL 中最受欢迎和功能最丰富的开源可视化GUI软件，可在 Linux、Unix、macOS 和 Windows 平台上安装和使用。</p>
-<p>what is pgAdmin?</p>
+<p>What is pgAdmin?</p>
 <blockquote>
-<p>pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.<br>pgAdmin may be used on Linux, Unix, macOS and Windows to manage PostgreSQL and EDB Advanced Server 9.5 and above.</p>
+<p>pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.</p>
+</blockquote>
+<blockquote>
+<p>pgAdmin may be used on Linux, Unix, macOS and Windows to manage PostgreSQL and EDB Advanced Server 9.5 and above.</p>
 </blockquote>
 <h3 id="下载和安装"><a href="#下载和安装" class="headerlink" title="下载和安装"></a>下载和安装</h3><hr>
 <p>由于 pgAdmin 支持多个环境的平台，可根据自己的需要进行<a href="https://www.pgadmin.org/download/" target="_blank" rel="noopener">下载安装</a>。</p>
-<center><img src="/images/pgadmin/pgadmin-download.png" width="50%" height="50%" alt="pgadmin download platfrom"><br>支持的安装方式<br></center>
+<center><img src="/images/pgadmin/pgadmin-download.png" width="50%" height="50%" alt="pgadmin download platfrom"><br>支持多种方式安装<br></center>
 
 <p>1、客户端方式：<br>在 macOS 和 Windows 个人电脑上安装方便比较简单，将安装包下载到电脑上进行安装即可。</p>
-<p>2、服务端方式：<br>在 CentOS/Fedora 系统上，可通过 rmp 和 yum 方式安装，比如：</p>
+<p>2、服务端方式：<br>在 CentOS/Fedora 系统上，可通过 rmp 和 yum 方式安装，可分为 desktop 和 web 模式两种。</p>
 <p>Fedora：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm -e pgadmin4-fedora-repo</span><br><span class="line">sudo rpm -i https://ftp.postgresql.org/pub/pgadmin/pgadmin4/yum/pgadmin4-fedora-repo-1-1.noarch.rpm</span><br></pre></td></tr></table></figure></p>
 <p>CentOS：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm -e pgadmin4-redhat-repo</span><br><span class="line">sudo rpm -i https://ftp.postgresql.org/pub/pgadmin/pgadmin4/yum/pgadmin4-redhat-repo-1-1.noarch.rpm</span><br></pre></td></tr></table></figure></p>
-<p>CentOS/Fedora：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Install for both desktop and web modes.</span><br><span class="line">sudo yum install pgadmin4</span><br><span class="line"></span><br><span class="line"># Install for desktop mode only.</span><br><span class="line">sudo yum install pgadmin4-desktop</span><br><span class="line"></span><br><span class="line"># Install for web mode only.</span><br><span class="line">sudo yum install pgadmin4-web</span><br></pre></td></tr></table></figure></p>
-<p>最后，如果是以 web 模式安装的，需要运行 Web 配置脚本以 Web 模式运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">该文件所在的位置/usr/pgadmin4/bin/，可能是：</span><br><span class="line">sudo /usr/pgadmin4/bin/pgadmin4-web-setup.sh</span><br><span class="line">或者</span><br><span class="line">sudo /usr/pgadmin4/bin/setup-web.sh</span><br></pre></td></tr></table></figure></p>
+<p>在 CentOS/Fedora 上选择安装模式:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Install for both desktop and web modes.</span><br><span class="line">sudo yum install pgadmin4</span><br><span class="line"></span><br><span class="line"># Install for desktop mode only.</span><br><span class="line">sudo yum install pgadmin4-desktop</span><br><span class="line"></span><br><span class="line"># Install for web mode only.</span><br><span class="line">sudo yum install pgadmin4-web</span><br></pre></td></tr></table></figure></p>
+<p>如果是以 web 模式安装的，需要运行 Web 配置脚本以 Web 模式运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">该文件所在的位置/usr/pgadmin4/bin/，可能是：</span><br><span class="line">sudo /usr/pgadmin4/bin/pgadmin4-web-setup.sh</span><br><span class="line">或者</span><br><span class="line">sudo /usr/pgadmin4/bin/setup-web.sh</span><br></pre></td></tr></table></figure></p>
 <p>注：setup-web.sh启动配置文件默认 httpd 服务为基础，需要进行一些配置方可访问。若使用其他 Web 服务，可参考<a href="https://www.pgadmin.org/docs/pgadmin4/4.30/server_deployment.html" target="_blank" rel="noopener">此链接</a>。</p>
-<p>对于在云服务器以 Web 模式安装的 pgAdmin 有个好处，拥有账号的人员可通过公网方式进行访问。</p>
+<p>对于在云服务器支持 Web 模式 pgAdmin 有个好处，拥有账号的人员可通过公网方式进行访问。</p>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><hr>
 <h4 id="中文界面"><a href="#中文界面" class="headerlink" title="中文界面"></a>中文界面</h4><hr>
-<p>pgAdmin 支持多种语言显示，由于我们习惯了中文图形界面，所以这里介绍一下中文界面的配置。</p>
-<p>首先，找到 User Language 配置界面，路径：<code>File(菜单)</code> -&gt; <code>Preferences</code> -&gt; <code>Miscellaneous</code> -&gt; <code>User Language</code></p>
+<p>pgAdmin 支持多种语言显示，由于我们习惯了中文图形界面，所以这里介绍一下中文语言设置方式。</p>
+<p>首先，我们需要找到 User Language 配置界面，路径：<code>File(菜单)</code> -&gt; <code>Preferences</code> -&gt; <code>Miscellaneous</code> -&gt; <code>User Language</code></p>
 <p>然后，点击下拉框，选择适合自己语言：</p>
-<center><img src="/images/pgadmin/user-language.png" width="50%" height="50%" alt="中文配置"><br>配置中文<br></center><br>最后，点击“save”或“保存”并刷新此界面，这样就可以看到中文形式的图文界面。<br><br>### 使用<br>***<br><br>安装完成之后，启动 pgAdmin 添加 server 配置，连接 PostgreSQL 数据库：<br><center><img src="/images/pgadmin/add-server.png" width="50%" height="50%" alt="add server"><br>连接 PostgreSQL 数据库<br></center>
+<center><img src="/images/pgadmin/user-language.png" width="50%" height="50%" alt="Chinese(Simplified)"><br>选择中文简体<br></center><br>最后，点击“save”或“保存”并刷新此界面，这样就可以看到中文形式的图文界面。<br><br>### 使用<br>***<br><br>安装完成之后，启动 pgAdmin 添加 server 配置，连接 PostgreSQL 数据库：<br><center><img src="/images/pgadmin/add-server.png" width="50%" height="50%" alt="add server"><br>连接 PostgreSQL 数据库<br></center>
 
 <p>注：</p>
 <ul>
@@ -136,7 +139,7 @@
 <li>Username: 数据库用户名</li>
 <li>Password: 对应 username 的密码</li>
 </ul>
-<p>pgAdmin 支持连接远程 PostgreSQL，不过需要 PostgreSQL 和 服务器配置。</p>
+<p>pgAdmin 支持连接远程 PostgreSQL，不过需要 PostgreSQL 和服务器支持。</p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><hr>
 <ul>
 <li><a href="https://www.pgadmin.org/" target="_blank" rel="noopener">pgAdmin</a></li>

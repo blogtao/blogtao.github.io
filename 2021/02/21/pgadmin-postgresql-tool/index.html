@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>PostgreSQL 可视化工具 pgAdmin 的下载、安装和使用 - 郭工笔记</title>
+    <title>PostgreSQL客户端 pgAdmin 的下载、安装、配置和使用 - 郭工笔记</title>
     <!--  <meta name="robots" content="nofollow" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
@@ -15,7 +15,7 @@
     <meta name="description" content="前言 pgAdmin 是什么？pgAdmin 是 PostgreSQL 中最受欢迎和功能最丰富的开源可视化GUI软件，可在 Linux、Unix、macOS 和 Windows 平台上安装和使用。 What is pgAdmin?  pgAdmin is the most popular and feature rich Open Source administration and develop">
 <meta name="keywords" content="pgadmin,postgresql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PostgreSQL 可视化工具 pgAdmin 的下载、安装和使用">
+<meta property="og:title" content="PostgreSQL客户端 pgAdmin 的下载、安装、配置和使用">
 <meta property="og:url" content="https://blog.devhitao.com/2021/02/21/pgadmin-postgresql-tool/index.html">
 <meta property="og:site_name" content="郭工笔记">
 <meta property="og:description" content="前言 pgAdmin 是什么？pgAdmin 是 PostgreSQL 中最受欢迎和功能最丰富的开源可视化GUI软件，可在 Linux、Unix、macOS 和 Windows 平台上安装和使用。 What is pgAdmin?  pgAdmin is the most popular and feature rich Open Source administration and develop">
@@ -23,9 +23,9 @@
 <meta property="og:image" content="https://blog.devhitao.com/images/pgadmin/pgadmin-download.png">
 <meta property="og:image" content="https://blog.devhitao.com/images/pgadmin/user-language.png">
 <meta property="og:image" content="https://blog.devhitao.com/images/pgadmin/add-server.png">
-<meta property="og:updated_time" content="2021-02-21T04:41:27.295Z">
+<meta property="og:updated_time" content="2021-02-21T04:51:52.738Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PostgreSQL 可视化工具 pgAdmin 的下载、安装和使用">
+<meta name="twitter:title" content="PostgreSQL客户端 pgAdmin 的下载、安装、配置和使用">
 <meta name="twitter:description" content="前言 pgAdmin 是什么？pgAdmin 是 PostgreSQL 中最受欢迎和功能最丰富的开源可视化GUI软件，可在 Linux、Unix、macOS 和 Windows 平台上安装和使用。 What is pgAdmin?  pgAdmin is the most popular and feature rich Open Source administration and develop">
 <meta name="twitter:image" content="https://blog.devhitao.com/images/pgadmin/pgadmin-download.png">
 
@@ -86,7 +86,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/02/21/pgadmin-postgresql-tool/" title="PostgreSQL 可视化工具 pgAdmin 的下载、安装和使用" itemprop="url">PostgreSQL 可视化工具 pgAdmin 的下载、安装和使用</a>
+      <a href="/2021/02/21/pgadmin-postgresql-tool/" title="PostgreSQL客户端 pgAdmin 的下载、安装、配置和使用" itemprop="url">PostgreSQL客户端 pgAdmin 的下载、安装、配置和使用</a>
   </h1>
   
   <p class="article-time">
@@ -99,7 +99,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载和安装"><span class="toc-number">2.</span> <span class="toc-text">下载和安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#中文界面"><span class="toc-number">3.1.</span> <span class="toc-text">中文界面</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">5.</span> <span class="toc-text">文档信息</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载和安装"><span class="toc-number">2.</span> <span class="toc-text">下载和安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#中文界面"><span class="toc-number">3.1.</span> <span class="toc-text">中文界面</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-number">4.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">5.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">6.</span> <span class="toc-text">文档信息</span></a></li></ol>
 		
 		</div>
 		
@@ -114,7 +114,7 @@
 </blockquote>
 <h3 id="下载和安装"><a href="#下载和安装" class="headerlink" title="下载和安装"></a>下载和安装</h3><hr>
 <p>由于 pgAdmin 支持多个环境的平台，可根据自己的需要进行<a href="https://www.pgadmin.org/download/" target="_blank" rel="noopener">下载安装</a>。</p>
-<center><img src="/images/pgadmin/pgadmin-download.png" width="50%" height="50%" alt="pgadmin download platfrom"><br>支持多种方式安装<br></center>
+<center><img src="/images/pgadmin/pgadmin-download.png" width="66%" height="66%" alt="pgadmin download platfrom"><br>支持多种方式安装<br></center>
 
 <p>1、客户端方式：<br>在 macOS 和 Windows 个人电脑上安装方便比较简单，将安装包下载到电脑上进行安装即可。</p>
 <p>2、服务端方式：<br>在 CentOS/Fedora 系统上，可通过 rmp 和 yum 方式安装，可分为 desktop 和 web 模式两种。</p>
@@ -129,7 +129,12 @@
 <p>pgAdmin 支持多种语言显示，由于我们习惯了中文图形界面，所以这里介绍一下中文语言设置方式。</p>
 <p>首先，我们需要找到 User Language 配置界面，路径：<code>File(菜单)</code> -&gt; <code>Preferences</code> -&gt; <code>Miscellaneous</code> -&gt; <code>User Language</code></p>
 <p>然后，点击下拉框，选择适合自己语言：</p>
-<center><img src="/images/pgadmin/user-language.png" width="50%" height="50%" alt="Chinese(Simplified)"><br>选择中文简体<br></center><br>最后，点击“save”或“保存”并刷新此界面，这样就可以看到中文形式的图文界面。<br><br>### 使用<br>***<br><br>安装完成之后，启动 pgAdmin 添加 server 配置，连接 PostgreSQL 数据库：<br><center><img src="/images/pgadmin/add-server.png" width="50%" height="50%" alt="add server"><br>连接 PostgreSQL 数据库<br></center>
+<center><img src="/images/pgadmin/user-language.png" width="60%" height="60%" alt="Chinese(Simplified)"><br>选择中文简体<br></center>
+
+<p>最后，点击“save”或“保存”并刷新界面，这样就可以看到中文的图文界面。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><hr>
+<p>安装完成之后，启动 pgAdmin 添加 server 配置，连接 PostgreSQL 数据库：</p>
+<center><img src="/images/pgadmin/add-server.png" width="50%" height="50%" alt="add server"><br>连接 PostgreSQL 数据库<br></center>
 
 <p>注：</p>
 <ul>
@@ -168,7 +173,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://blog.devhitao.com/2021/02/21/pgadmin-postgresql-tool/" data-title="PostgreSQL 可视化工具 pgAdmin 的下载、安装和使用 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  <div data-url="https://blog.devhitao.com/2021/02/21/pgadmin-postgresql-tool/" data-title="PostgreSQL客户端 pgAdmin 的下载、安装、配置和使用 | 郭工笔记" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -201,7 +206,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载和安装"><span class="toc-number">2.</span> <span class="toc-text">下载和安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#中文界面"><span class="toc-number">3.1.</span> <span class="toc-text">中文界面</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">5.</span> <span class="toc-text">文档信息</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载和安装"><span class="toc-number">2.</span> <span class="toc-text">下载和安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#中文界面"><span class="toc-number">3.1.</span> <span class="toc-text">中文界面</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-number">4.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">5.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">6.</span> <span class="toc-text">文档信息</span></a></li></ol>
  
   </div>
 

@@ -12,18 +12,18 @@
     
 
     
-    <meta name="description" content="前言 Git 标签作用：  Git 可以给仓库历史中的某个提交打上标签，以示重要。  Git 标签是什么？  比较有代表性提交通常会使用这个功能来标记发布结点(v1.0.0、v1.1.0 …)。  列出标签 列出标签：1$ git tag 打标签 轻量标签 在某个分支上打标签，可以使用 git tag &amp;lt;tagname&amp;gt;, eg:1$ git tag 1.1.0 附注标签 附注标签 g">
+    <meta name="description" content="前言 Git 标签作用：  Git 可以给仓库历史中的某个提交打上标签，以示重要。  Git 标签是什么？  比较有代表性提交通常会使用这个功能来标记发布结点(v1.0.0、v1.1.0 …)。  列出标签 列出标签：1$ git tag 查看某个 tagname 信息1$ git tag -v &amp;lt;tagname&amp;gt; 打标签 轻量标签 在某个分支上打标签，可以使用 git tag &amp;lt">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git tag 标签操作">
 <meta property="og:url" content="https://blog.devhitao.com/2015/04/09/git-basics-tag/index.html">
 <meta property="og:site_name" content="郭工笔记">
-<meta property="og:description" content="前言 Git 标签作用：  Git 可以给仓库历史中的某个提交打上标签，以示重要。  Git 标签是什么？  比较有代表性提交通常会使用这个功能来标记发布结点(v1.0.0、v1.1.0 …)。  列出标签 列出标签：1$ git tag 打标签 轻量标签 在某个分支上打标签，可以使用 git tag &amp;lt;tagname&amp;gt;, eg:1$ git tag 1.1.0 附注标签 附注标签 g">
+<meta property="og:description" content="前言 Git 标签作用：  Git 可以给仓库历史中的某个提交打上标签，以示重要。  Git 标签是什么？  比较有代表性提交通常会使用这个功能来标记发布结点(v1.0.0、v1.1.0 …)。  列出标签 列出标签：1$ git tag 查看某个 tagname 信息1$ git tag -v &amp;lt;tagname&amp;gt; 打标签 轻量标签 在某个分支上打标签，可以使用 git tag &amp;lt">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-14T14:08:14.447Z">
+<meta property="og:updated_time" content="2021-04-15T13:30:44.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git tag 标签操作">
-<meta name="twitter:description" content="前言 Git 标签作用：  Git 可以给仓库历史中的某个提交打上标签，以示重要。  Git 标签是什么？  比较有代表性提交通常会使用这个功能来标记发布结点(v1.0.0、v1.1.0 …)。  列出标签 列出标签：1$ git tag 打标签 轻量标签 在某个分支上打标签，可以使用 git tag &amp;lt;tagname&amp;gt;, eg:1$ git tag 1.1.0 附注标签 附注标签 g">
+<meta name="twitter:description" content="前言 Git 标签作用：  Git 可以给仓库历史中的某个提交打上标签，以示重要。  Git 标签是什么？  比较有代表性提交通常会使用这个功能来标记发布结点(v1.0.0、v1.1.0 …)。  列出标签 列出标签：1$ git tag 查看某个 tagname 信息1$ git tag -v &amp;lt;tagname&amp;gt; 打标签 轻量标签 在某个分支上打标签，可以使用 git tag &amp;lt">
 
     
     <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
@@ -95,7 +95,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列出标签"><span class="toc-number">2.</span> <span class="toc-text">列出标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打标签"><span class="toc-number">3.</span> <span class="toc-text">打标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#轻量标签"><span class="toc-number">3.1.</span> <span class="toc-text">轻量标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#附注标签"><span class="toc-number">3.2.</span> <span class="toc-text">附注标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后期打标签"><span class="toc-number">3.3.</span> <span class="toc-text">后期打标签</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检出标签"><span class="toc-number">4.</span> <span class="toc-text">检出标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除标签"><span class="toc-number">5.</span> <span class="toc-text">删除标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修复标签"><span class="toc-number">6.</span> <span class="toc-text">修复标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">8.</span> <span class="toc-text">文档信息</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列出标签"><span class="toc-number">2.</span> <span class="toc-text">列出标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打标签"><span class="toc-number">3.</span> <span class="toc-text">打标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#轻量标签"><span class="toc-number">3.1.</span> <span class="toc-text">轻量标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#附注标签"><span class="toc-number">3.2.</span> <span class="toc-text">附注标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后期打标签"><span class="toc-number">3.3.</span> <span class="toc-text">后期打标签</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检出标签"><span class="toc-number">4.</span> <span class="toc-text">检出标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#推送标签"><span class="toc-number">5.</span> <span class="toc-text">推送标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除标签"><span class="toc-number">6.</span> <span class="toc-text">删除标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修复标签"><span class="toc-number">7.</span> <span class="toc-text">修复标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">8.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">9.</span> <span class="toc-text">文档信息</span></a></li></ol>
 		
 		</div>
 		
@@ -110,6 +110,7 @@
 </blockquote>
 <h3 id="列出标签"><a href="#列出标签" class="headerlink" title="列出标签"></a>列出标签</h3><hr>
 <p>列出标签：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag</span><br></pre></td></tr></table></figure></p>
+<p>查看某个 tagname 信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -v &lt;tagname&gt;</span><br></pre></td></tr></table></figure></p>
 <h3 id="打标签"><a href="#打标签" class="headerlink" title="打标签"></a>打标签</h3><hr>
 <h4 id="轻量标签"><a href="#轻量标签" class="headerlink" title="轻量标签"></a>轻量标签</h4><hr>
 <p>在某个分支上打标签，可以使用 <code>git tag &lt;tagname&gt;</code>, eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag 1.1.0</span><br></pre></td></tr></table></figure></p>
@@ -117,12 +118,15 @@
 <p>附注标签 <code>git tag -a &lt;tagname&gt; -m &quot;描述文字&quot;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -a 1.2.1 -m &quot;fix bug&quot;</span><br></pre></td></tr></table></figure></p>
 <h4 id="后期打标签"><a href="#后期打标签" class="headerlink" title="后期打标签"></a>后期打标签</h4><hr>
 <p>列出提交记录，复制某个需要打标签的记录校验和（或部分校验和）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log --pretty=oneline</span><br></pre></td></tr></table></figure></p>
-<p>复制校验和之后，可以使用 <code>git tag -a &lt;tagname&gt; &lt;commit_id&gt;</code>，eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -a 2.0.0 c3117c4884117772d20096b7d3857cc759fb8d43</span><br></pre></td></tr></table></figure></p>
+<p>复制校验和之后，可以使用 <code>git tag -a &lt;tagname&gt; &lt;commit_id&gt; -m &lt;msg&gt;</code>，eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -a 2.0.0 c3117c4884117772d20096b7d3857cc759fb8d43 -m &quot;blog.devhitao.com&quot;</span><br><span class="line">或</span><br><span class="line">$ git tag -a 2.0.0 c3117c4884117772d20096b7d3857cc759fb8d43 # 会打开 vi 编辑器，让输入描述</span><br></pre></td></tr></table></figure></p>
 <h3 id="检出标签"><a href="#检出标签" class="headerlink" title="检出标签"></a>检出标签</h3><hr>
 <p>检出存在的标签，并建立分支可以使用 <code>git checkout -b &lt;branchname&gt; &lt;tagname&gt;</code>。eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b fixbug 1.1.0</span><br><span class="line">Switched to a new branch &apos;fixbug&apos;</span><br></pre></td></tr></table></figure></p>
+<h3 id="推送标签"><a href="#推送标签" class="headerlink" title="推送标签"></a>推送标签</h3><hr>
+<p>将本地仓库标签推送到远程仓库上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --tags</span><br></pre></td></tr></table></figure></p>
 <h3 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a>删除标签</h3><hr>
 <p>删除本地仓库上的标签， 可以使用 <code>git tag -d &lt;tagname&gt;</code>。 eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -d 1.0.4</span><br><span class="line">Deleted tag &apos;1.0.4&apos; (was 645a648)</span><br></pre></td></tr></table></figure></p>
-<p>要删除远程仓库上的标签， 可以使用 <code>git push origin --delete &lt;tagname&gt;</code> 。 eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --delete 1.0.4</span><br><span class="line">To https://blog.devhitao.com/git/demo.git</span><br><span class="line"> - [deleted]         1.0.4</span><br></pre></td></tr></table></figure></p>
+<p>要删除远程仓库上的标签， 可以使用 <code>git push origin -d &lt;tagname&gt;</code> 。 eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin -d1.0.4</span><br><span class="line">To https://blog.devhitao.com/git/demo.git</span><br><span class="line"> - [deleted]         1.0.4</span><br></pre></td></tr></table></figure></p>
+<p>注：<code>-d</code> 是 <code>--delete</code> 缩写</p>
 <h3 id="修复标签"><a href="#修复标签" class="headerlink" title="修复标签"></a>修复标签</h3><hr>
 <p>将远程仓库上的标签拉取到本地仓库上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch --prune-tags</span><br></pre></td></tr></table></figure></p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><hr>
@@ -176,9 +180,9 @@
 
 
 <div class="next">
-<a href="/2015/04/07/git-branch/"  title="Git 分支管理">
+<a href="/2015/04/07/git-branch/"  title="Git branch 分支管理">
  <strong>下一篇：</strong><br/> 
- <span>Git 分支管理
+ <span>Git branch 分支管理
 </span>
 </a>
 </div>
@@ -194,7 +198,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列出标签"><span class="toc-number">2.</span> <span class="toc-text">列出标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打标签"><span class="toc-number">3.</span> <span class="toc-text">打标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#轻量标签"><span class="toc-number">3.1.</span> <span class="toc-text">轻量标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#附注标签"><span class="toc-number">3.2.</span> <span class="toc-text">附注标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后期打标签"><span class="toc-number">3.3.</span> <span class="toc-text">后期打标签</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检出标签"><span class="toc-number">4.</span> <span class="toc-text">检出标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除标签"><span class="toc-number">5.</span> <span class="toc-text">删除标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修复标签"><span class="toc-number">6.</span> <span class="toc-text">修复标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">8.</span> <span class="toc-text">文档信息</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列出标签"><span class="toc-number">2.</span> <span class="toc-text">列出标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打标签"><span class="toc-number">3.</span> <span class="toc-text">打标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#轻量标签"><span class="toc-number">3.1.</span> <span class="toc-text">轻量标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#附注标签"><span class="toc-number">3.2.</span> <span class="toc-text">附注标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后期打标签"><span class="toc-number">3.3.</span> <span class="toc-text">后期打标签</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检出标签"><span class="toc-number">4.</span> <span class="toc-text">检出标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#推送标签"><span class="toc-number">5.</span> <span class="toc-text">推送标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除标签"><span class="toc-number">6.</span> <span class="toc-text">删除标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修复标签"><span class="toc-number">7.</span> <span class="toc-text">修复标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">8.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">9.</span> <span class="toc-text">文档信息</span></a></li></ol>
  
   </div>
 

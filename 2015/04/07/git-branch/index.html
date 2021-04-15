@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Git 分支管理 - 郭工笔记</title>
+    <title>Git branch 分支管理 - 郭工笔记</title>
     <!--  <meta name="robots" content="nofollow" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
@@ -12,18 +12,18 @@
     
 
     
-    <meta name="description" content="分支管理 分支管理，比如：创建、删除、合并、重命名等操作 创建分支 创建本地分支12$ git checkout -b hotfixSwitched to a new branch &amp;apos;hotfix&amp;apos; 推送到远程分支上1234$ git push origin hotfixTotal 0 (delta 0), reused 0 (delta 0)To https://blog.d">
+    <meta name="description" content="前言 分支管理，比如：创建、删除、合并、重命名等操作 查看分支 查看远程和本地分支，-a 是 --all 缩写：1$ git branch -a 只查看本地分支1$ git branch 只查看远程分支1$ git branch -r 创建分支 创建本地分支12$ git checkout -b hotfixSwitched to a new branch &amp;apos;hotfix&amp;apos; 推">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git 分支管理">
+<meta property="og:title" content="Git branch 分支管理">
 <meta property="og:url" content="https://blog.devhitao.com/2015/04/07/git-branch/index.html">
 <meta property="og:site_name" content="郭工笔记">
-<meta property="og:description" content="分支管理 分支管理，比如：创建、删除、合并、重命名等操作 创建分支 创建本地分支12$ git checkout -b hotfixSwitched to a new branch &amp;apos;hotfix&amp;apos; 推送到远程分支上1234$ git push origin hotfixTotal 0 (delta 0), reused 0 (delta 0)To https://blog.d">
+<meta property="og:description" content="前言 分支管理，比如：创建、删除、合并、重命名等操作 查看分支 查看远程和本地分支，-a 是 --all 缩写：1$ git branch -a 只查看本地分支1$ git branch 只查看远程分支1$ git branch -r 创建分支 创建本地分支12$ git checkout -b hotfixSwitched to a new branch &amp;apos;hotfix&amp;apos; 推">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-12-08T23:53:48.345Z">
+<meta property="og:updated_time" content="2021-04-15T13:37:01.044Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git 分支管理">
-<meta name="twitter:description" content="分支管理 分支管理，比如：创建、删除、合并、重命名等操作 创建分支 创建本地分支12$ git checkout -b hotfixSwitched to a new branch &amp;apos;hotfix&amp;apos; 推送到远程分支上1234$ git push origin hotfixTotal 0 (delta 0), reused 0 (delta 0)To https://blog.d">
+<meta name="twitter:title" content="Git branch 分支管理">
+<meta name="twitter:description" content="前言 分支管理，比如：创建、删除、合并、重命名等操作 查看分支 查看远程和本地分支，-a 是 --all 缩写：1$ git branch -a 只查看本地分支1$ git branch 只查看远程分支1$ git branch -r 创建分支 创建本地分支12$ git checkout -b hotfixSwitched to a new branch &amp;apos;hotfix&amp;apos; 推">
 
     
     <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
@@ -82,7 +82,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/04/07/git-branch/" title="Git 分支管理" itemprop="url">Git 分支管理</a>
+      <a href="/2015/04/07/git-branch/" title="Git branch 分支管理" itemprop="url">Git branch 分支管理</a>
   </h1>
   
   <p class="article-time">
@@ -95,22 +95,26 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#分支管理"><span class="toc-number">1.</span> <span class="toc-text">分支管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建分支"><span class="toc-number">1.1.</span> <span class="toc-text">创建分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#合并分支"><span class="toc-number">1.2.</span> <span class="toc-text">合并分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除分支"><span class="toc-number">1.3.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更改分支名字"><span class="toc-number">1.4.</span> <span class="toc-text">更改分支名字</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">2.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">3.</span> <span class="toc-text">文档信息</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看分支"><span class="toc-number">2.</span> <span class="toc-text">查看分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建分支"><span class="toc-number">3.</span> <span class="toc-text">创建分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并分支"><span class="toc-number">4.</span> <span class="toc-text">合并分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除分支"><span class="toc-number">5.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改分支名字"><span class="toc-number">6.</span> <span class="toc-text">更改分支名字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">8.</span> <span class="toc-text">文档信息</span></a></li></ol>
 		
 		</div>
 		
-		<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><hr>
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><hr>
 <p>分支管理，比如：创建、删除、合并、重命名等操作</p>
-<h4 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h4><hr>
+<h3 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h3><hr>
+<p>查看远程和本地分支，<code>-a</code> 是 <code>--all</code> 缩写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -a</span><br></pre></td></tr></table></figure></p>
+<p>只查看本地分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br></pre></td></tr></table></figure></p>
+<p>只查看远程分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -r</span><br></pre></td></tr></table></figure></p>
+<h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><hr>
 <p>创建本地分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b hotfix</span><br><span class="line">Switched to a new branch &apos;hotfix&apos;</span><br></pre></td></tr></table></figure></p>
 <p>推送到远程分支上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin hotfix</span><br><span class="line">Total 0 (delta 0), reused 0 (delta 0)</span><br><span class="line">To https://blog.devhitao.com/hi/blog.git</span><br><span class="line"> * [new branch]      hotfix -&gt; hotfix</span><br></pre></td></tr></table></figure></p>
-<h4 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h4><hr>
+<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><hr>
 <p>切换到要合并的分支上，合并整个 hotfix 分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout develop</span><br><span class="line">$ git merge hotfix</span><br></pre></td></tr></table></figure></p>
 <p>切换到要合并的分支上之后，将某个分支上的某条提交记录合并到该分支上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout develop</span><br><span class="line">$ git cherry-pick aaa6e57ef8cc97bf75f307d429547190341b9f5e</span><br></pre></td></tr></table></figure></p>
-<h4 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h4><hr>
+<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><hr>
 <p>删除本地 hotfix 分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d hotfix	# -D 强制删除</span><br><span class="line">Deleted branch hotfix (was 87f7322).</span><br></pre></td></tr></table></figure></p>
 <p>删除远程 hotfix 分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --delete hotfix </span><br><span class="line">To https://blog.devhitao.com/hi/blog.git</span><br><span class="line"> - [deleted]         hotfix</span><br></pre></td></tr></table></figure></p>
-<h4 id="更改分支名字"><a href="#更改分支名字" class="headerlink" title="更改分支名字"></a>更改分支名字</h4><hr>
+<h3 id="更改分支名字"><a href="#更改分支名字" class="headerlink" title="更改分支名字"></a>更改分支名字</h3><hr>
 <p>由于某些原因我们需要重命名某分支名字，比如：将 master 变为 main 名称</p>
 <p>1、将本地 master 分支重命名为 main:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --move master main</span><br></pre></td></tr></table></figure></p>
 <p>2、将变更后的 main 分支推送到远程分支上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git push --set-upstream origin main</span><br><span class="line">Total 0 (delta 0), reused 0 (delta 0)</span><br><span class="line">To https://blog.devhitao.com/hi/blog.git</span><br><span class="line"> * [new branch]      main -&gt; main</span><br><span class="line">Branch &apos;main&apos; set up to track remote branch &apos;main&apos; from &apos;origin&apos;.</span><br></pre></td></tr></table></figure></p>
@@ -149,7 +153,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://blog.devhitao.com/2015/04/07/git-branch/" data-title="Git 分支管理 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  <div data-url="https://blog.devhitao.com/2015/04/07/git-branch/" data-title="Git branch 分支管理 | 郭工笔记" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -190,7 +194,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#分支管理"><span class="toc-number">1.</span> <span class="toc-text">分支管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建分支"><span class="toc-number">1.1.</span> <span class="toc-text">创建分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#合并分支"><span class="toc-number">1.2.</span> <span class="toc-text">合并分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除分支"><span class="toc-number">1.3.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更改分支名字"><span class="toc-number">1.4.</span> <span class="toc-text">更改分支名字</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">2.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">3.</span> <span class="toc-text">文档信息</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看分支"><span class="toc-number">2.</span> <span class="toc-text">查看分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建分支"><span class="toc-number">3.</span> <span class="toc-text">创建分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并分支"><span class="toc-number">4.</span> <span class="toc-text">合并分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除分支"><span class="toc-number">5.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改分支名字"><span class="toc-number">6.</span> <span class="toc-text">更改分支名字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">8.</span> <span class="toc-text">文档信息</span></a></li></ol>
  
   </div>
 

@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="郭工笔记">
 <meta property="og:description" content="前言 分支管理，比如：创建、删除、合并、重命名等操作 查看分支 查看远程和本地分支（-a 是 --all 缩写）1$ git branch -a 只查看本地分支1$ git branch 只查看远程分支1$ git branch -r 创建分支 创建本地分支12$ git checkout -b hotfixSwitched to a new branch &amp;apos;hotfix&amp;apos; 推">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-15T15:22:35.111Z">
+<meta property="og:updated_time" content="2021-04-16T15:11:29.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git branch 分支管理">
 <meta name="twitter:description" content="前言 分支管理，比如：创建、删除、合并、重命名等操作 查看分支 查看远程和本地分支（-a 是 --all 缩写）1$ git branch -a 只查看本地分支1$ git branch 只查看远程分支1$ git branch -r 创建分支 创建本地分支12$ git checkout -b hotfixSwitched to a new branch &amp;apos;hotfix&amp;apos; 推">
@@ -95,7 +95,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看分支"><span class="toc-number">2.</span> <span class="toc-text">查看分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建分支"><span class="toc-number">3.</span> <span class="toc-text">创建分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并分支"><span class="toc-number">4.</span> <span class="toc-text">合并分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除分支"><span class="toc-number">5.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改分支名字"><span class="toc-number">6.</span> <span class="toc-text">更改分支名字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">8.</span> <span class="toc-text">文档信息</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看分支"><span class="toc-number">2.</span> <span class="toc-text">查看分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建分支"><span class="toc-number">3.</span> <span class="toc-text">创建分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并分支"><span class="toc-number">4.</span> <span class="toc-text">合并分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除分支"><span class="toc-number">5.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改分支名称"><span class="toc-number">6.</span> <span class="toc-text">修改分支名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">8.</span> <span class="toc-text">文档信息</span></a></li></ol>
 		
 		</div>
 		
@@ -114,7 +114,7 @@
 <h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><hr>
 <p>删除本地 hotfix 分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d hotfix	# -D 强制删除</span><br><span class="line">Deleted branch hotfix (was 87f7322).</span><br></pre></td></tr></table></figure></p>
 <p>删除远程 hotfix 分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --delete hotfix </span><br><span class="line">To https://blog.devhitao.com/hi/blog.git</span><br><span class="line"> - [deleted]         hotfix</span><br></pre></td></tr></table></figure></p>
-<h3 id="更改分支名字"><a href="#更改分支名字" class="headerlink" title="更改分支名字"></a>更改分支名字</h3><hr>
+<h3 id="修改分支名称"><a href="#修改分支名称" class="headerlink" title="修改分支名称"></a>修改分支名称</h3><hr>
 <p>由于某些原因我们需要重命名某分支名字，比如：将 master 变为 main 名称</p>
 <p>1、将本地 master 分支重命名为 main:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --move master main</span><br></pre></td></tr></table></figure></p>
 <p>2、将变更后的 main 分支推送到远程分支上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git push --set-upstream origin main</span><br><span class="line">Total 0 (delta 0), reused 0 (delta 0)</span><br><span class="line">To https://blog.devhitao.com/hi/blog.git</span><br><span class="line"> * [new branch]      main -&gt; main</span><br><span class="line">Branch &apos;main&apos; set up to track remote branch &apos;main&apos; from &apos;origin&apos;.</span><br></pre></td></tr></table></figure></p>
@@ -167,10 +167,10 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/04/09/git-basics-tag/" title="Git tag 标签操作">
+ <a href="/2015/04/09/git-basics-tag/" title="Git Tag 标签操作">
   <strong>上一篇：</strong><br/>
   <span>
-  Git tag 标签操作</span>
+  Git Tag 标签操作</span>
 </a>
 </div>
 
@@ -194,7 +194,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看分支"><span class="toc-number">2.</span> <span class="toc-text">查看分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建分支"><span class="toc-number">3.</span> <span class="toc-text">创建分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并分支"><span class="toc-number">4.</span> <span class="toc-text">合并分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除分支"><span class="toc-number">5.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改分支名字"><span class="toc-number">6.</span> <span class="toc-text">更改分支名字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">8.</span> <span class="toc-text">文档信息</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看分支"><span class="toc-number">2.</span> <span class="toc-text">查看分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建分支"><span class="toc-number">3.</span> <span class="toc-text">创建分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并分支"><span class="toc-number">4.</span> <span class="toc-text">合并分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除分支"><span class="toc-number">5.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改分支名称"><span class="toc-number">6.</span> <span class="toc-text">修改分支名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">8.</span> <span class="toc-text">文档信息</span></a></li></ol>
  
   </div>
 

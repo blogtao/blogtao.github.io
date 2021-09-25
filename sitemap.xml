@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/2021/08/28/baya/</loc>
+    
+    <lastmod>2021-09-25T03:21:17.803Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.devhitao.com/2019/12/18/pip-guide/</loc>
+    
+    <lastmod>2021-08-11T13:17:41.247Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/2015/04/07/git-branch/</loc>
     
     <lastmod>2021-04-16T15:43:15.316Z</lastmod>
@@ -40,13 +54,6 @@
     <loc>https://blog.devhitao.com/2020/12/26/python-connector-mysql/</loc>
     
     <lastmod>2020-12-28T13:20:02.523Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2019/12/18/pip-guide/</loc>
-    
-    <lastmod>2020-12-14T13:00:36.981Z</lastmod>
     
   </url>
   

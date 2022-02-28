@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/site/data/ad.json</loc>
+    
+    <lastmod>2022-02-28T16:06:47.267Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/site/data/discover_data.json</loc>
     
     <lastmod>2021-12-18T13:32:35.891Z</lastmod>

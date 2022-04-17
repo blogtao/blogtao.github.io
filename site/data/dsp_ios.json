@@ -1,1 +1,16 @@
-{"last":{"version":"1.0.1","update":"0","build":"202203102120","url":"https://apps.apple.com/app/id1614447783","note":""},"versions":{"1.0.0":{"update":"0","note":"","build":"202203090750"}}}
+{
+    "last": {
+        "version": "1.0.1",
+        "update":"0",
+        "build":"202203102120",
+        "url": "https://apps.apple.com/app/id1614447783",
+        "note":""
+    },
+    "versions":{
+        "1.0.0": {
+            "update":"0",
+            "note":"",
+            "build":"202203090750"
+        }
+    }
+}

@@ -18,11 +18,27 @@
     <wb:image href="https://blog.devhitao.com/site/wb/img/xiaofuyang.jpg"/>
     <wb:explicit>false</wb:explicit>
     <item>
-      <title>链接转换功能</title>
-      <wb:title>链接转换功能</wb:title>
+      <title>标题1-竖向视频</title>
+      <wb:title>副标题1</wb:title>
       <link>https://wangbo.link/code/link.html</link>
       <wb:image href="https://blog.devhitao.com/site/wb/img/Qzone.jpg"/>
-      <description>链接转换功能，将你的网址进一步编码，分享时变得更加安全</description>
+      <description>欢迎观看，谢谢！</description>
+      <enclosure 
+        length="1990" 
+        type="video/mp4" 
+        url="https://blog.devhitao.com/media/dsp_demo.mp4"
+      />
+      <guid>video52689815</guid>
+      <pubDate>2020-08-07 23:00:00</pubDate>
+      <wb:duration>240</wb:duration>
+      <wb:explicit>true</wb:explicit>
+    </item>
+    <item>
+      <title>标题2-横向视频</title>
+      <wb:title>副标题2</wb:title>
+      <link>https://wangbo.link/code/link.html</link>
+      <wb:image href="https://blog.devhitao.com/site/wb/img/Qzone.jpg"/>
+      <description>欢迎观看标题2，谢谢！</description>
       <enclosure 
         length="1990" 
         type="video/mp4" 
@@ -33,102 +49,5 @@
       <wb:duration>240</wb:duration>
       <wb:explicit>true</wb:explicit>
     </item>
-        <item>
-      <title>链接转换功能</title>
-      <wb:title>链接转换功能</wb:title>
-      <link>https://wangbo.link/code/link.html</link>
-      <wb:image href="https://blog.devhitao.com/site/wb/img/Qzone.jpg"/>
-      <description>链接转换功能，将你的网址进一步编码，分享时变得更加安全</description>
-      <enclosure 
-        length="1990" 
-        type="video/mp4" 
-        url="https://blog.devhitao.com/media/x/video52689815_low.mp4"
-      />
-      <guid>video52689815</guid>
-      <pubDate>2020-08-07 23:00:00</pubDate>
-      <wb:duration>240</wb:duration>
-      <wb:explicit>true</wb:explicit>
-    </item>
-        <item>
-      <title>链接转换功能</title>
-      <wb:title>链接转换功能</wb:title>
-      <link>https://wangbo.link/code/link.html</link>
-      <wb:image href="https://blog.devhitao.com/site/wb/img/Qzone.jpg"/>
-      <description>链接转换功能，将你的网址进一步编码，分享时变得更加安全</description>
-      <enclosure 
-        length="1990" 
-        type="video/mp4" 
-        url="https://blog.devhitao.com/media/x/video52689815_low.mp4"
-      />
-      <guid>video52689815</guid>
-      <pubDate>2020-08-07 23:00:00</pubDate>
-      <wb:duration>240</wb:duration>
-      <wb:explicit>true</wb:explicit>
-    </item>
-        <item>
-      <title>链接转换功能</title>
-      <wb:title>链接转换功能</wb:title>
-      <link>https://wangbo.link/code/link.html</link>
-      <wb:image href="https://blog.devhitao.com/site/wb/img/Qzone.jpg"/>
-      <description>链接转换功能，将你的网址进一步编码，分享时变得更加安全</description>
-      <enclosure 
-        length="1990" 
-        type="video/mp4" 
-        url="https://blog.devhitao.com/media/x/video52689815_low.mp4"
-      />
-      <guid>video52689815</guid>
-      <pubDate>2020-08-07 23:00:00</pubDate>
-      <wb:duration>240</wb:duration>
-      <wb:explicit>true</wb:explicit>
-    </item>
-        <item>
-      <title>链接转换功能</title>
-      <wb:title>链接转换功能</wb:title>
-      <link>https://wangbo.link/code/link.html</link>
-      <wb:image href="https://blog.devhitao.com/site/wb/img/Qzone.jpg"/>
-      <description>链接转换功能，将你的网址进一步编码，分享时变得更加安全</description>
-      <enclosure 
-        length="1990" 
-        type="video/mp4" 
-        url="https://blog.devhitao.com/media/x/video52689815_low.mp4"
-      />
-      <guid>video52689815</guid>
-      <pubDate>2020-08-07 23:00:00</pubDate>
-      <wb:duration>240</wb:duration>
-      <wb:explicit>true</wb:explicit>
-    </item>
-        <item>
-      <title>链接转换功能</title>
-      <wb:title>链接转换功能</wb:title>
-      <link>https://wangbo.link/code/link.html</link>
-      <wb:image href="https://blog.devhitao.com/site/wb/img/Qzone.jpg"/>
-      <description>链接转换功能，将你的网址进一步编码，分享时变得更加安全</description>
-      <enclosure 
-        length="1990" 
-        type="video/mp4" 
-        url="https://blog.devhitao.com/media/x/video52689815_low.mp4"
-      />
-      <guid>video52689815</guid>
-      <pubDate>2020-08-07 23:00:00</pubDate>
-      <wb:duration>240</wb:duration>
-      <wb:explicit>true</wb:explicit>
-    </item>
-        <item>
-      <title>链接转换功能</title>
-      <wb:title>链接转换功能</wb:title>
-      <link>https://wangbo.link/code/link.html</link>
-      <wb:image href="https://blog.devhitao.com/site/wb/img/Qzone.jpg"/>
-      <description>链接转换功能，将你的网址进一步编码，分享时变得更加安全</description>
-      <enclosure 
-        length="1990" 
-        type="video/mp4" 
-        url="https://blog.devhitao.com/media/x/video52689815_low.mp4"
-      />
-      <guid>video52689815</guid>
-      <pubDate>2020-08-07 23:00:00</pubDate>
-      <wb:duration>240</wb:duration>
-      <wb:explicit>true</wb:explicit>
-    </item>
-    
   </channel>
 </rss>

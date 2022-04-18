@@ -37,12 +37,12 @@
       <title>标题2-横向视频</title>
       <wb:title>副标题2</wb:title>
       <link>https://wangbo.link/code/link.html</link>
-      <wb:image href="https://blog.devhitao.com/site/wb/img/Qzone.jpg"/>
+      <wb:image href="https://blog.devhitao.com/site/dsp/dsp_demo_h.png"/>
       <description>欢迎观看标题2，谢谢！</description>
       <enclosure 
         length="1990" 
         type="video/mp4" 
-        url="https://blog.devhitao.com/media/x/video52689815_low.mp4"
+        url="https://blog.devhitao.com/media/dsp_demo_h.mp4"
       />
       <guid>video52689815</guid>
       <pubDate>2020-08-07 23:00:00</pubDate>

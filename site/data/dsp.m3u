@@ -1,5 +1,5 @@
 #EXTM3U x-tvg-url=""
 #EXTINF:-1 tvg-id="" tvg-country="" tvg-language="" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Aljazeera_eng.svg/400px-Aljazeera_eng.svg.png" group-title="",标题1-竖向视频
 https://blog.devhitao.com/media/dsp_demo.mp4
-#EXTINF:-1 tvg-id="" tvg-country="" tvg-language="" tvg-logo="https://upload.wikimedia.org/wikipedia/en/9/90/Al_Jazeera_Mubasher_logo.png" group-title="News",标题2-横向视频
-https://blog.devhitao.com/media/x/video52689815_low.mp4
+#EXTINF:-1 tvg-id="" tvg-country="" tvg-language="" tvg-logo="https://blog.devhitao.com/site/dsp/dsp_demo_h.png" group-title="News",标题2-横向视频
+https://blog.devhitao.com/media/dsp_demo_h.mp4

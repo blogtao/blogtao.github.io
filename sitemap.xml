@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/2020/03/20/heroku-guide/</loc>
+    
+    <lastmod>2022-06-09T14:38:23.777Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/site/data/dsp_ios.json</loc>
     
     <lastmod>2022-05-13T15:41:33.035Z</lastmod>
@@ -254,13 +261,6 @@
   </url>
   
   <url>
-    <loc>https://blog.devhitao.com/2020/03/20/heroku-guide/</loc>
-    
-    <lastmod>2020-06-09T12:47:05.514Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.devhitao.com/2015/03/21/ssh-usage/</loc>
     
     <lastmod>2020-04-28T13:14:38.300Z</lastmod>
@@ -320,6 +320,13 @@
     <loc>https://blog.devhitao.com/2020/02/16/get-my-ip-address/</loc>
     
     <lastmod>2020-02-17T14:17:59.860Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.devhitao.com/media/t/dt_loading_error.html</loc>
+    
+    <lastmod>2020-02-17T04:47:32.000Z</lastmod>
     
   </url>
   

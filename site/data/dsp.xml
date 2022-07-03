@@ -1,51 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:wb="http://www.wangbo.link">
+<rss version="2.0" xmlns:wb="http://www.wangbo.link" xmlns:itunes="http://www.wangbo.link">
   <channel>
-    <title>功能介绍</title>
-    <wb:title>功能介绍</wb:title>
+    <title>产品杂谈</title>
+    <wb:title>产品杂谈</wb:title>
     <link>https://wangbo.link</link>
     <language>zh-cn</language>
-    <copyright>&#169; 2020 网播</copyright>
+    <copyright>&#169; 2022 网播</copyright>
     <wb:author>网播团队</wb:author>
     <description>网播功能介绍，带你熟悉现有功能</description>
     <wb:owner>
-      <wb:name>小网播</wb:name>
-      <wb:email>wangbo@email.com</wb:email>
       <wb:url>https://wangbo.link</wb:url>
       <wb:telegram>https://t.me/wangbolink</wb:telegram>
       <wb:qqgroup>993596291</wb:qqgroup>
     </wb:owner>
-    <wb:image href="https://blog.devhitao.com/site/wb/img/xiaofuyang.jpg"/>
+    <itunes:webmaster>63835086</itunes:webmaster>
+    <wb:image href="https://blog.devhitao.com/site/dsp/dsp_zt.jpeg"/>
     <wb:explicit>false</wb:explicit>
     <item>
-      <title>标题1-竖向视频</title>
+      <title>功能介绍一：书签模块</title>
       <wb:title>副标题1</wb:title>
       <link>https://wangbo.link/code/link.html</link>
-      <wb:image href="https://blog.devhitao.com/site/wb/img/proxy.jpg"/>
-      <description>欢迎观看，谢谢！</description>
+      <wb:image href="https://blog.devhitao.com/site/dsp/static/images/index_01.jpeg"/>
+      <description>欢迎观看本期功能介绍</description>
       <enclosure 
         length="1990" 
         type="video/mp4" 
-        url="https://blog.devhitao.com/media/dsp_demo.mp4"
+        url="https://blog.devhitao.com/site/dsp/static/media/index_01.mov"
       />
       <guid>video52689815</guid>
-      <pubDate>2020-08-07 23:00:00</pubDate>
+      <pubDate>2022-04-07 23:12:12</pubDate>
       <wb:duration>240</wb:duration>
       <wb:explicit>true</wb:explicit>
     </item>
     <item>
-      <title>标题2-横向视频</title>
+      <title>模块介绍二：本地模块</title>
       <wb:title>副标题2</wb:title>
       <link>https://wangbo.link/code/link.html</link>
-      <wb:image href="https://blog.devhitao.com/site/dsp/dsp_demo_h.png"/>
-      <description>欢迎观看标题2，谢谢！</description>
+      <wb:image href="https://blog.devhitao.com/site/dsp/static/images/index_02.jpeg"/>
+      <description>欢迎观看本期功能介绍</description>
       <enclosure 
-        length="1990" 
+        length="" 
         type="video/mp4" 
-        url="https://blog.devhitao.com/media/dsp_demo_h.mp4"
+        url="https://blog.devhitao.com/site/dsp/static/media/index_02.mov"
       />
       <guid>video52689815</guid>
-      <pubDate>2020-08-07 23:00:00</pubDate>
+      <pubDate>2021-08-07</pubDate>
+      <wb:duration>240</wb:duration>
+      <wb:explicit>true</wb:explicit>
+    </item>
+    <item>
+      <title>模块介绍三：更多</title>
+      <wb:title>副标题2</wb:title>
+      <link>https://wangbo.link/code/link.html</link>
+      <wb:image href="https://blog.devhitao.com/site/dsp/static/images/index_03.jpeg"/>
+      <description>欢迎观看本期功能介绍</description>
+      <enclosure 
+        length="" 
+        type="video/mp4" 
+        url="https://blog.devhitao.com/site/dsp/static/media/index_03.mp4"
+      />
+      <guid>video52689815</guid>
+      <pubDate>2021-08-07</pubDate>
+      <wb:duration>240</wb:duration>
+      <wb:explicit>true</wb:explicit>
+    </item>
+        <item>
+      <title>如何利用App赚钱或变现</title>
+      <wb:title></wb:title>
+      <link>https://wangbo.link/code/link.html</link>
+      <wb:image href="https://blog.devhitao.com/site/dsp/static/images/index_04.jpeg"/>
+      <description></description>
+      <enclosure 
+        length="" 
+        type="video/mp4" 
+        url="https://blog.devhitao.com/site/dsp/static/media/index_04.mp4"
+      />
+      <guid>video52689816</guid>
+      <pubDate>2022-07-07</pubDate>
       <wb:duration>240</wb:duration>
       <wb:explicit>true</wb:explicit>
     </item>

@@ -1,5 +1,9 @@
-#EXTM3U x-tvg-url=""
-#EXTINF:-1 tvg-id="" tvg-country="" tvg-language="" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Aljazeera_eng.svg/400px-Aljazeera_eng.svg.png" group-title="",标题1-竖向视频
-https://blog.devhitao.com/media/dsp_demo.mp4
-#EXTINF:-1 tvg-id="" tvg-country="" tvg-language="" tvg-logo="https://blog.devhitao.com/site/dsp/dsp_demo_h.png" group-title="News",标题2-横向视频
-https://blog.devhitao.com/media/dsp_demo_h.mp4
+#EXTM3U x-tvg-url="" webmaster="63835086"
+#EXTINF:-1 tvg-id="" tvg-country="" tvg-language="" tvg-logo="http://www.rungo.online/dsp/static/images/index_01.jpeg" group-title="",书签模块
+http://www.rungo.online/dsp/static/media/index_01.mov
+#EXTINF:-1 tvg-id="" tvg-country="" tvg-language="" tvg-logo="http://www.rungo.online/dsp/static/images/index_02.jpeg" group-title="News",本地模块
+http://www.rungo.online/dsp/static/media/index_02.mov
+#EXTINF:-1 tvg-id="" tvg-country="" tvg-language="" tvg-logo="http://www.rungo.online/dsp/static/images/index_03.jpeg" group-title="News",更多模块
+http://www.rungo.online/dsp/static/media/index_03.mp4
+#EXTINF:-1 tvg-id="" tvg-country="" tvg-language="" tvg-logo="http://www.rungo.online/dsp/static/images/index_04.jpeg" group-title="News",如何利用App进行赚钱或变现
+http://www.rungo.online/dsp/static/media/index_04.mp4

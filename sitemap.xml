@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/site/data/ad.json</loc>
+    
+    <lastmod>2022-07-03T23:31:08.481Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/site/data/dsp_ios.json</loc>
     
     <lastmod>2022-07-03T16:17:41.440Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>https://blog.devhitao.com/site/data/xsp_ios_version.json</loc>
     
     <lastmod>2022-03-10T13:13:12.305Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/site/data/ad.json</loc>
-    
-    <lastmod>2022-02-28T16:50:32.077Z</lastmod>
     
   </url>
   

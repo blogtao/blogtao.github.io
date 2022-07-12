@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/site/data/ad.json</loc>
+    
+    <lastmod>2022-07-12T00:02:37.401Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/site/data/xsp_ios.json</loc>
     
     <lastmod>2022-07-12T00:00:34.941Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://blog.devhitao.com/2020/01/18/homebrew-usage/</loc>
     
     <lastmod>2022-07-08T15:08:52.117Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/site/data/ad.json</loc>
-    
-    <lastmod>2022-07-03T23:31:08.481Z</lastmod>
     
   </url>
   

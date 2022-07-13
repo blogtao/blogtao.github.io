@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="郭工笔记">
 <meta property="og:description" content="引言 What is CocoaPods  CocoaPods manages library dependencies for your Xcode projects.   The dependencies for your projects are specified in a single text file called a Podfile. CocoaPods will resolve">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-22T08:43:08.870Z">
+<meta property="og:updated_time" content="2022-07-13T14:21:40.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CocoaPods 安装、使用、更新和卸载">
 <meta name="twitter:description" content="引言 What is CocoaPods  CocoaPods manages library dependencies for your Xcode projects.   The dependencies for your projects are specified in a single text file called a Podfile. CocoaPods will resolve">
@@ -156,6 +156,7 @@
 <p>据说，还可以在 GitHub 上下载镜像源进行替换，无聊的小伙伴可以试试。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//如果本地存在 cocoapods 文件的话，请将其移除 rm -fr ~/.cocoapods 然后在创建。</span><br><span class="line">$ mkdir -p ~/.cocoapods/repos </span><br><span class="line">$ git init</span><br><span class="line">$ git remote add origin https://github.com/CocoaPods/Specs.git</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure></p>
 <hr>
 <p>4、当我们在安装 or 升级的过程中，遇到类似错误：Operation not permitted - /usr/bin/pod、 Operation not permitted - /usr/bin/xcodeproj，执行 <code>sudo gem install -n /usr/local/bin cocoapods</code> 进行安装即可。eg: 指定版本安装：sudo gem install -n /usr/local/bin cocoapods -v 1.3.0</p>
+<p>Q5: 若在 Apple M1 芯片电脑上通过 gem 进行安装可能会报错，可通过下面命令解决：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Did you try:</span><br><span class="line">$ sudo arch -x86_64 gem install ffi</span><br><span class="line"></span><br><span class="line"># And run: arch -x86_64 pod install instead of pod install.</span><br><span class="line">arch -x86_64 pod install</span><br></pre></td></tr></table></figure></p>
 <h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><hr>
 <ul>
 <li><a href="http://blog.devtang.com/2014/05/25/use-cocoapod-to-manage-ios-lib-dependency/" target="_blank" rel="noopener">用CocoaPods做iOS程序的依赖管理</a></li>

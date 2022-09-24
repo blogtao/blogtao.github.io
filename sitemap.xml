@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/2021/08/28/baya/</loc>
+    
+    <lastmod>2022-09-24T03:59:02.112Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/2020/11/27/go2shell/</loc>
     
     <lastmod>2022-07-17T00:42:42.206Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>https://blog.devhitao.com/2016/08/07/github-pages/</loc>
     
     <lastmod>2021-09-25T03:54:36.174Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2021/08/28/baya/</loc>
-    
-    <lastmod>2021-09-25T03:21:17.803Z</lastmod>
     
   </url>
   

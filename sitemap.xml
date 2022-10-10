@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.devhitao.com/2020/01/31/python-virtual-venv/</loc>
+    
+    <lastmod>2022-10-10T13:07:55.930Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.devhitao.com/2021/08/28/baya/</loc>
     
     <lastmod>2022-09-30T07:47:28.931Z</lastmod>
@@ -215,13 +222,6 @@
     <loc>https://blog.devhitao.com/2015/03/23/xcode-project-pbxproj-fqa/</loc>
     
     <lastmod>2020-12-03T13:56:18.605Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.devhitao.com/2020/01/31/python-virtual-venv/</loc>
-    
-    <lastmod>2020-11-27T15:06:37.284Z</lastmod>
     
   </url>
   

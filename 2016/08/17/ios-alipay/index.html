@@ -1,0 +1,523 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS 集成支付宝（AliPay） - 郭工笔记</title>
+    <!--  <meta name="robots" content="nofollow" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="郭工">
+    
+
+    
+    <meta name="description" content="引言 移动支付越来越火，每一个应用都开始植入移动支付，比较常用的支付有支付宝、微信、银联等支付方式，今天来讲一下如何集成支付宝，讲的不好之处，请指出，共同探讨进步！ AliPay  版本号：v2.0.1 支付宝钱包支付接口开发包2.0标准版(20160516)  密码: bfj8跟支付宝签名，商家成为支付宝的“商户”，二级商户：自己支付平台是第一级商户，加入平台的商户成为第二级商户。 流程图 大致">
+<meta name="keywords" content="支付">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 集成支付宝（AliPay）">
+<meta property="og:url" content="https://blog.devhitao.com/2016/08/17/ios-alipay/index.html">
+<meta property="og:site_name" content="郭工笔记">
+<meta property="og:description" content="引言 移动支付越来越火，每一个应用都开始植入移动支付，比较常用的支付有支付宝、微信、银联等支付方式，今天来讲一下如何集成支付宝，讲的不好之处，请指出，共同探讨进步！ AliPay  版本号：v2.0.1 支付宝钱包支付接口开发包2.0标准版(20160516)  密码: bfj8跟支付宝签名，商家成为支付宝的“商户”，二级商户：自己支付平台是第一级商户，加入平台的商户成为第二级商户。 流程图 大致">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.devhitao.com/images/AliWxUnPay/AliPay/支付宝支付流程.png">
+<meta property="og:image" content="https://blog.devhitao.com/images/AliWxUnPay/AliPay/支付宝数据业务交互.png">
+<meta property="og:image" content="https://blog.devhitao.com/images/AliWxUnPay/AliPay/Setting-RSA.png">
+<meta property="og:updated_time" content="2017-04-29T13:20:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 集成支付宝（AliPay）">
+<meta name="twitter:description" content="引言 移动支付越来越火，每一个应用都开始植入移动支付，比较常用的支付有支付宝、微信、银联等支付方式，今天来讲一下如何集成支付宝，讲的不好之处，请指出，共同探讨进步！ AliPay  版本号：v2.0.1 支付宝钱包支付接口开发包2.0标准版(20160516)  密码: bfj8跟支付宝签名，商家成为支付宝的“商户”，二级商户：自己支付平台是第一级商户，加入平台的商户成为第二级商户。 流程图 大致">
+<meta name="twitter:image" content="https://blog.devhitao.com/images/AliWxUnPay/AliPay/支付宝支付流程.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+<!-- </script> -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-5819327586326271",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="郭工笔记">郭工笔记</a></h1>
+				<h2 class="blog-motto">业精于勤，荒于嬉；行成于思，毁于随。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.devhitao.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/08/17/ios-alipay/" title="iOS 集成支付宝（AliPay）" itemprop="url">iOS 集成支付宝（AliPay）</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2016-08-17T02:32:55.000Z" itemprop="datePublished"> 发表于 2016-08-17</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AliPay"><span class="toc-number">2.</span> <span class="toc-text">AliPay</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流程图"><span class="toc-number">3.</span> <span class="toc-text">流程图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#支付流程"><span class="toc-number">3.1.</span> <span class="toc-text">支付流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#业务流程"><span class="toc-number">3.2.</span> <span class="toc-text">业务流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置RSA公钥"><span class="toc-number">4.</span> <span class="toc-text">设置RSA公钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Code"><span class="toc-number">5.</span> <span class="toc-text">Code</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#集成和配置"><span class="toc-number">5.1.</span> <span class="toc-text">集成和配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ATS-说明"><span class="toc-number">5.2.</span> <span class="toc-text">ATS 说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置-Model"><span class="toc-number">5.3.</span> <span class="toc-text">配置 Model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AppDelegate"><span class="toc-number">5.4.</span> <span class="toc-text">AppDelegate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地测试"><span class="toc-number">5.5.</span> <span class="toc-text">本地测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#回调说明"><span class="toc-number">5.6.</span> <span class="toc-text">回调说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端验签"><span class="toc-number">5.7.</span> <span class="toc-text">客户端验签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解析结果"><span class="toc-number">5.8.</span> <span class="toc-text">解析结果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FQA"><span class="toc-number">6.</span> <span class="toc-text">FQA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><hr>
+<p>移动支付越来越火，每一个应用都开始植入移动支付，比较常用的支付有支付宝、微信、银联等支付方式，今天来讲一下如何集成支付宝，讲的不好之处，请指出，共同探讨进步！</p>
+<h3 id="AliPay"><a href="#AliPay" class="headerlink" title="AliPay"></a>AliPay</h3><hr>
+<!--本文章围绕版本号为 V2.0.1 的 SDK，而展开的，不足之处，敬请谅解！-->
+<p>版本号：v2.0.1 <a href="http://pan.baidu.com/s/1kUZGZtH" target="_blank" rel="noopener">支付宝钱包支付接口开发包2.0标准版(20160516)</a>  密码: <code>bfj8</code><br>跟支付宝签名，商家成为支付宝的“商户”，二级商户：自己支付平台是第一级商户，加入平台的商户成为第二级商户。</p>
+<h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><hr>
+<p>大致支付流程（在服务端进行签名）：用户在商户客户端下单 -&gt; 商户客户端会获取用户的地址，收货人信息，商品ID，UID，私钥  -&gt; 发送给商户服务端，商户服务端创建一个订单号，对订单号加密 -&gt;  然后将加密的订单号返回给商户客户端 -&gt; 商户客户端调用支付宝SDK，并传递信息 -&gt;  等待支付宝支付结果，并做友好提示，支付宝服务端接收支付结果。</p>
+<h4 id="支付流程"><a href="#支付流程" class="headerlink" title="支付流程"></a>支付流程</h4><hr>
+<p><img src="/images/AliWxUnPay/AliPay/支付宝支付流程.png" alt="支付宝支付流程"></p>
+<h4 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h4><hr>
+<p><img src="/images/AliWxUnPay/AliPay/支付宝数据业务交互.png" alt="支付宝数据业务交互"></p>
+<h3 id="设置RSA公钥"><a href="#设置RSA公钥" class="headerlink" title="设置RSA公钥"></a>设置RSA公钥</h3><hr>
+<blockquote>
+<p>1、如果您使用了支付宝移动支付、即时到账产品，请在【合作伙伴密钥管理】模块下添加RSA公钥。<br>2、如果您使用了支付宝手机网站支付产品，请在【无线产品密钥管理（wap专用）】模块下添加RSA公钥。<br>3、如果您使用了支付宝当面付产品(包括条码支付、扫码支付、声波支付)，请在【开放平台密钥管理】接入应用为当面付的模块下添加RSA公钥</p>
+</blockquote>
+<p>本地生成 RSA 私钥以公钥，私钥保存在本地，将公钥上传至支付宝平台，以下使用 Mac 上自带的 openssl 生成私钥和公钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">OpenSSL&gt; genrsa -out rsa_private_key.pem   1024  #生成私钥</span><br><span class="line">OpenSSL&gt; pkcs8 -topk8 -inform PEM -in rsa_private_key.pem -outform PEM -nocrypt -out rsa_private_key_pkcs8.pem #Java开发者需要将私钥转换成PKCS8格式</span><br><span class="line">OpenSSL&gt; rsa -in rsa_private_key.pem -pubout -out rsa_public_key.pem #生成公钥</span><br><span class="line">OpenSSL&gt; exit #退出OpenSSL程序</span><br></pre></td></tr></table></figure></p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><hr>
+<h4 id="集成和配置"><a href="#集成和配置" class="headerlink" title="集成和配置"></a>集成和配置</h4><hr>
+<p>关于如何集成和配置不过多的进行介绍，eg：导入包、所需类库和引入头文件等，具体相关配置请参考官方 Demo。</p>
+<h4 id="ATS-说明"><a href="#ATS-说明" class="headerlink" title="ATS 说明"></a>ATS 说明</h4><hr>
+<blockquote>
+<p>如果你的app基于9.0编译，那么为了适配iOS9.0中的App Transport Security(ATS)对http的限制，这里需要对支付宝的请求地址alipay.com、alipayobjects.com做例外，在app对应的info.list中添加如下配置（文中以XML格式描述）。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;key&gt;NSAppTransportSecurity&lt;/key&gt;</span><br><span class="line">    &lt;dict&gt;</span><br><span class="line">        &lt;key&gt;NSExceptionDomains&lt;/key&gt;</span><br><span class="line">        &lt;dict&gt;</span><br><span class="line">            &lt;key&gt;alipay.com&lt;/key&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;NSIncludesSubdomains&lt;/key&gt;</span><br><span class="line">                &lt;true/&gt;</span><br><span class="line">                &lt;key&gt;NSTemporaryExceptionAllowsInsecureHTTPLoads&lt;/key&gt;</span><br><span class="line">                &lt;true/&gt;</span><br><span class="line">                &lt;key&gt;NSTemporaryExceptionMinimumTLSVersion&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;TLSv1.0&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;NSTemporaryExceptionRequiresForwardSecrecy&lt;/key&gt;</span><br><span class="line">                &lt;false/&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">            &lt;key&gt;alipayobjects.com&lt;/key&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;NSIncludesSubdomains&lt;/key&gt;</span><br><span class="line">                &lt;true/&gt;</span><br><span class="line">                &lt;key&gt;NSTemporaryExceptionAllowsInsecureHTTPLoads&lt;/key&gt;</span><br><span class="line">                &lt;true/&gt;</span><br><span class="line">                &lt;key&gt;NSTemporaryExceptionMinimumTLSVersion&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;TLSv1.0&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;NSTemporaryExceptionRequiresForwardSecrecy&lt;/key&gt;</span><br><span class="line">                &lt;false/&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">        &lt;/dict&gt;</span><br><span class="line">    &lt;/dict&gt;</span><br></pre></td></tr></table></figure>
+<p>也可以用下面进行替代:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;key&gt;NSAppTransportSecurity&lt;/key&gt;</span><br><span class="line">    &lt;dict&gt;    </span><br><span class="line">        &lt;key&gt;NSAllowsArbitraryLoads&lt;/key&gt;&lt;true/&gt;</span><br><span class="line">    &lt;/dict&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="配置-Model"><a href="#配置-Model" class="headerlink" title="配置 Model"></a>配置 Model</h4><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Order *order = [[Order alloc] init];</span><br><span class="line">order.partner = partner; //商户ID</span><br><span class="line">order.seller = seller; // 收款账号</span><br><span class="line">order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）</span><br><span class="line">order.productName = product.subject; //商品标题（产品名）</span><br><span class="line">order.productDescription = product.body; //商品描述</span><br><span class="line">order.amount = [NSString stringWithFormat:@&quot;%.2f&quot;,product.price]; //商</span><br><span class="line">品价格</span><br><span class="line">order.notifyURL = @&quot;http://www.test.com&quot;; //回调URL</span><br><span class="line">//以下目前固定写法</span><br><span class="line">order.service = @&quot;mobile.securitypay.pay&quot;;//没有支付宝客户端，跳转网页</span><br><span class="line">order.paymentType = @&quot;1&quot;; //目前只有1</span><br><span class="line">order.inputCharset = @&quot;utf-8&quot;; </span><br><span class="line">order.itBPay = @&quot;30m&quot;;</span><br></pre></td></tr></table></figure>
+<h4 id="AppDelegate"><a href="#AppDelegate" class="headerlink" title="AppDelegate"></a>AppDelegate</h4><hr>
+<p>配置支付宝客户端返回url处理方法。(外部存在支付包钱包，支付宝钱包将处理结果通过url返回。)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">如果从另一个应用进入，将调用此方法。</span><br><span class="line">- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation</span><br><span class="line">&#123;</span><br><span class="line">	//url 支付宝传过来的结果，支付宝不建议解析url // scheme://safepay/   (scheme 自定义的， safepay 安全支付)</span><br><span class="line">	// url.scheme  协议头</span><br><span class="line">	// url.host 域名</span><br><span class="line"> 	// sourceApplication 从哪个应用来的</span><br><span class="line"> 	</span><br><span class="line">    //如果极简开发包不可用，会跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给开发包</span><br><span class="line">    if ([url.host isEqualToString:@&quot;safepay&quot;]) &#123;</span><br><span class="line">        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) &#123;</span><br><span class="line">    //【由于在跳转支付宝客户端支付的过程中，商户app在后台很可能被系统kill了，所以pay接口的callback就会失效，请商户对standbyCallback返回的回调结果进行处理,就是在这个方法里面处理跟callback一样的逻辑】</span><br><span class="line">            NSLog(@&quot;result = %@&quot;,resultDic);</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">    if ([url.host isEqualToString:@&quot;platformapi&quot;])&#123;//支付宝钱包快登授权返回authCode</span><br><span class="line">        [[AlipaySDK defaultService] processAuthResult:url standbyCallback:^(NSDictionary *resultDic) &#123;</span><br><span class="line">            //【由于在跳转支付宝客户端支付的过程中，商户app在后台很可能被系统kill了，所以pay接口的callback就会失效，请商户对standbyCallback返回的回调结果进行处理,就是在这个方法里面处理跟callback一样的逻辑】</span><br><span class="line">            NSLog(@&quot;result = %@&quot;,resultDic);</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">    return YES; //YES 允许调起 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h4><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//应用注册scheme,在AlixPayDemo-Info.plist定义URL types</span><br><span class="line">NSString *appScheme = @&quot;alisdkdemo&quot;; //支付宝调到当前客户端的标识</span><br><span class="line"></span><br><span class="line">//将商品信息拼接成字符串</span><br><span class="line">NSString *orderSpec = [order description];</span><br><span class="line">NSLog(@&quot;orderSpec = %@&quot;,orderSpec);</span><br><span class="line"> </span><br><span class="line">//获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode</span><br><span class="line">id&lt;DataSigner&gt; signer = CreateRSADataSigner(privateKey);</span><br><span class="line">NSString *signedString = [signer signString:orderSpec];</span><br><span class="line">    </span><br><span class="line">//将签名成功字符串格式化为订单字符串,请严格按照该格式</span><br><span class="line">NSString *orderString = nil;</span><br><span class="line">if (signedString != nil) &#123; // 签名成功</span><br><span class="line">	//拼接最终的订单和签名信息</span><br><span class="line">   orderString = [NSString stringWithFormat:@&quot;%@&amp;sign=\&quot;%@\&quot;&amp;sign_type=\&quot;%@\&quot;&quot;, orderSpec, signedString, @&quot;RSA&quot;];</span><br><span class="line">    //调起支付宝支付</span><br><span class="line">   [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) &#123;</span><br><span class="line">//【callback处理支付结果】 支付结束之后的回调</span><br><span class="line">            NSLog(@&quot;reslut = %@&quot;,resultDic); //code == 9000 支付成功</span><br><span class="line">      </span><br><span class="line">   &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="回调说明"><a href="#回调说明" class="headerlink" title="回调说明"></a>回调说明</h4><hr>
+<p>在支付过程结束后，会通过callbackBlock同步返回支付结果。返回结果需要通过resultStatus以及result字段的值来综合判断并确定支付结果。在resultStatus=9000，并且success=“true”以及sign=“xxx”校验通过的情况下，证明支付成功。其它情况归为失败。较低安全级别的场合，也可以只通过检查resultStatus以及success=“true”来判定支付结果。以下为订单支付成功的完成信息示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    memo = &quot;&quot;;</span><br><span class="line">    result = &quot;partner=\&quot;2088101568358171\&quot;&amp;seller_id=\&quot;xxx@alipay.com\&quot;&amp;out_trade_no=\&quot;0819145412-6177\&quot;&amp;subject=\&quot;测试\&quot;&amp;body=\&quot;测试测试\&quot;&amp;total_fee=\&quot;0.01\&quot;&amp;notify_url=\&quot;http://notify.msp.hk/notify.htm\&quot;&amp;service=\&quot;mobile.securitypay.pay\&quot;&amp;payment_type=\&quot;1\&quot;&amp;_input_charset=\&quot;utf-8\&quot;&amp;it_b_pay=\&quot;30m\&quot;&amp;success=\&quot;true\&quot;&amp;sign_type=\&quot;RSA\&quot;&amp;sign=\&quot;hkFZr+zE9499nuqDNLZEF7W75RFFPsly876QuRSeN8WMaUgcdR00IKy5ZyBJ4eldhoJ/2zghqrD4E2G2mNjs3aE+HCLiBXrPDNdLKCZgSOIqmv46TfPTEqopYfhs+o5fZzXxt34fwdrzN4mX6S13cr3UwmEV4L3Ffir/02RBVtU=\&quot;&quot;;</span><br><span class="line">    resultStatus = &quot;9000&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="客户端验签"><a href="#客户端验签" class="headerlink" title="客户端验签"></a>客户端验签</h4><hr>
+<p>一般可以在服务器端进行验签，将支付宝返回的字段上传到服务器即可，服务器端进行判断。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//验签</span><br><span class="line">//去掉返回字典中result值里面的“\\”</span><br><span class="line">NSString *result = [resultDic[@&quot;result&quot;] stringByReplacingOccurrencesOfString:@&quot;\\\\&quot; withString:@&quot;&quot;];</span><br><span class="line">//分割字符串获取订单信息和签名</span><br><span class="line">NSString * comStr = @&quot;&amp;sign_type=\&quot;RSA\&quot;&amp;sign=\&quot;&quot;;</span><br><span class="line">NSArray *array = [result componentsSeparatedByString:comStr];</span><br><span class="line">//返回的订单信息</span><br><span class="line">NSString *orderString = array[0];</span><br><span class="line">//返回的订单签名</span><br><span class="line">NSString *signedString = [array[1] substringToIndex:[array[1]length]-1];</span><br><span class="line">//验证返回信息与签名</span><br><span class="line">if ([verifier verifyString:orderString withSign:signedString])</span><br><span class="line">&#123;</span><br><span class="line">	//验证签名成功，交易结果无篡改</span><br><span class="line">	NSLog(@&quot;------------支付成功---------------&quot;);</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">	//验签错误</span><br><span class="line">	NSLog(@&quot;======错误=======&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="解析结果"><a href="#解析结果" class="headerlink" title="解析结果"></a>解析结果</h4><hr>
+<p>支付结果的提取，必须通过CompletionBlock获取，禁止开发者私自解析支付结果返回的URL。获取值的Key对应resultStatus、memo与result（result中的值，开发者可以自行解析）；</p>
+<p>为了保障已有商户的正常使用，返回参数ResultStatus首字母为大写。在新的SDK中已经用统一的工具类实现了ResultStatus到resultStatus的转换，商户从CompletionBlock中获取resultStatus即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">if ([resultDic[@&quot;resultStatus&quot;] isEqualToString:@&quot;9000&quot;]) &#123;</span><br><span class="line">    NSString * resultStr = resultDic[@&quot;result&quot;];</span><br><span class="line">    NSRange signRange = [resultStr rangeOfString:@&quot;&amp;sign=\&quot;&quot;];</span><br><span class="line">    NSString * sign = [resultStr substringWithRange:NSMakeRange(signRange.location + signRange.length, [resultStr length] - signRange.location - signRange.length - 1)];</span><br><span class="line">    NSLog(@&quot;%@&quot;, sign);</span><br><span class="line">    NSRange successRange = [resultStr rangeOfString:@&quot;&amp;success=\&quot;&quot;];</span><br><span class="line">    NSString * daiqianming = [resultStr substringToIndex:successRange.location];</span><br><span class="line">    NSLog(@&quot;%@&quot;, daiqianming);</span><br><span class="line">    NSString * status = [resultStr substringWithRange:NSMakeRange(successRange.location + successRange.length, 1)];</span><br><span class="line"></span><br><span class="line">    if ([status isEqualToString:@&quot;t&quot;]) &#123;</span><br><span class="line">        NSLog(@&quot;HT 支付宝测试成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="FQA"><a href="#FQA" class="headerlink" title="FQA"></a>FQA</h3><hr>
+<p>0、如何找到 AliPay SDK，大致方法如下：<br><a href="https://doc.open.alipay.com/" target="_blank" rel="noopener">文档中心</a> -&gt; 资源下载 -&gt; 开发工具包下载 -&gt; 移动支付DEMO&amp;SDK<br>1、如何在支付宝平台设置 RSA 公钥钥<br><a href="https://b.alipay.com/" target="_blank" rel="noopener">商家服务</a> -&gt; 我的商家服务 -&gt; 查询PID、Key<br><img src="/images/AliWxUnPay/AliPay/Setting-RSA.png" alt="Setting-RSA">
+　　</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><hr>
+<p>1、<a href="https://doc.open.alipay.com/doc2/detail?treeId=59&amp;articleId=103676&amp;docType=1" target="_blank" rel="noopener">导入代码</a><br>2、<a href="http://www.mamicode.com/info-detail-1076023.html" target="_blank" rel="noopener">手动集成问题解决</a><br>3、<a href="https://beecloud.cn/doc/payapply/?index=14" target="_blank" rel="noopener">支付宝支付生成与配置RSA密钥</a><br>4、<a href="https://doc.open.alipay.com/doc2/detail?treeId=58&amp;articleId=103546&amp;docType=1" target="_blank" rel="noopener">查看RSA商户公钥与支付宝公钥</a><br>5、<a href="http://www.jianshu.com/p/75ba14cfcacf" target="_blank" rel="noopener">关于iOS开发支付宝集成，客户端签名与验证</a><br>6、<a href="https://www.pingxx.com/docs/overview" target="_blank" rel="noopener">PING++ 开发者中心</a><br>7、<a href="https://beecloud.cn/" target="_blank" rel="noopener">BeeCloud</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/支付/">支付</a>
+  </div>
+
+</div>
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://blog.devhitao.com/2016/08/17/ios-alipay/" data-title="iOS 集成支付宝（AliPay） | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/08/17/ios-wxpay/" title="iOS 集成微信支付（WxPay）">
+  <strong>上一篇：</strong><br/>
+  <span>
+  iOS 集成微信支付（WxPay）</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/08/07/github-pages/"  title="GitHub Pages 说明">
+ <strong>下一篇：</strong><br/> 
+ <span>GitHub Pages 说明
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AliPay"><span class="toc-number">2.</span> <span class="toc-text">AliPay</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流程图"><span class="toc-number">3.</span> <span class="toc-text">流程图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#支付流程"><span class="toc-number">3.1.</span> <span class="toc-text">支付流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#业务流程"><span class="toc-number">3.2.</span> <span class="toc-text">业务流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置RSA公钥"><span class="toc-number">4.</span> <span class="toc-text">设置RSA公钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Code"><span class="toc-number">5.</span> <span class="toc-text">Code</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#集成和配置"><span class="toc-number">5.1.</span> <span class="toc-text">集成和配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ATS-说明"><span class="toc-number">5.2.</span> <span class="toc-text">ATS 说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置-Model"><span class="toc-number">5.3.</span> <span class="toc-text">配置 Model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AppDelegate"><span class="toc-number">5.4.</span> <span class="toc-text">AppDelegate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地测试"><span class="toc-number">5.5.</span> <span class="toc-text">本地测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#回调说明"><span class="toc-number">5.6.</span> <span class="toc-text">回调说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端验签"><span class="toc-number">5.7.</span> <span class="toc-text">客户端验签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解析结果"><span class="toc-number">5.8.</span> <span class="toc-text">解析结果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FQA"><span class="toc-number">6.</span> <span class="toc-text">FQA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Git/" title="Git">Git<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PostgreSQL/" title="PostgreSQL">PostgreSQL<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>53</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/jekyll/" title="jekyll">jekyll<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linux-Unix-Centos/" title="linux &amp; Unix &amp; Centos">linux &amp; Unix &amp; Centos<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/security/" title="security">security<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开发工具/" title="开发工具">开发工具<sup>15</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>16</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="weixin">
+  <br />
+<!--
+  <p class="asidetitle">微信打赏，赞助小猿</p>
+  <p>你的支持，是对小猿的最大鼓励</p>
+  <img src="/images/ads/weixin-pay.png" width="220px" />
+-->
+<br />
+  <p class="asidetitle">欢迎关注微博</p>
+  <p>微博ID：<a href="https://weibo.com/u/5166488487" target="_blank">@devhitao</a></p>
+  <a href="https://weibo.com/u/5166488487" target="_blank"><img src="/images/ads/weibo.png" width="220px" /></a>
+  <!-- <p class="asidetitle">iOS交流群</p> -->
+  <!-- <p>Q群:326729317,暗号:小锅</p> -->
+  <!-- <a href="http://jq.qq.com/?_wv=1027&k=2BjVH4c" target="_blank"><img src="/ad/place-hold.png"  width="220px" /></a> -->
+<br />
+<br />
+  <p class="asidetitle">友情链接</p>
+  <p><a href="http://www.ituring.com.cn/" target="_blank">图灵社区</a></p>
+  <p><a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰的网络日志</a></p>
+  <p><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a></p>
+  <!-- 
+  <p>test</p>
+  <a href="http://www.test.com" target="_blank"><img src="/ad/weibo.png"  width="220px" height="100"/></a>
+-->
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+<!--cc 图标-->
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+	&nbsp;&nbsp;&nbsp;
+	Powered by <a href="https://hexo.io" target="_blank" title="hexo">Hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2022
+	
+	<a href="/about" target="_blank" title="郭工">郭工</a>
+	
+<!--	&nbsp;&nbsp;
+	原创内容，保留一切权利。-->
+<!--cnzz 统计图标-->
+&nbsp;&nbsp;&nbsp;
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261101034'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261101034%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6f3ed6f7016660f2922ad49dcee905e3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

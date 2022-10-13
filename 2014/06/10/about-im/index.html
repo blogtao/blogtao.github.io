@@ -1,0 +1,516 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>XMPP - 郭工笔记</title>
+    <!--  <meta name="robots" content="nofollow" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="郭工">
+    
+
+    
+    <meta name="description" content="关于即时通信   即时通讯 (Instant Messaging, 简称IM)是一个实时通信系统，允许两个人或多人使用网络即时的传递文字消息、文件、语音与视频的交流。  四大主流IM协议： 可扩展通讯和表示协议(XMPP)、即时信息和空间协议（IMPP）、空间和即时信息协议（PRIM）、针对即时通讯和空间平衡扩充的进程开始协议SIP（SIMPLE），其中，XMPP协议最为灵活。 关于XMPP  X">
+<meta name="keywords" content="XMPP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XMPP">
+<meta property="og:url" content="https://blog.devhitao.com/2014/06/10/about-im/index.html">
+<meta property="og:site_name" content="郭工笔记">
+<meta property="og:description" content="关于即时通信   即时通讯 (Instant Messaging, 简称IM)是一个实时通信系统，允许两个人或多人使用网络即时的传递文字消息、文件、语音与视频的交流。  四大主流IM协议： 可扩展通讯和表示协议(XMPP)、即时信息和空间协议（IMPP）、空间和即时信息协议（PRIM）、针对即时通讯和空间平衡扩充的进程开始协议SIP（SIMPLE），其中，XMPP协议最为灵活。 关于XMPP  X">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.devhitao.com/images/XMPP/Jabber-Transport_funktioniert.svg.png">
+<meta property="og:updated_time" content="2018-11-13T02:12:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XMPP">
+<meta name="twitter:description" content="关于即时通信   即时通讯 (Instant Messaging, 简称IM)是一个实时通信系统，允许两个人或多人使用网络即时的传递文字消息、文件、语音与视频的交流。  四大主流IM协议： 可扩展通讯和表示协议(XMPP)、即时信息和空间协议（IMPP）、空间和即时信息协议（PRIM）、针对即时通讯和空间平衡扩充的进程开始协议SIP（SIMPLE），其中，XMPP协议最为灵活。 关于XMPP  X">
+<meta name="twitter:image" content="https://blog.devhitao.com/images/XMPP/Jabber-Transport_funktioniert.svg.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+<!-- </script> -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-5819327586326271",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="郭工笔记">郭工笔记</a></h1>
+				<h2 class="blog-motto">业精于勤，荒于嬉；行成于思，毁于随。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.devhitao.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/06/10/about-im/" title="XMPP" itemprop="url">XMPP</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2014-06-10T01:45:40.000Z" itemprop="datePublished"> 发表于 2014-06-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于即时通信"><span class="toc-number">1.</span> <span class="toc-text">关于即时通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于XMPP"><span class="toc-number">2.</span> <span class="toc-text">关于XMPP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点"><span class="toc-number">2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XMPP协议通过HTTP传输"><span class="toc-number">2.2.</span> <span class="toc-text">XMPP协议通过HTTP传输</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XMPP-Servers"><span class="toc-number">2.3.</span> <span class="toc-text">XMPP Servers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XMPP-Clients-And-XMPP-Libraries"><span class="toc-number">2.4.</span> <span class="toc-text">XMPP Clients And XMPP Libraries</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="关于即时通信"><a href="#关于即时通信" class="headerlink" title="关于即时通信"></a>关于即时通信</h3><hr>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/zh-cn/%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A" target="_blank" rel="noopener"><strong> 即时通讯 </strong></a>(Instant Messaging, 简称IM)是一个实时通信系统，允许两个人或多人使用网络即时的传递文字消息、文件、语音与视频的交流。</p>
+</blockquote>
+<p><a href="http://xiangwangfeng.com/2015/05/20/%E7%A7%BB%E5%8A%A8IM%E5%BC%80%E5%8F%91%E9%82%A3%E4%BA%9B%E4%BA%8B/" target="_blank" rel="noopener">四大主流IM协议</a>： 可扩展通讯和表示协议(XMPP)、即时信息和空间协议（IMPP）、空间和即时信息协议（PRIM）、针对即时通讯和空间平衡扩充的进程开始协议SIP（SIMPLE），其中，XMPP协议最为灵活。</p>
+<h3 id="关于XMPP"><a href="#关于XMPP" class="headerlink" title="关于XMPP"></a>关于XMPP</h3><hr>
+<blockquote>
+<p><a href="https://xmpp.org/" target="_blank" rel="noopener">XMPP</a> is the open standard for messaging and presence</p>
+</blockquote>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/XMPP" target="_blank" rel="noopener"><strong> XMPP </strong></a>(Extensible Messaging and Presence Protocol，前称Jabber)是一种以XML为基础的开放式即时通讯协议，是经有互联网工程工作小组（IETF）通过的互联网标准。</p>
+</blockquote>
+<p><img src="/images/XMPP/Jabber-Transport_funktioniert.svg.png" alt="XMPP通信方式"></p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><hr>
+<p>０、开放</p>
+<blockquote>
+<p>XMPP协议是自由、开放、公开的，并且易于了解。而且在客户端、服务器、组件、源代码等方面，都已经各自有多种实现。</p>
+</blockquote>
+<p>1、分布式</p>
+<blockquote>
+<p>XMPP网络的架构和电子邮件十分相像；XMPP核心通信方式是先创建一个stream，XMPP以TCP传递XML数据流，没有中央主服务器。任何人都可以运行自己的XMPP服务器，使个人及组织能够掌控他们的即时传讯体验。</p>
+</blockquote>
+<h4 id="XMPP协议通过HTTP传输"><a href="#XMPP协议通过HTTP传输" class="headerlink" title="XMPP协议通过HTTP传输"></a>XMPP协议通过HTTP传输</h4><hr>
+<blockquote>
+<p>在原来的规格，XMPP协议可以使用HTTP的方式有两种：轮询（polling）与绑定（binding）。轮询现在不推荐，基本上，轮询意味着hTTP邮件存储在服务器端的数据库上，客户端必须一再地以HTTP的GET和POST的方式去抓取（以及刊出）其中的消息。然而使用绑定的方式时，客户端会保留一个长存在的HTTP链接，等等一旦服务器有新的消息时，就立刻接受消息。因为轮询的结果往往是服务器没有新消息，这种推送的通知模式比轮询的方式更有效率。<br>由于客户端使用HTTP，大多数防火墙允许客户端获取和留言没有任何障碍。因此，即使使用XMPP协议的TCP端口被拦截，服务器也能正常地倾听一般的HTTP端口，其上的消息也能保持畅通。</p>
+</blockquote>
+<h4 id="XMPP-Servers"><a href="#XMPP-Servers" class="headerlink" title="XMPP Servers"></a>XMPP Servers</h4><p>关于XMPP的服务器和客户端平台版本有很多，大家比较常用的有 <a href="http://igniterealtime.org/" target="_blank" rel="noopener">Openfire</a>、<a href="https://www.process-one.net/en/" target="_blank" rel="noopener">ejabberd</a>、<a href="http://www.tigase.net/" target="_blank" rel="noopener">tigase</a> ，它们可以兼容多个平台。</p>
+<h4 id="XMPP-Clients-And-XMPP-Libraries"><a href="#XMPP-Clients-And-XMPP-Libraries" class="headerlink" title="XMPP Clients And XMPP Libraries"></a>XMPP Clients And XMPP Libraries</h4><p>Because XMPP protocol is open source. The XMPP Clients for every platform and the XMPP Libraries for every language.</p>
+<p>今天谈一谈 基于iOS的 XMPPFramework，不谈基于Andorid的 Smack，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;XMPP.h&gt; //基本类在这个里面</span><br><span class="line">#import &lt;XMPPRoster.h&gt;//好友管理类</span><br><span class="line">#import &lt;XMPPRosterCoreDataStorage.h&gt;//管理好友数据库存储</span><br></pre></td></tr></table></figure>
+<p>参考资料</p>
+<hr>
+<p>0、<a href="http://xmpp.org" target="_blank" rel="noopener">XMPP</a></p>
+<p>1、<a href="http://blog.csdn.net/sanfengshou/article/details/5664061" target="_blank" rel="noopener">主流IM协议简介</a></p>
+<p>2、<a href="http://xiangwangfeng.com/2015/05/20/%E7%A7%BB%E5%8A%A8IM%E5%BC%80%E5%8F%91%E9%82%A3%E4%BA%9B%E4%BA%8B/" target="_blank" rel="noopener">移动IM开发那些事</a></p>
+<p>3、<a href="https://www.ianisme.com/ios/2255.html" target="_blank" rel="noopener">XMPP即时通信之一(服务器篇)</a></p>
+<p>4、<a href="https://xmpp.net/directory.php" target="_blank" rel="noopener">Public XMPP Server Directory</a></p>
+<p>5、<a href="https://tonghuix.io/2015/03/xmpp-chat/" target="_blank" rel="noopener">弃用QQ和微信！全面转向基于XMPP(Jabber)的即时聊天</a></p>
+<p>6、<a href="https://ruby-china.org/topics/22530" target="_blank" rel="noopener">移动 IM 学习笔记</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/XMPP/">XMPP</a>
+  </div>
+
+</div>
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://blog.devhitao.com/2014/06/10/about-im/" data-title="XMPP | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/06/10/about-database/" title="About DataBase">
+  <strong>上一篇：</strong><br/>
+  <span>
+  About DataBase</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/06/10/about-ios-vendor/"  title="Vendor">
+ <strong>下一篇：</strong><br/> 
+ <span>Vendor
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于即时通信"><span class="toc-number">1.</span> <span class="toc-text">关于即时通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于XMPP"><span class="toc-number">2.</span> <span class="toc-text">关于XMPP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点"><span class="toc-number">2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XMPP协议通过HTTP传输"><span class="toc-number">2.2.</span> <span class="toc-text">XMPP协议通过HTTP传输</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XMPP-Servers"><span class="toc-number">2.3.</span> <span class="toc-text">XMPP Servers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XMPP-Clients-And-XMPP-Libraries"><span class="toc-number">2.4.</span> <span class="toc-text">XMPP Clients And XMPP Libraries</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Git/" title="Git">Git<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PostgreSQL/" title="PostgreSQL">PostgreSQL<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>53</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/jekyll/" title="jekyll">jekyll<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linux-Unix-Centos/" title="linux &amp; Unix &amp; Centos">linux &amp; Unix &amp; Centos<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/security/" title="security">security<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开发工具/" title="开发工具">开发工具<sup>15</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>16</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="weixin">
+  <br />
+<!--
+  <p class="asidetitle">微信打赏，赞助小猿</p>
+  <p>你的支持，是对小猿的最大鼓励</p>
+  <img src="/images/ads/weixin-pay.png" width="220px" />
+-->
+<br />
+  <p class="asidetitle">欢迎关注微博</p>
+  <p>微博ID：<a href="https://weibo.com/u/5166488487" target="_blank">@devhitao</a></p>
+  <a href="https://weibo.com/u/5166488487" target="_blank"><img src="/images/ads/weibo.png" width="220px" /></a>
+  <!-- <p class="asidetitle">iOS交流群</p> -->
+  <!-- <p>Q群:326729317,暗号:小锅</p> -->
+  <!-- <a href="http://jq.qq.com/?_wv=1027&k=2BjVH4c" target="_blank"><img src="/ad/place-hold.png"  width="220px" /></a> -->
+<br />
+<br />
+  <p class="asidetitle">友情链接</p>
+  <p><a href="http://www.ituring.com.cn/" target="_blank">图灵社区</a></p>
+  <p><a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰的网络日志</a></p>
+  <p><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a></p>
+  <!-- 
+  <p>test</p>
+  <a href="http://www.test.com" target="_blank"><img src="/ad/weibo.png"  width="220px" height="100"/></a>
+-->
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+<!--cc 图标-->
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+	&nbsp;&nbsp;&nbsp;
+	Powered by <a href="https://hexo.io" target="_blank" title="hexo">Hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2022
+	
+	<a href="/about" target="_blank" title="郭工">郭工</a>
+	
+<!--	&nbsp;&nbsp;
+	原创内容，保留一切权利。-->
+<!--cnzz 统计图标-->
+&nbsp;&nbsp;&nbsp;
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261101034'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261101034%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6f3ed6f7016660f2922ad49dcee905e3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -1,0 +1,783 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Vim editor - 郭工笔记</title>
+    <!--  <meta name="robots" content="nofollow" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="郭工">
+    
+
+    
+    <meta name="description" content="Vim 编辑器简介0、vim 编辑器包括命令、插入和底行 3 种模式，具体情况如下：　　（1）命令模式（command mode）　　用于对文件进行编辑操作or切换到其他模式。打开编辑器时，首先进入的是该模式，此时输入的任何字符都被当做命令。　　（2）插入模式（Insert mode）　　用于从当前光标所在位置插入正文，是用户使用最多的工作模式，按 Esc 键可以从插入模式切换到命令模式。　　（3">
+<meta name="keywords" content="vim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim editor">
+<meta property="og:url" content="https://blog.devhitao.com/2014/05/12/vim-editor/index.html">
+<meta property="og:site_name" content="郭工笔记">
+<meta property="og:description" content="Vim 编辑器简介0、vim 编辑器包括命令、插入和底行 3 种模式，具体情况如下：　　（1）命令模式（command mode）　　用于对文件进行编辑操作or切换到其他模式。打开编辑器时，首先进入的是该模式，此时输入的任何字符都被当做命令。　　（2）插入模式（Insert mode）　　用于从当前光标所在位置插入正文，是用户使用最多的工作模式，按 Esc 键可以从插入模式切换到命令模式。　　（3">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2016-05-02T13:05:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vim editor">
+<meta name="twitter:description" content="Vim 编辑器简介0、vim 编辑器包括命令、插入和底行 3 种模式，具体情况如下：　　（1）命令模式（command mode）　　用于对文件进行编辑操作or切换到其他模式。打开编辑器时，首先进入的是该模式，此时输入的任何字符都被当做命令。　　（2）插入模式（Insert mode）　　用于从当前光标所在位置插入正文，是用户使用最多的工作模式，按 Esc 键可以从插入模式切换到命令模式。　　（3">
+
+    
+    <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+<!-- </script> -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-5819327586326271",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="郭工笔记">郭工笔记</a></h1>
+				<h2 class="blog-motto">业精于勤，荒于嬉；行成于思，毁于随。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.devhitao.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/05/12/vim-editor/" title="Vim editor" itemprop="url">Vim editor</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2014-05-12T12:00:00.000Z" itemprop="datePublished"> 发表于 2014-05-12</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim-编辑器简介"><span class="toc-number">1.</span> <span class="toc-text">Vim 编辑器简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动-Vim"><span class="toc-number">2.</span> <span class="toc-text">启动 Vim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移动光标"><span class="toc-number">3.</span> <span class="toc-text">移动光标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件功能命令"><span class="toc-number">4.</span> <span class="toc-text">文件功能命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令"><span class="toc-number">5.</span> <span class="toc-text">常用命令</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="Vim-编辑器简介"><a href="#Vim-编辑器简介" class="headerlink" title="Vim 编辑器简介"></a>Vim 编辑器简介</h2><p>0、vim 编辑器包括命令、插入和底行 3 种模式，具体情况如下：<br>　　（1）命令模式（command mode）<br>　　用于对文件进行编辑操作or切换到其他模式。打开编辑器时，首先进入的是该模式，此时输入的任何字符都被当做命令。<br>　　（2）插入模式（Insert mode）<br>　　用于从当前光标所在位置插入正文，是用户使用最多的工作模式，按 Esc 键可以从插入模式切换到命令模式。<br>　　（3）底行模式（last line mode）<br>　　用于向 vi 输入特定的扩充命令，如寻找字符串、列出行号等。在此命令模式中输入”:”可以切换到命令模式。在命令模式中，用户输入的命令会显示在屏幕的最低行，按 Enter 键后确认执行。</p>
+<h2 id="启动-Vim"><a href="#启动-Vim" class="headerlink" title="启动 Vim"></a>启动 Vim</h2><p>0、<code>vim &lt;fileName&gt;</code>，系统会载入所要编辑的文件or开启一个新文件。<br>1、按 I 进入编辑模式，按 Esc 和 “:”，进入命令模式。</p>
+<h2 id="移动光标"><a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h2><p>0、除了h、j、k、l基本的光标移动命令和方向键外，还提供了许多移动光标的命令。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:left">功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">H</td>
+<td style="text-align:left">移动到屏幕的第一行</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">M</td>
+<td style="text-align:left">移动屏幕的中间一行</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">L</td>
+<td style="text-align:left">移动到屏幕的最后一行</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">G</td>
+<td style="text-align:left">移动屏到文档的最后一行</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:left">移动到下一个单词的第一个字母</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">W</td>
+<td style="text-align:left">移动到上一个单词的第一个字母</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">E</td>
+<td style="text-align:left">移动到下一个单词的最后一个字母</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:left">移动当前行的第一个字符，其功能等同Home键</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">$</td>
+<td style="text-align:left">移动到第n行</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">……</td>
+<td style="text-align:left">……</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+U</td>
+<td style="text-align:left">向上滚屏半页</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+B</td>
+<td style="text-align:left">向上滚屏一页（等同PgUp）</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+D</td>
+<td style="text-align:left">向下滚屏半页</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+F</td>
+<td style="text-align:left">向下滚屏一页（等同PgDn）</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">……</td>
+<td style="text-align:left">……</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>1、插入模式中的基本操作</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令名称</th>
+<th style="text-align:center">功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:center">从当前光标所在的位置之后插入到正文</td>
+</tr>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">从当前光标所在行末尾处插入正文</td>
+</tr>
+<tr>
+<td style="text-align:center">i</td>
+<td style="text-align:center">从当前光标所在位置之前插入正文</td>
+</tr>
+<tr>
+<td style="text-align:center">I</td>
+<td style="text-align:center">从当前光标所在行的第一个非空白字符之前插入正文</td>
+</tr>
+<tr>
+<td style="text-align:center">o</td>
+<td style="text-align:center">在当前光标坐在行下芳新增一行并进入插入模式</td>
+</tr>
+<tr>
+<td style="text-align:center">O</td>
+<td style="text-align:center">在当前光标所在行上方新增加一行并进入插入模式</td>
+</tr>
+</tbody>
+</table>
+<p>将其他文件插入到当前光标所在的位置 <code>:r fileName</code></p>
+<h2 id="文件功能命令"><a href="#文件功能命令" class="headerlink" title="文件功能命令"></a>文件功能命令</h2><p>0、删除与修改</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x</td>
+<td>删除光标所在的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">dd</td>
+<td>删除光标所在的行</td>
+</tr>
+<tr>
+<td style="text-align:center">r</td>
+<td>修改光标所在的字符，r后接着要插入修正的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">R</td>
+<td>进入覆盖状态，直到按 Esc 键回到命令模式下为止</td>
+</tr>
+<tr>
+<td style="text-align:center">s</td>
+<td>删除光标所在的字符，并进入插入模式</td>
+</tr>
+<tr>
+<td style="text-align:center">S</td>
+<td>删除光标所在的行，并进入插入模式</td>
+</tr>
+</tbody>
+</table>
+<p>1、查找</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令名称</th>
+<th style="text-align:left">功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">set nu</td>
+<td style="text-align:left">显示行号</td>
+</tr>
+<tr>
+<td style="text-align:center">/或？</td>
+<td style="text-align:left">查找，在/或？后输入要查找的内容</td>
+</tr>
+<tr>
+<td style="text-align:center">n</td>
+<td style="text-align:left">与/一起使用，如果查找的内容不是想要找的关键字，按 N 键or向后键（与/合用）or向前键（与？合用）继续查找，直到找到为止</td>
+</tr>
+</tbody>
+</table>
+<p>2、存盘退出</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令格式</th>
+<th style="text-align:left">功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">:w fileName</td>
+<td style="text-align:left">将文章以指定的文件名fileName保存</td>
+</tr>
+<tr>
+<td style="text-align:center">:wq fileName</td>
+<td style="text-align:left">存储正在编辑的文件为fileName，并退出vi</td>
+</tr>
+<tr>
+<td style="text-align:center">:n,mw fileName</td>
+<td style="text-align:left">将第n行到第m行的文字存放到指定的fileName</td>
+</tr>
+<tr>
+<td style="text-align:center">q</td>
+<td style="text-align:left">存盘并退出vi</td>
+</tr>
+<tr>
+<td style="text-align:center">:q!</td>
+<td style="text-align:left">不存盘强制退出vi</td>
+</tr>
+<tr>
+<td style="text-align:center">ZZ</td>
+<td style="text-align:left">存盘退出（命令模式下使用）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>0、常用命令</p>
+<ul>
+<li>dd 删除整行</li>
+<li>cc 修改整行</li>
+<li>yy 复制整行文字</li>
+<li>D 删除光标到该行结束为止所有文字的命令D</li>
+</ul>
+<p>1、常用的编辑命令</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">功能描述</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">d</td>
+<td style="text-align:center">删除（delete）</td>
+<td style="text-align:center">p</td>
+<td style="text-align:center">放置（put）</td>
+</tr>
+<tr>
+<td style="text-align:center">y</td>
+<td style="text-align:center">复制（yank）</td>
+<td style="text-align:center">c</td>
+<td style="text-align:center">修改（change） </td>
+</tr>
+</tbody>
+</table>
+<p>2、常用的范围命令</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">范围命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">e</td>
+<td style="text-align:center">光标所在位置到该单词的最后一个字母</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:center">光标所在位置到下个单词的第一个字母</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">b</td>
+<td style="text-align:center">光标所在位置到上个单词的第一个字母</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">$</td>
+<td style="text-align:center">光标所在位置到该行的最后一个字母</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">光标所在位置到该行的第一个字母</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">）</td>
+<td style="text-align:center">光标所在位置到下个句子的第一个字母</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">（</td>
+<td style="text-align:center">光标所在位置到该句子的第一个字母</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">}</td>
+<td style="text-align:center">光标所在位置到该段落的最后一个字母</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">{</td>
+<td style="text-align:center">光标所在位置到该段落的第一个字母</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>参考资料</p>
+<hr>
+<p>《Red Hat Linux 服务器搭建与管理》</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/开发工具/">开发工具</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/vim/">vim</a>
+  </div>
+
+</div>
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://blog.devhitao.com/2014/05/12/vim-editor/" data-title="Vim editor | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/06/10/about-ios-vendor/" title="Vendor">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Vendor</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/04/07/OSX-File/"  title="OS X hide&#39;s File">
+ <strong>下一篇：</strong><br/> 
+ <span>OS X hide&#39;s File
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim-编辑器简介"><span class="toc-number">1.</span> <span class="toc-text">Vim 编辑器简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动-Vim"><span class="toc-number">2.</span> <span class="toc-text">启动 Vim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移动光标"><span class="toc-number">3.</span> <span class="toc-text">移动光标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件功能命令"><span class="toc-number">4.</span> <span class="toc-text">文件功能命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令"><span class="toc-number">5.</span> <span class="toc-text">常用命令</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Git/" title="Git">Git<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PostgreSQL/" title="PostgreSQL">PostgreSQL<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>53</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/jekyll/" title="jekyll">jekyll<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linux-Unix-Centos/" title="linux &amp; Unix &amp; Centos">linux &amp; Unix &amp; Centos<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/security/" title="security">security<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开发工具/" title="开发工具">开发工具<sup>15</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>16</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="weixin">
+  <br />
+<!--
+  <p class="asidetitle">微信打赏，赞助小猿</p>
+  <p>你的支持，是对小猿的最大鼓励</p>
+  <img src="/images/ads/weixin-pay.png" width="220px" />
+-->
+<br />
+  <p class="asidetitle">欢迎关注微博</p>
+  <p>微博ID：<a href="https://weibo.com/u/5166488487" target="_blank">@devhitao</a></p>
+  <a href="https://weibo.com/u/5166488487" target="_blank"><img src="/images/ads/weibo.png" width="220px" /></a>
+  <!-- <p class="asidetitle">iOS交流群</p> -->
+  <!-- <p>Q群:326729317,暗号:小锅</p> -->
+  <!-- <a href="http://jq.qq.com/?_wv=1027&k=2BjVH4c" target="_blank"><img src="/ad/place-hold.png"  width="220px" /></a> -->
+<br />
+<br />
+  <p class="asidetitle">友情链接</p>
+  <p><a href="http://www.ituring.com.cn/" target="_blank">图灵社区</a></p>
+  <p><a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰的网络日志</a></p>
+  <p><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a></p>
+  <!-- 
+  <p>test</p>
+  <a href="http://www.test.com" target="_blank"><img src="/ad/weibo.png"  width="220px" height="100"/></a>
+-->
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+<!--cc 图标-->
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+	&nbsp;&nbsp;&nbsp;
+	Powered by <a href="https://hexo.io" target="_blank" title="hexo">Hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2022
+	
+	<a href="/about" target="_blank" title="郭工">郭工</a>
+	
+<!--	&nbsp;&nbsp;
+	原创内容，保留一切权利。-->
+<!--cnzz 统计图标-->
+&nbsp;&nbsp;&nbsp;
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261101034'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261101034%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6f3ed6f7016660f2922ad49dcee905e3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

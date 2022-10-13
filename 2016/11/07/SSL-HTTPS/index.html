@@ -1,0 +1,522 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>SSL 或 HTTPS 优势及证书 - 郭工笔记</title>
+    <!--  <meta name="robots" content="nofollow" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="郭工">
+    
+
+    
+    <meta name="description" content="引言 近一年来，HTTPS 在国内很火的，这离不开免费证书的颁发机构，其次也离不开开发者对知识的探索，同时也离不开用户对网络安全的重视，下面我介绍一下关于 HTTPS。 什么是 HTTPS  HTTPS（Secure Hypertext Transfer Protocol）安全超文本传输协议是在 HTTP（Hypertext Transfer Protocol）超文本传输协议基础上开发，基于安全套">
+<meta name="keywords" content="SSL,HTTPS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSL 或 HTTPS 优势及证书">
+<meta property="og:url" content="https://blog.devhitao.com/2016/11/07/ssl-https/index.html">
+<meta property="og:site_name" content="郭工笔记">
+<meta property="og:description" content="引言 近一年来，HTTPS 在国内很火的，这离不开免费证书的颁发机构，其次也离不开开发者对知识的探索，同时也离不开用户对网络安全的重视，下面我介绍一下关于 HTTPS。 什么是 HTTPS  HTTPS（Secure Hypertext Transfer Protocol）安全超文本传输协议是在 HTTP（Hypertext Transfer Protocol）超文本传输协议基础上开发，基于安全套">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-12-04T15:30:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSL 或 HTTPS 优势及证书">
+<meta name="twitter:description" content="引言 近一年来，HTTPS 在国内很火的，这离不开免费证书的颁发机构，其次也离不开开发者对知识的探索，同时也离不开用户对网络安全的重视，下面我介绍一下关于 HTTPS。 什么是 HTTPS  HTTPS（Secure Hypertext Transfer Protocol）安全超文本传输协议是在 HTTP（Hypertext Transfer Protocol）超文本传输协议基础上开发，基于安全套">
+
+    
+    <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+<!-- </script> -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-5819327586326271",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="郭工笔记">郭工笔记</a></h1>
+				<h2 class="blog-motto">业精于勤，荒于嬉；行成于思，毁于随。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.devhitao.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/11/07/ssl-https/" title="SSL 或 HTTPS 优势及证书" itemprop="url">SSL 或 HTTPS 优势及证书</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2016-11-07T14:00:05.000Z" itemprop="datePublished"> 发表于 2016-11-07</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是-HTTPS"><span class="toc-number">2.</span> <span class="toc-text">什么是 HTTPS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTPS-的优势"><span class="toc-number">3.</span> <span class="toc-text">HTTPS 的优势</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#防流量劫持"><span class="toc-number">3.1.</span> <span class="toc-text">防流量劫持</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#提高搜索排名"><span class="toc-number">3.2.</span> <span class="toc-text">提高搜索排名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#杜绝钓鱼网站"><span class="toc-number">3.3.</span> <span class="toc-text">杜绝钓鱼网站</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTPS-与-HTTP-的区别"><span class="toc-number">4.</span> <span class="toc-text">HTTPS 与 HTTP 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是-SSL-证书"><span class="toc-number">5.</span> <span class="toc-text">什么是 SSL 证书</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SSL-证书问世"><span class="toc-number">5.1.</span> <span class="toc-text">SSL 证书问世</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SSL-证书作用"><span class="toc-number">5.2.</span> <span class="toc-text">SSL 证书作用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#颁发-SSL-机构"><span class="toc-number">6.</span> <span class="toc-text">颁发 SSL 机构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#国外"><span class="toc-number">6.1.</span> <span class="toc-text">国外</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#国内"><span class="toc-number">6.2.</span> <span class="toc-text">国内</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSL-证书分类"><span class="toc-number">7.</span> <span class="toc-text">SSL 证书分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-SSL-证书-仅供参考"><span class="toc-number">8.</span> <span class="toc-text">安装 SSL 证书 (仅供参考)</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><hr>
+<p>近一年来，HTTPS 在国内很火的，这离不开免费证书的颁发机构，其次也离不开开发者对知识的探索，同时也离不开用户对网络安全的重视，下面我介绍一下关于 HTTPS。</p>
+<h3 id="什么是-HTTPS"><a href="#什么是-HTTPS" class="headerlink" title="什么是 HTTPS"></a>什么是 HTTPS</h3><hr>
+<blockquote>
+<p>HTTPS（Secure Hypertext Transfer Protocol）安全超文本传输协议是在 HTTP（Hypertext Transfer Protocol）超文本传输协议基础上开发，基于安全套接字层（SSL）进行安全数据传输的加密版Http协议。简单讲，HTTPS = HTTP + SSL，是 HTTP 的安全版。</p>
+</blockquote>
+<h3 id="HTTPS-的优势"><a href="#HTTPS-的优势" class="headerlink" title="HTTPS 的优势"></a>HTTPS 的优势</h3><hr>
+<h4 id="防流量劫持"><a href="#防流量劫持" class="headerlink" title="防流量劫持"></a>防流量劫持</h4><hr>
+<blockquote>
+<p>全站 HTTPS 是根治运营商、中间人流量劫持的解决方案，不仅可以杜绝网页中被插入的小广告，更可以保护用户隐私安全。</p>
+</blockquote>
+<h4 id="提高搜索排名"><a href="#提高搜索排名" class="headerlink" title="提高搜索排名"></a>提高搜索排名</h4><hr>
+<blockquote>
+<p>采用 HTTPS 可以帮忙搜索排名的提升，提高站点的可信度和品牌形象。</p>
+</blockquote>
+<h4 id="杜绝钓鱼网站"><a href="#杜绝钓鱼网站" class="headerlink" title="杜绝钓鱼网站"></a>杜绝钓鱼网站</h4><hr>
+<blockquote>
+<p>HTTPS 地址栏绿色图标可以帮助用户识别出钓鱼网站，保障用户和企业的利益不受损害，增强用户信任。</p>
+</blockquote>
+<h3 id="HTTPS-与-HTTP-的区别"><a href="#HTTPS-与-HTTP-的区别" class="headerlink" title="HTTPS 与 HTTP 的区别"></a>HTTPS 与 HTTP 的区别</h3><hr>
+<blockquote>
+<p>HTTP（Hypertext Transfer Protocol）超文本传输协议是用来在 Internet 上传送超文本的传送协议，它可以使浏览器更加高效，使网络传输减少。但 HTTP 协议采用明文传输信息，存在信息窃听、信息篡改和信息劫持的风险。<br>HTTPS(Secure Hypertext Transfer Protocol) 安全超文本传输协议是一个安全的通信通道，它基于 HTTP 开发，用于在客户计算机和服务器之间交换信息。HTTPS 使用安全套接字层(SSL)进行信息交换，简单来说 HTTPS 是 HTTP 的安全版，是使用 TLS/SSL 加密的 HTTP 协议。</p>
+</blockquote>
+<h3 id="什么是-SSL-证书"><a href="#什么是-SSL-证书" class="headerlink" title="什么是 SSL 证书"></a>什么是 SSL 证书</h3><hr>
+<blockquote>
+<p>SSL证书是数字证书的一种，遵守 SSL协议，由受信任的数字证书颁发机构CA（如：Symantec）在验证服务器身份后颁发，具有服务器身份验证和数据传输加密功能。</p>
+</blockquote>
+<h4 id="SSL-证书问世"><a href="#SSL-证书问世" class="headerlink" title="SSL 证书问世"></a>SSL 证书问世</h4><hr>
+<blockquote>
+<p>SSL 证书就是遵守 SSL 安全套接层协议的服务器数字证书。而 SSL 安全协议最初是由美国网景 Netscape Communication 公司设计开发的,全称为:安全套接层协议 (Secure Sockets Layer) , 它指定了在应用程序协议(如 HTTP、Telnet、FTP)和 TCP/IP 之间提供数据安全性 分层的机制,它是在传输通信协议(TCP/IP)上实现的一种安全协议,采用公开密钥技术,它为 TCP/IP 连接提供数据加密、服务器认证、消息完整性以及可选的客户机认证。由于此协议很 好地解决了互联网明文传输的不安全问题,很快得到了业界的支持,并已经成为国际标准。SSL 证书由浏览器中“受信任的根证书颁发机构”在验证服务器身份后颁发,具有网站身份 验证和加密传输双重功能。</p>
+</blockquote>
+<h4 id="SSL-证书作用"><a href="#SSL-证书作用" class="headerlink" title="SSL 证书作用"></a>SSL 证书作用</h4><hr>
+<blockquote>
+<p>服务器部署了SSL证书后可以确保从用户电脑到服务器之间的传输链路上是高强度加密传输的，用户在浏览器上输入的机密信息和从服务器上查询的信息是不可能被非法篡改和窃取的。同时向网站访问者证明了服务器的真实身份，此真实身份是通过第三方权威机构验证的。</p>
+</blockquote>
+<h3 id="颁发-SSL-机构"><a href="#颁发-SSL-机构" class="headerlink" title="颁发 SSL 机构"></a>颁发 SSL 机构</h3><hr>
+<p>国内厂商经常合作的机构，从国内厂商申请的证书，一般都是与国外机构进行合作的。</p>
+<h4 id="国外"><a href="#国外" class="headerlink" title="国外"></a>国外</h4><hr>
+<p>0、<a href="https://www.symantec.com/" target="_blank" rel="noopener">赛门铁克 (Symantec)</a> 是 SSL/TLS 证书的领先提供商，为全球一百多万台网络服务器提供安全防护。选择赛门铁克后，证书颁发机构 (CA) 将妥善保护您的网站和信誉，让您安枕无忧。<br>1、<a href="https://www.geotrust.com/" target="_blank" rel="noopener">GeoTrust</a> 是全球第二大数字证书颁发机构，也是身份认证和信任服务的领导者<br>2、<a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Encrypt</a>，3个月续签一次，建议使用自动续签功能。<br>3、<a href="https://www.startssl.com/Certificates" target="_blank" rel="noopener">StartCom</a> 免费，不建议使用</p>
+<h4 id="国内"><a href="#国内" class="headerlink" title="国内"></a>国内</h4><hr>
+<p>0、<a href="https://www.trustasia.com" target="_blank" rel="noopener">亚洲诚信</a>® 是Symantec™（赛门铁克）的白金合作伙伴，<a href="https://mpki.trustasia.com" target="_blank" rel="noopener">登录入口</a>，近期(截止到20161130)可以关注微信，使用兑换码免费使用一年。<br>1、<a href="https://console.qcloud.com/ssl" target="_blank" rel="noopener">腾讯证书</a>申请，是基于亚洲诚信的，可以免费申请使用，有效期也是一年，百度、阿里云也提供相关 SSL 证书。<br>2、中国权威数字证书认证机构自主研发，纯国产证书，是国际CA浏览器联盟组织成员，同时通过国际WebTrust 认证，遵循全球统一鉴证标准；提供 7 * 24 小时金融级的安全保障服务；完善的风险承保计划。中文版 CPS（全球信任体系电子认证业务规则）便于用户理解双方权利和义务。(注: CFCA 服务器证书目前不支持Safari浏览器)</p>
+<h3 id="SSL-证书分类"><a href="#SSL-证书分类" class="headerlink" title="SSL 证书分类"></a>SSL 证书分类</h3><hr>
+<blockquote>
+<p>用于网站HTTPS化的SSL数字证书，当前主要分为DV SSL、OV SSL、EV SSL三种类型的证书。<br>DV 证书是域名级别验证的证书，通常无需人工审核，快速办法。适合小型网站。</p>
+</blockquote>
+<h3 id="安装-SSL-证书-仅供参考"><a href="#安装-SSL-证书-仅供参考" class="headerlink" title="安装 SSL 证书 (仅供参考)"></a>安装 SSL 证书 (仅供参考)</h3><hr>
+<p>0、<a href="https://www.trustasia.com/help/ssl-certificate-install.htm" target="_blank" rel="noopener">TrustAsia亚洲诚信 SSL证书安装指南</a><br>1、<a href="https://www.qcloud.com/doc/product/400/6814" target="_blank" rel="noopener">域名型证书申请流程</a><br>2、<a href="https://letsencrypt.org/getting-started/" target="_blank" rel="noopener">Let’s Encrypt Getting Started</a><br>3、<a href="https://help.aliyun.com/knowledge_detail/44596.html?spm=5176.7968328.237602.16.j0GboF" target="_blank" rel="noopener">Aliyun 配置</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/security/">security</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/SSL/">SSL</a><a href="/tags/HTTPS/">HTTPS</a>
+  </div>
+
+</div>
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://blog.devhitao.com/2016/11/07/ssl-https/" data-title="SSL 或 HTTPS 优势及证书 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/11/11/install-letsencrypt-certificate/" title="安装 Let&#39;s Encrypt 证书">
+  <strong>上一篇：</strong><br/>
+  <span>
+  安装 Let&#39;s Encrypt 证书</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/10/25/QQApp-to-AppStore/"  title="通过应用宝跳转到 App Store">
+ <strong>下一篇：</strong><br/> 
+ <span>通过应用宝跳转到 App Store
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是-HTTPS"><span class="toc-number">2.</span> <span class="toc-text">什么是 HTTPS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTPS-的优势"><span class="toc-number">3.</span> <span class="toc-text">HTTPS 的优势</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#防流量劫持"><span class="toc-number">3.1.</span> <span class="toc-text">防流量劫持</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#提高搜索排名"><span class="toc-number">3.2.</span> <span class="toc-text">提高搜索排名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#杜绝钓鱼网站"><span class="toc-number">3.3.</span> <span class="toc-text">杜绝钓鱼网站</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTPS-与-HTTP-的区别"><span class="toc-number">4.</span> <span class="toc-text">HTTPS 与 HTTP 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是-SSL-证书"><span class="toc-number">5.</span> <span class="toc-text">什么是 SSL 证书</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SSL-证书问世"><span class="toc-number">5.1.</span> <span class="toc-text">SSL 证书问世</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SSL-证书作用"><span class="toc-number">5.2.</span> <span class="toc-text">SSL 证书作用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#颁发-SSL-机构"><span class="toc-number">6.</span> <span class="toc-text">颁发 SSL 机构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#国外"><span class="toc-number">6.1.</span> <span class="toc-text">国外</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#国内"><span class="toc-number">6.2.</span> <span class="toc-text">国内</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSL-证书分类"><span class="toc-number">7.</span> <span class="toc-text">SSL 证书分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-SSL-证书-仅供参考"><span class="toc-number">8.</span> <span class="toc-text">安装 SSL 证书 (仅供参考)</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Git/" title="Git">Git<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PostgreSQL/" title="PostgreSQL">PostgreSQL<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>53</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/jekyll/" title="jekyll">jekyll<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linux-Unix-Centos/" title="linux &amp; Unix &amp; Centos">linux &amp; Unix &amp; Centos<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/security/" title="security">security<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开发工具/" title="开发工具">开发工具<sup>15</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>16</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="weixin">
+  <br />
+<!--
+  <p class="asidetitle">微信打赏，赞助小猿</p>
+  <p>你的支持，是对小猿的最大鼓励</p>
+  <img src="/images/ads/weixin-pay.png" width="220px" />
+-->
+<br />
+  <p class="asidetitle">欢迎关注微博</p>
+  <p>微博ID：<a href="https://weibo.com/u/5166488487" target="_blank">@devhitao</a></p>
+  <a href="https://weibo.com/u/5166488487" target="_blank"><img src="/images/ads/weibo.png" width="220px" /></a>
+  <!-- <p class="asidetitle">iOS交流群</p> -->
+  <!-- <p>Q群:326729317,暗号:小锅</p> -->
+  <!-- <a href="http://jq.qq.com/?_wv=1027&k=2BjVH4c" target="_blank"><img src="/ad/place-hold.png"  width="220px" /></a> -->
+<br />
+<br />
+  <p class="asidetitle">友情链接</p>
+  <p><a href="http://www.ituring.com.cn/" target="_blank">图灵社区</a></p>
+  <p><a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰的网络日志</a></p>
+  <p><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a></p>
+  <!-- 
+  <p>test</p>
+  <a href="http://www.test.com" target="_blank"><img src="/ad/weibo.png"  width="220px" height="100"/></a>
+-->
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+<!--cc 图标-->
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+	&nbsp;&nbsp;&nbsp;
+	Powered by <a href="https://hexo.io" target="_blank" title="hexo">Hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2022
+	
+	<a href="/about" target="_blank" title="郭工">郭工</a>
+	
+<!--	&nbsp;&nbsp;
+	原创内容，保留一切权利。-->
+<!--cnzz 统计图标-->
+&nbsp;&nbsp;&nbsp;
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261101034'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261101034%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6f3ed6f7016660f2922ad49dcee905e3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

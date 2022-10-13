@@ -1,0 +1,14 @@
+#EXTM3U
+#EXTM3U-X-INF: title="产品故事", logo="dsp_gs.jpeg", id="63835086"
+#EXTINF:-1 tvg-id="" tvg-country="" tvg-language="" tvg-logo="http://www.rungo.online/dsp/static/images/index_01.jpeg" group-title="",书签模块
+http://www.rungo.online/dsp/static/media/index_01.mov
+#EXTINF:-1 tvg-id="" tvg-country="" tvg-language="" tvg-logo="http://www.rungo.online/dsp/static/images/index_02.jpeg" group-title="News",本地模块
+http://www.rungo.online/dsp/static/media/index_02.mov
+#EXTINF:-1 tvg-id="" tvg-country="" tvg-language="" tvg-logo="http://www.rungo.online/dsp/static/images/index_03.jpeg" group-title="News",更多模块
+http://www.rungo.online/dsp/static/media/index_03.mp4
+#EXTINF:-1 tvg-id="" tvg-country="" tvg-language="" tvg-logo="http://www.rungo.online/dsp/static/images/index_04.jpeg" group-title="News",如何利用App进行赚钱或变现
+http://www.rungo.online/dsp/static/media/index_04.mp4
+#EXTINF:-1 tvg-id="" tvg-country="" tvg-language="" tvg-logo="http://www.rungo.online/dsp/static/images/fengjing.png" group-title="News",再美的风景也有落幕的一天 - 高清拍摄(单文件)
+http://www.rungo.online/dsp/static/media/fengjing.m3u8
+#EXTINF:-1 tvg-id="" tvg-country="" tvg-language="" tvg-logo="http://www.rungo.online/dsp/static/images/fengjing.png" group-title="News",再美的风景也有落幕的一天 - 高清拍摄(多文件)
+http://www.rungo.online/dsp/static/media/fengjing_segment.m3u8

@@ -1,0 +1,529 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>安装 Let&#39;s Encrypt 证书 - 郭工笔记</title>
+    <!--  <meta name="robots" content="nofollow" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="郭工">
+    
+
+    
+    <meta name="description" content="引言  Let’s Encrypt is a free, automated, and open certificate authority brought to you by the non-profit Internet Security Research Group (ISRG).  Let’s Encrypt 是由非盈性利互联网安全研究小组(ISRG)向您提供的一个免费，自动化和开放的证书">
+<meta name="keywords" content="SSL,HTTPS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装 Let&#39;s Encrypt 证书">
+<meta property="og:url" content="https://blog.devhitao.com/2016/11/11/install-letsencrypt-certificate/index.html">
+<meta property="og:site_name" content="郭工笔记">
+<meta property="og:description" content="引言  Let’s Encrypt is a free, automated, and open certificate authority brought to you by the non-profit Internet Security Research Group (ISRG).  Let’s Encrypt 是由非盈性利互联网安全研究小组(ISRG)向您提供的一个免费，自动化和开放的证书">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-05T02:06:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安装 Let&#39;s Encrypt 证书">
+<meta name="twitter:description" content="引言  Let’s Encrypt is a free, automated, and open certificate authority brought to you by the non-profit Internet Security Research Group (ISRG).  Let’s Encrypt 是由非盈性利互联网安全研究小组(ISRG)向您提供的一个免费，自动化和开放的证书">
+
+    
+    <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+<!-- </script> -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-5819327586326271",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="郭工笔记">郭工笔记</a></h1>
+				<h2 class="blog-motto">业精于勤，荒于嬉；行成于思，毁于随。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.devhitao.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/11/11/install-letsencrypt-certificate/" title="安装 Let&#39;s Encrypt 证书" itemprop="url">安装 Let&#39;s Encrypt 证书</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2016-11-11T01:45:40.000Z" itemprop="datePublished"> 发表于 2016-11-11</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ACME-Client"><span class="toc-number">2.</span> <span class="toc-text">ACME Client</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Certbot"><span class="toc-number">2.1.</span> <span class="toc-text">Certbot</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#下载"><span class="toc-number">2.1.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#安装"><span class="toc-number">2.1.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#输入信息"><span class="toc-number">2.1.3.</span> <span class="toc-text">输入信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#重新续签"><span class="toc-number">2.1.4.</span> <span class="toc-text">重新续签</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#acme-sh"><span class="toc-number">2.2.</span> <span class="toc-text">acme.sh</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#安装-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#生成证书"><span class="toc-number">2.2.2.</span> <span class="toc-text">生成证书</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FAQ"><span class="toc-number">3.</span> <span class="toc-text">FAQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">4.</span> <span class="toc-text">文档信息</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><hr>
+<blockquote>
+<p>Let’s Encrypt is a free, automated, and open certificate authority brought to you by the non-profit Internet Security Research Group (ISRG).</p>
+</blockquote>
+<p>Let’s Encrypt 是由非盈性利互联网安全研究小组(ISRG)向您提供的一个免费，自动化和开放的证书认证机构。可概括为：Let’s Encrypt is a Certificate Authority (CA). </p>
+<h3 id="ACME-Client"><a href="#ACME-Client" class="headerlink" title="ACME Client"></a>ACME Client</h3><hr>
+<p>自动管理工具很多，只要遵循 ACME 协议即可。比如官方推荐的 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">Certbot</a>，同时也列出来其他管理工具，应用在不同的平台和环境中。官方提供的可选的适用于不同平台或语言的<a href="https://letsencrypt.org/docs/client-options/" target="_blank" rel="noopener">ACME Client Implementations</a></p>
+<h4 id="Certbot"><a href="#Certbot" class="headerlink" title="Certbot"></a>Certbot</h4><hr>
+<blockquote>
+<p>Certbot is an easy-to-use automatic client that fetches and deploys SSL/TLS certificates for your webserver. Certbot was developed by EFF and others as a client for Let’s Encrypt and was previously known as “the official Let’s Encrypt client” or “the Let’s Encrypt Python client.” Certbot will also work with any other CAs that support the ACME protocol.</p>
+</blockquote>
+<blockquote>
+<p>Automatically enable HTTPS on your website with EFF’s Certbot, deploying Let’s Encrypt certificates.</p>
+</blockquote>
+<p>Certbot 是一个容易使用的自动客户端，在你的服务器上它能够抓取和发布 SSL/TLS 证书。</p>
+<p>下面基于 Centos 6，Apache 环境进行安装，如使用其他系统和服务软件，<a href="https://certbot.eff.org/" target="_blank" rel="noopener">请点击这里选择</a>。</p>
+<h5 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h5><hr>
+<p>通过 wget 命令进行下载，并赋予其执行权限。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://dl.eff.org/certbot-auto</span><br><span class="line">$ chmod a+x certbot-auto</span><br></pre></td></tr></table></figure></p>
+<p>注：<em>certbot-auto</em> 是一个文件，不是文件夹，以后所有操作都基于 <em>certbot-auto</em> <strong>同级目录</strong>。</p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ./certbot-auto --apache //自动配置，推荐此方式</span><br><span class="line">or</span><br><span class="line">$ ./certbot-auto --apache certonly  //需要手动配置</span><br></pre></td></tr></table></figure>
+<h5 id="输入信息"><a href="#输入信息" class="headerlink" title="输入信息"></a>输入信息</h5><hr>
+<p>在安装过程中，系统会提示我们输入一下信息或者取消操作</p>
+<ul>
+<li>提示输入邮箱：Enter email address (used for urgent renewal and security notices) (Enter ‘c’ to cancel):<a href="mailto:dev@devhitao.com" target="_blank" rel="noopener">dev@devhitao.com</a></li>
+<li>阅读服务条款，是否同意注册：…register with the ACME server … (A)gree/(C)ancel: A</li>
+<li>是否同意分享邮箱地址：…share your email address… (Y)es/(N)o: N </li>
+<li>输入域名，多个用空格隔开：…Please enter in your domain<br>name(s) (comma and/or space separated)… :devhitao.com</li>
+<li>选择是否必须 https 访问，还是可选</li>
+</ul>
+<h5 id="重新续签"><a href="#重新续签" class="headerlink" title="重新续签"></a>重新续签</h5><hr>
+<p>续签测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./certbot-auto renew --dry-run  //续签测试，证明可以续签</span><br></pre></td></tr></table></figure></p>
+<p>由于 let’s Encrypt 证书 90 天后会过期，因此我们要在 90 天之前进行重签。系统的 cron 和 systemed 可以自动完成此续签工作。将其 <code>./certbot-auto renew</code> 定时执行即可。用户手册<a href="https://certbot.eff.org/docs/using.html#renewal" target="_blank" rel="noopener">Certbot User Guide</a></p>
+<p>定时续签<br>Unix/Linux 系统包含各种用于任务调度的工具，例如：cron 和 systemctl；这里使用 cron 工具进行任务调度，对证书进行定时续签，以防止过期。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00 */12 * * * yourpath/certbot-auto renew //每过 12 小时检测一次，yourpath 为安装目录(绝对路径)</span><br></pre></td></tr></table></figure></p>
+<p>执行命令行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ crontab&lt;&lt;EOF</span><br><span class="line">&gt; 00 */12 * * * yourpath/certbot-auto renew </span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
+<h4 id="acme-sh"><a href="#acme-sh" class="headerlink" title="acme.sh"></a>acme.sh</h4><hr>
+<p>由于我在主机上没有 root 和安装软件的权限，所以我就选择开源的 <a href="https://github.com/Neilpang/acme.sh" target="_blank" rel="noopener">An ACME Shell script: acme.sh</a> 进行管理证书, 该项目的作者将此自动管理的工具集成在项目中，包括自动更新时间等。同时也讲解了多种安装方法，详细信息请阅读作者写的安装指南。</p>
+<h5 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h5><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/Neilpang/acme.sh.git //下载项目文件</span><br><span class="line">$ cd ./acme.sh //切换到项目目录</span><br><span class="line">$ ./acme.sh --install //执行此命令进行安装</span><br></pre></td></tr></table></figure>
+<p>在安装中，详细安装执行过程</p>
+<blockquote>
+<p>1、Create and copy acme.sh to your home dir ($HOME): ~/.acme.sh/. All certs will be placed in this folder too.<br>2、Create alias for: acme.sh=~/.acme.sh/acme.sh.<br>3、Create daily cron job to check and renew the certs if needed.</p>
+</blockquote>
+<h5 id="生成证书"><a href="#生成证书" class="headerlink" title="生成证书"></a>生成证书</h5><hr>
+<p>单域名单证书<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --issue -d devhitao.com -w ~/public_html  // ~/public_html 是webRoot的路径，也是网站主路径</span><br></pre></td></tr></table></figure></p>
+<p>多域名单证书<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ acme.sh --issue -d devhitao.com -d www.devhitao.com -d blog.devhitao.com -w ~/public_html</span><br></pre></td></tr></table></figure></p>
+<p>上面命令会生成类似的 devhitao.com.cer、devhitao.com.key、ca.cer 文件，当然还有 fullchain.cer 文件；fullchain.cer 文件中包括 ca.cer 和 devhitao.com.cer 中的内容。</p>
+<h3 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h3><hr>
+<p>1、证书重置请求超过次数，一般 3 次，子域名除外。就会出现 Sign failed: “detail”:”Error creating new cert :: Too many certificates already issued for exact set of domains: devhitao.com, 5 天以后才可以再次重置。<a href="https://letsencrypt.org/docs/rate-limits/" target="_blank" rel="noopener">Rate Limits</a></p>
+<h3 id="文档信息"><a href="#文档信息" class="headerlink" title="文档信息"></a>文档信息</h3><hr>
+<ul>
+<li>版权声明：自由转载-保持署名-非商用-非衍生 ( <a rel="noopener" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a> )</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/security/">security</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/SSL/">SSL</a><a href="/tags/HTTPS/">HTTPS</a>
+  </div>
+
+</div>
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://blog.devhitao.com/2016/11/11/install-letsencrypt-certificate/" data-title="安装 Let&#39;s Encrypt 证书 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/12/10/notification-push/" title="通知（Notification）和推送（Push）">
+  <strong>上一篇：</strong><br/>
+  <span>
+  通知（Notification）和推送（Push）</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/11/07/ssl-https/"  title="SSL 或 HTTPS 优势及证书">
+ <strong>下一篇：</strong><br/> 
+ <span>SSL 或 HTTPS 优势及证书
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ACME-Client"><span class="toc-number">2.</span> <span class="toc-text">ACME Client</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Certbot"><span class="toc-number">2.1.</span> <span class="toc-text">Certbot</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#下载"><span class="toc-number">2.1.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#安装"><span class="toc-number">2.1.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#输入信息"><span class="toc-number">2.1.3.</span> <span class="toc-text">输入信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#重新续签"><span class="toc-number">2.1.4.</span> <span class="toc-text">重新续签</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#acme-sh"><span class="toc-number">2.2.</span> <span class="toc-text">acme.sh</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#安装-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#生成证书"><span class="toc-number">2.2.2.</span> <span class="toc-text">生成证书</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FAQ"><span class="toc-number">3.</span> <span class="toc-text">FAQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">4.</span> <span class="toc-text">文档信息</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Git/" title="Git">Git<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PostgreSQL/" title="PostgreSQL">PostgreSQL<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>53</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/jekyll/" title="jekyll">jekyll<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linux-Unix-Centos/" title="linux &amp; Unix &amp; Centos">linux &amp; Unix &amp; Centos<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/security/" title="security">security<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开发工具/" title="开发工具">开发工具<sup>15</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>16</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="weixin">
+  <br />
+<!--
+  <p class="asidetitle">微信打赏，赞助小猿</p>
+  <p>你的支持，是对小猿的最大鼓励</p>
+  <img src="/images/ads/weixin-pay.png" width="220px" />
+-->
+<br />
+  <p class="asidetitle">欢迎关注微博</p>
+  <p>微博ID：<a href="https://weibo.com/u/5166488487" target="_blank">@devhitao</a></p>
+  <a href="https://weibo.com/u/5166488487" target="_blank"><img src="/images/ads/weibo.png" width="220px" /></a>
+  <!-- <p class="asidetitle">iOS交流群</p> -->
+  <!-- <p>Q群:326729317,暗号:小锅</p> -->
+  <!-- <a href="http://jq.qq.com/?_wv=1027&k=2BjVH4c" target="_blank"><img src="/ad/place-hold.png"  width="220px" /></a> -->
+<br />
+<br />
+  <p class="asidetitle">友情链接</p>
+  <p><a href="http://www.ituring.com.cn/" target="_blank">图灵社区</a></p>
+  <p><a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰的网络日志</a></p>
+  <p><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a></p>
+  <!-- 
+  <p>test</p>
+  <a href="http://www.test.com" target="_blank"><img src="/ad/weibo.png"  width="220px" height="100"/></a>
+-->
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+<!--cc 图标-->
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+	&nbsp;&nbsp;&nbsp;
+	Powered by <a href="https://hexo.io" target="_blank" title="hexo">Hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2022
+	
+	<a href="/about" target="_blank" title="郭工">郭工</a>
+	
+<!--	&nbsp;&nbsp;
+	原创内容，保留一切权利。-->
+<!--cnzz 统计图标-->
+&nbsp;&nbsp;&nbsp;
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261101034'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261101034%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6f3ed6f7016660f2922ad49dcee905e3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

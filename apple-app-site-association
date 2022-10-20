@@ -1,0 +1,15 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "teamid.com.devhitao.blog",
+                "paths": [ "/*", "/m/*", "NOT /resume/*"]
+            },
+            {
+                "appID": "teamid.com.devhitao.app",
+                "paths": [ "/*" ]
+            }
+        ]
+    }
+}

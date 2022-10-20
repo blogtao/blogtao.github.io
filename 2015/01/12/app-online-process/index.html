@@ -1,0 +1,611 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>App 证书和上线相关知识 - 郭工笔记</title>
+    <!--  <meta name="robots" content="nofollow" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="郭工">
+    
+
+    
+    <meta name="description" content="配置证书 0、首先我们应该有 App 开发者账号我们可以去Apple开发者官网上申请账号，我们需要提供注册邮箱，一定要记住自己的密保问题，同时我们需要用信用卡支付一定的费用，请记住强大的淘宝可以解决任何问题。（注：yourAccount.age &amp;gt; 18） Certificates 1、在开发者中心，点击开发者证书选项，进入相应的配置证书网页。2、选择相应的开发选项（iOS Apps）3、配">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="App 证书和上线相关知识">
+<meta property="og:url" content="https://blog.devhitao.com/2015/01/12/app-online-process/index.html">
+<meta property="og:site_name" content="郭工笔记">
+<meta property="og:description" content="配置证书 0、首先我们应该有 App 开发者账号我们可以去Apple开发者官网上申请账号，我们需要提供注册邮箱，一定要记住自己的密保问题，同时我们需要用信用卡支付一定的费用，请记住强大的淘宝可以解决任何问题。（注：yourAccount.age &amp;gt; 18） Certificates 1、在开发者中心，点击开发者证书选项，进入相应的配置证书网页。2、选择相应的开发选项（iOS Apps）3、配">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.devhitao.com/images/App-Online/Certificates.png">
+<meta property="og:image" content="https://blog.devhitao.com/images/App-Online/iOS-Apps.png">
+<meta property="og:image" content="https://blog.devhitao.com/images/App-Online/CSR-Development-or-Production.png">
+<meta property="og:image" content="https://blog.devhitao.com/images/App-Online/app-dev-dis.png">
+<meta property="og:image" content="https://blog.devhitao.com/images/App-Online/App-IDs-identifiers.png">
+<meta property="og:image" content="https://blog.devhitao.com/images/App-Online/Bundle-ID.png">
+<meta property="og:image" content="https://blog.devhitao.com/images/App-Online/Test－Xcode7不需要添加设备.png">
+<meta property="og:image" content="https://blog.devhitao.com/images/App-Online/Profile.png">
+<meta property="og:image" content="https://blog.devhitao.com/images/App-Online/iTunes-Connect.png">
+<meta property="og:image" content="https://blog.devhitao.com/images/App-Online/Contact-Us.png">
+<meta property="og:image" content="https://blog.devhitao.com/images/App-Online/Show%20Provisioning%20Profiles.png">
+<meta property="og:updated_time" content="2018-11-27T08:36:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="App 证书和上线相关知识">
+<meta name="twitter:description" content="配置证书 0、首先我们应该有 App 开发者账号我们可以去Apple开发者官网上申请账号，我们需要提供注册邮箱，一定要记住自己的密保问题，同时我们需要用信用卡支付一定的费用，请记住强大的淘宝可以解决任何问题。（注：yourAccount.age &amp;gt; 18） Certificates 1、在开发者中心，点击开发者证书选项，进入相应的配置证书网页。2、选择相应的开发选项（iOS Apps）3、配">
+<meta name="twitter:image" content="https://blog.devhitao.com/images/App-Online/Certificates.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+<!-- </script> -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-5819327586326271",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="郭工笔记">郭工笔记</a></h1>
+				<h2 class="blog-motto">业精于勤，荒于嬉；行成于思，毁于随。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.devhitao.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/01/12/app-online-process/" title="App 证书和上线相关知识" itemprop="url">App 证书和上线相关知识</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2015-01-12T02:42:02.000Z" itemprop="datePublished"> 发表于 2015-01-12</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置证书"><span class="toc-number">1.</span> <span class="toc-text">配置证书</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Certificates"><span class="toc-number">1.1.</span> <span class="toc-text">Certificates</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Upload-CRS-Certificate"><span class="toc-number">1.1.1.</span> <span class="toc-text">Upload CRS Certificate</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Identifiers"><span class="toc-number">1.2.</span> <span class="toc-text">Identifiers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Devices"><span class="toc-number">1.3.</span> <span class="toc-text">Devices</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Profiles"><span class="toc-number">1.4.</span> <span class="toc-text">Profiles</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iTunes-Connect"><span class="toc-number">2.</span> <span class="toc-text">iTunes Connect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置图标"><span class="toc-number">3.</span> <span class="toc-text">设置图标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#真机调试"><span class="toc-number">4.</span> <span class="toc-text">真机调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传应用"><span class="toc-number">5.</span> <span class="toc-text">上传应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#多个人共用一个证书"><span class="toc-number">5.1.</span> <span class="toc-text">多个人共用一个证书</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#此证书的签发者无效"><span class="toc-number">6.</span> <span class="toc-text">此证书的签发者无效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FAQ"><span class="toc-number">7.</span> <span class="toc-text">FAQ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#valid-provisioning-profile"><span class="toc-number">7.1.</span> <span class="toc-text">valid provisioning profile</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">8.</span> <span class="toc-text">参考资料</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="配置证书"><a href="#配置证书" class="headerlink" title="配置证书"></a>配置证书</h3><hr>
+<p>0、首先我们应该有 App 开发者账号<br>我们可以去<a href="https://developer.apple.com/" target="_blank" rel="noopener">Apple开发者官网</a>上申请账号，我们需要提供注册邮箱，一定要记住自己的密保问题，同时我们需要用信用卡支付一定的费用，请记住强大的淘宝可以解决任何问题。（注：yourAccount.age &gt; 18）</p>
+<h4 id="Certificates"><a href="#Certificates" class="headerlink" title="Certificates"></a>Certificates</h4><hr>
+<p>1、在开发者中心，点击开发者证书选项，进入相应的配置证书网页。<br><img src="/images/App-Online/Certificates.png" alt="/images/App-Online/Certificates.png" width="60%" height="100%"><br>2、选择相应的开发选项（iOS Apps）<br><img src="/images/App-Online/iOS-Apps.png" alt="select devices"><br>3、配置开发和发布证书。(Certificates)<br>　　创建电脑CSR证书文件（电脑签名）：钥匙串访问 -&gt; 证书助理 -&gt; 从证书颁发机构请求证书… -&gt; 电子邮件（存储到磁盘）<br>　　在开发者网站上传证书文件 -&gt; 将证书下载到本地（ios_development.cer或ios_production.cer文件）-&gt; 双击进行安装<br>　　真机测试所用证书为Development，上线所用证书为Production。<br>　　选择相应的证书，证书又分为开发证书和上线证书，开发证书中又分为开发和推送证书。<br><img src="/images/App-Online/CSR-Development-or-Production.png" width="50%" height="30%"><br>　　完成PC端电脑证书的创建（Development和Production证书）<br><img src="/images/App-Online/app-dev-dis.png" alt="开发证书和发布证书"></p>
+<h5 id="Upload-CRS-Certificate"><a href="#Upload-CRS-Certificate" class="headerlink" title="Upload CRS Certificate"></a>Upload CRS Certificate</h5><hr>
+<p>遇到 <code>Upload CRS Certificate</code>，需要本地签名，点击钥匙串中<code>证书颁发机构请求证书...</code>，填写相关信息后，将证书存储到磁盘，然后上传 crs 文件，生成相应的证书。<br>注：一台电脑只能做1个证书，一个账号最多注册3个证书。只有证书的拥有者，才有权利下载，其他用户下载无效。</p>
+<h4 id="Identifiers"><a href="#Identifiers" class="headerlink" title="Identifiers"></a>Identifiers</h4><hr>
+<p>4、添加App应用的Bundle ID（Identifiers），可以有N个。<br>　　0、添加描述，最好是应用的名字。<br><img src="/images/App-Online/App-IDs-identifiers.png" alt="Add Bundle ID"><br>　　1、添加Bundle Identifier，可以从Xcode中获取<br>　　App ID Prefix 应用的前缀，一个开发者账号为一个team，系统默认为开发者账号分配。<br><img src="/images/App-Online/Bundle-ID.png" width="50%" height="50%"></p>
+<h4 id="Devices"><a href="#Devices" class="headerlink" title="Devices"></a>Devices</h4><hr>
+<p>5、添加测试设备（用于真机测试—Devices），一个账号最多关联一种设备100台。<br>Xcode 7 以下需要获取设备Identifier进行测试<br>在iTunes 、Xcode(Window -&gt; Devices)可以查看设备标识<br><img src="/images/App-Online/Test－Xcode7不需要添加设备.png" alt="Add Devices"><br>注：Xcode 7 以后不需要添加设备信息，可以直接进行测试。</p>
+<h4 id="Profiles"><a href="#Profiles" class="headerlink" title="Profiles"></a>Profiles</h4><hr>
+<p>6、将以上配置文件相关联（Provisioning Profiels，简称为配置文件)<br>先关联应用（Bundle ID）-&gt; 其次关联证书 -&gt; 然后需要关联设备 -&gt; 最后生成关联文件 -&gt; 下载配置文件 -&gt; 双击安装。<br><img src="/images/App-Online/Profile.png" width="50%" height="50%"><br>双击安装后的位置为<code>~/Library/MobileDevice/Provisioning Profiles</code></p>
+<h3 id="iTunes-Connect"><a href="#iTunes-Connect" class="headerlink" title="iTunes Connect"></a>iTunes Connect</h3><hr>
+<p>1、关于iTunes Connect</p>
+<blockquote>
+<p>iTunes Connect是一套基于 Web 的工具，专为开发者创建，用以提交和管理在 App Store 或 Mac App Store 上销售的 App.</p>
+</blockquote>
+<p><img src="/images/App-Online/iTunes-Connect.png" alt="iTunes-Connect"><br>2、如何更改iTunes Connect显示语言</p>
+<blockquote>
+<p>注意： 某些 iTunes Connect 页面可使用英语以外的其他语言进行查看。若要更改在 iTunes Connect 中显示的语言，则必须在操作系统设置中更改语言偏好设置：在 Mac 上，请转到“系统偏好设置”，然后转到“语言与地区”</p>
+</blockquote>
+<p>iTunes Connect 首页底边栏中的“联系我们”，是我们联系苹果的入口。<br><img src="/images/App-Online/Contact-Us.png" alt="联系我们"><br>3、App Store 法则<br>以下内容自来网络：</p>
+<blockquote>
+<p>（1）程序崩溃或者存在重大BUG：产品提审前一定要经过反复的测试，如果存在APP频繁崩溃或闪退，通过概率基本为零，在苹果丛林法则中，用户体验至上。<br>（2）适配：iPhone用五款型号的手机，一定要注意适配到iPhone4，例如iPhone4中页面少了一截，下面的操作按钮看不到的。<br>（3）Logo和UI：切忌勿模仿苹果的logo，否则是自掘坟墓，模仿竞品问题不会很大，但如果被举报了就另当别论了，个人是不太推崇此类做法，尽量保证logo和UI的原创，才能获取App更高的权重和提升曝光流量转下载的比例。<br>（4）App描述或应用内购买描述：切记出现“苹果官方” 、“App Store” 、“Apple Pay”等与苹果挂钩的关键词，苹果的版权意识极强。<br>（5）定位功能：获取用户定位，需要增加提示并告知用户干什么用，并允许用户拒绝。<br>（6）UCG内容： 用户产生内容的需要有举报功能；年龄限制等级是否过低；音视频类需要提供版权说明。<br>（7）诱导用户评论： App中出现“给个好评”、 “好评奖励”等诱导性评论，基本是要NG的。<br>（8）登录：第三方登录功能中，若用户没有安装微博、微信、QQ等，提示未安装也是不被允许的。解决方法：监测用户是否安装相应APP没有就变灰or隐藏相应图标。</p>
+</blockquote>
+<p>4、加急审核<br>一旦加急，当天晚上就会出结果，即使审核失败，再次提交也会自动加速的。<br>操作步骤：</p>
+<blockquote>
+<p>（1）登入苹果开发者后台(<a href="https://developer.apple.com/)；" target="_blank" rel="noopener">https://developer.apple.com/)；</a><br>（2）点击后台首页下面的Contact Us；<br>（3）依次选择App Review/App Store Review/Request Expedited Review，最后点击对话框下面Request an Expedited App Review，便可成功进入加急审核页面</p>
+</blockquote>
+<h3 id="设置图标"><a href="#设置图标" class="headerlink" title="设置图标"></a>设置图标</h3><hr>
+<p>1、屏幕尺寸<br>iPad:<br>786 x 1024</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">大小(英寸)</th>
+<th style="text-align:center">像素</th>
+<th style="text-align:center">代表机型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">3.5</td>
+<td style="text-align:center">(640 x 960)</td>
+<td style="text-align:center">iPhone 4s</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">(640 x 1136)</td>
+<td style="text-align:center">iPhone 5s</td>
+</tr>
+<tr>
+<td style="text-align:center">4.7</td>
+<td style="text-align:center">(750 x 1334)</td>
+<td style="text-align:center">iPhone 6</td>
+</tr>
+<tr>
+<td style="text-align:center">5.5</td>
+<td style="text-align:center">(1242 x 2208)</td>
+<td style="text-align:center">iPhone 6Plus</td>
+</tr>
+<tr>
+<td style="text-align:center">6.5</td>
+<td style="text-align:center">(1242 x 2268)</td>
+<td style="text-align:center">iPhone X</td>
+</tr>
+</tbody>
+</table>
+<p>2、icon 图标要求<br>1024.png(不能有透明通道，也不能是圆角)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">图标名字</th>
+<th style="text-align:center">像素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="mailto:AppIcon29x29@2x.png" target="_blank" rel="noopener">AppIcon29x29@2x.png</a></td>
+<td style="text-align:center">(58 x 58)</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="mailto:AppIcon29x29@3x.png" target="_blank" rel="noopener">AppIcon29x29@3x.png</a></td>
+<td style="text-align:center">(87 x 87)</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="mailto:AppIcon40x40@2x.png" target="_blank" rel="noopener">AppIcon40x40@2x.png</a></td>
+<td style="text-align:center">(80 x 80)</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="mailto:AppIcon40x40@3x.png" target="_blank" rel="noopener">AppIcon40x40@3x.png</a></td>
+<td style="text-align:center">(120 x 120)</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="mailto:AppIcon60x60@2x.png" target="_blank" rel="noopener">AppIcon60x60@2x.png</a></td>
+<td style="text-align:center">(120 x 120)</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="mailto:AppIcon60x60@3x.png" target="_blank" rel="noopener">AppIcon60x60@3x.png</a></td>
+<td style="text-align:center">(180 x 180)</td>
+</tr>
+</tbody>
+</table>
+<p>第三方在线生成各种尺寸的icon<br><a href="http://www.atool.org/ios_logo.php" target="_blank" rel="noopener">aTool在线工具</a><br><a href="https://icon.wuruihong.com" target="_blank" rel="noopener">图标工场</a></p>
+<h3 id="真机调试"><a href="#真机调试" class="headerlink" title="真机调试"></a>真机调试</h3><hr>
+<p>Xcode 7 之前需要证书（个人和企业证书），个人证书最多支持100台调试设备<br>1、如果iPhone OS高于Xcode支持版本<br>iPhone os版本高于Xcode版本，真机无法调试，但是我们可以将 <code>Build</code> 包导出，拖到 <code>iTunes</code> 中，选中手机，点击”应用”进行安装 or 更新。前提是手机 <code>UDID</code> 已经被添加到 <code>Devices</code> 中，并且相关证书配置正确的情况下，才能正常地运行。<br>2、显示iPhone上安装的证书<br><img src="/images/App-Online/Show Provisioning Profiles.png" width="70%" height="50%"><br><!--![Show Provisioning Profiles](/images/App-Online/Show Provisioning Profiles.png)--></p>
+<h3 id="上传应用"><a href="#上传应用" class="headerlink" title="上传应用"></a>上传应用</h3><hr>
+<p>登录iTunes Connect中心，新建App -&gt; 选择支持平台 -&gt; 应用名字 -&gt; 选择套装ID -&gt; SKU(随意)<br>填写App信息<br>1、设置App相关信息<br>应用名字<br>Bundle name<br>Bundle display name<br>归档时arachre 可能选对应的框架不一样<br>2、进行打包<br>没有真机，选 iOS Devices</p>
+<h4 id="多个人共用一个证书"><a href="#多个人共用一个证书" class="headerlink" title="多个人共用一个证书"></a>多个人共用一个证书</h4><hr>
+<p>多个人共用一个证书，使用p12文件<br>0、多个人共用一个证书，每个人只需配置App IDs、Devices、Profiles配置文件，就可以进行真机测试和上传应用。<br>1、在拥有csr证书签名的电脑中，找到钥匙串，点开相应的证书，右击导出文件另存为p12文件格式(可以设置p12文件的密码)。</p>
+<hr>
+<p>小结：<br>1.电脑开发证书（可导出供多人使用， 也可以多次申请）<br>2.应用证书（每个应用不同， 需要多次申请）<br>3.真机测试证书（每台iPhone有自己的证书， 跟UIID绑定）<br>4.真机配置文件（可申请一次。）</p>
+<h3 id="此证书的签发者无效"><a href="#此证书的签发者无效" class="headerlink" title="此证书的签发者无效"></a>此证书的签发者无效</h3><hr>
+<p>我们在查看证书的时候可能会看到类似于“此证书的签发者无效”等类似的信息，我们要更新<code>Apple Worldwide Developer Relations Certification Authority</code>证书，先将此证书移除，然后<a href="https://developer.apple.com/certificationauthority/AppleWWDRCA.cer" target="_blank" rel="noopener">下载</a>添加。</p>
+<blockquote>
+<p>Thanks for bringing this to the attention of the community and apologies for the issues you’ve been having. This issue stems from having a copy of the expired WWDR Intermediate certificate in both your System and Login keychains. To resolve the issue, you should first download and install the new WWDR intermediate certificate (by double-clicking on the file). Next, in the Keychain Access application, select the System keychain. Make sure to select “Show Expired Certificates” in the View menu and then delete the expired version of the Apple Worldwide Developer Relations Certificate Authority Intermediate certificate (expired on February 14, 2016). Your certificates should now appear as valid in Keychain Access and be available to Xcode for submissions to the App Store.</p>
+</blockquote>
+<p>参考资料</p>
+<hr>
+<p>0、<a href="https://forums.developer.apple.com/thread/37208" target="_blank" rel="noopener">Uploading archive error: “Missing iOS Distribution signing identity for …”</a><br>1、<a href="https://developer.apple.com/support/certificates/expiration/" target="_blank" rel="noopener">Apple Worldwide Developer Relations Intermediate Certificate Expiration</a></p>
+<h3 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h3><hr>
+<h4 id="valid-provisioning-profile"><a href="#valid-provisioning-profile" class="headerlink" title="valid provisioning profile"></a>valid provisioning profile</h4><p>A valid provisioning profile for this executable was not found. app installation failed</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">I think what you meant (clearly out of frustration) was that you&apos;ve had no success with everything you&apos;ve tried so far  - no surprise when older versions are used as examples for current tools, I guess.</span><br><span class="line"> </span><br><span class="line">     &gt;I have a free developer account.</span><br><span class="line">You might want to confirm your process in that case.</span><br><span class="line">-=-</span><br><span class="line">Free provisioning*/testing on your device:</span><br><span class="line"> </span><br><span class="line">  • From within Xcode 7.x (Mac only), navigate to “Xcode—-&gt;Preferences—-&gt;Accounts.” Hit the &apos;+&apos; icon below left to add your Apple ID. After you add your account, it will show within the main account window on the right.</span><br><span class="line">  • Select your account, hit the “View Details” button and wait for them to load.</span><br><span class="line">  • Now create the &apos;signing identity&apos; used to create a provisioning profile used for device testing - Hit the “Create” button next to the &apos;iOS development&apos; label. When completed, hit ‘Done’.</span><br><span class="line">  • Connect your device and select it as build destination via the &apos;active scheme&apos; dropdown to the right of the play and stop icons.</span><br><span class="line">  • In target&apos;s &apos;General&apos; tab/settings:</span><br><span class="line">      • a. Set app identifier you want for your free profile</span><br><span class="line">      • b. Set team id as your apple id</span><br><span class="line">      • c. Hit &apos;Fix Issue&apos; button below the provisioning profile warning</span><br><span class="line">  • Run your app with your device selected.</span><br><span class="line">You may have to &apos;fix issue&apos; more than once - keep at it so Xcode can step thru them as needed.</span><br><span class="line"> </span><br><span class="line">Notes:</span><br><span class="line">- The profile will be valid for 1 week, after which time you will need to recreate a new one.</span><br><span class="line">- What you can/can&apos;t do w/free provisioning is listed here: https://developer.apple.com/support/app-capabilities/</span><br><span class="line">- If this is about creating an /ipa to manually hand off, select Build For Archiving under the project menu, not ‘Run’.</span><br></pre></td></tr></table></figure>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><hr>
+<p><a href="http://stackoverflow.com/questions/33126849/xcode-7-app-installation-failed-a-valid-provisioning-profile-for-this-executab" target="_blank" rel="noopener">XCode :7 App installation failed :A valid provisioning profile for this executable was not found</a><br><a href="https://forums.developer.apple.com/thread/48329" target="_blank" rel="noopener">A valid provisioning profile for this executable was not found. app installation failed</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://blog.devhitao.com/2015/01/12/app-online-process/" data-title="App 证书和上线相关知识 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/02/26/install-use-update-cocoapods-on-mac/" title="CocoaPods 安装、使用、更新和卸载">
+  <strong>上一篇：</strong><br/>
+  <span>
+  CocoaPods 安装、使用、更新和卸载</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/09/13/install-php-mysql-apache-on-centos/"  title="在Centos上搭建PHP5.6、MySQL5.5、Apache">
+ <strong>下一篇：</strong><br/> 
+ <span>在Centos上搭建PHP5.6、MySQL5.5、Apache
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置证书"><span class="toc-number">1.</span> <span class="toc-text">配置证书</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Certificates"><span class="toc-number">1.1.</span> <span class="toc-text">Certificates</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Upload-CRS-Certificate"><span class="toc-number">1.1.1.</span> <span class="toc-text">Upload CRS Certificate</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Identifiers"><span class="toc-number">1.2.</span> <span class="toc-text">Identifiers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Devices"><span class="toc-number">1.3.</span> <span class="toc-text">Devices</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Profiles"><span class="toc-number">1.4.</span> <span class="toc-text">Profiles</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iTunes-Connect"><span class="toc-number">2.</span> <span class="toc-text">iTunes Connect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置图标"><span class="toc-number">3.</span> <span class="toc-text">设置图标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#真机调试"><span class="toc-number">4.</span> <span class="toc-text">真机调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传应用"><span class="toc-number">5.</span> <span class="toc-text">上传应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#多个人共用一个证书"><span class="toc-number">5.1.</span> <span class="toc-text">多个人共用一个证书</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#此证书的签发者无效"><span class="toc-number">6.</span> <span class="toc-text">此证书的签发者无效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FAQ"><span class="toc-number">7.</span> <span class="toc-text">FAQ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#valid-provisioning-profile"><span class="toc-number">7.1.</span> <span class="toc-text">valid provisioning profile</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">8.</span> <span class="toc-text">参考资料</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Git/" title="Git">Git<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PostgreSQL/" title="PostgreSQL">PostgreSQL<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>53</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/jekyll/" title="jekyll">jekyll<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linux-Unix-Centos/" title="linux &amp; Unix &amp; Centos">linux &amp; Unix &amp; Centos<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/security/" title="security">security<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开发工具/" title="开发工具">开发工具<sup>15</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>16</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="weixin">
+  <br />
+<!--
+  <p class="asidetitle">微信打赏，赞助小猿</p>
+  <p>你的支持，是对小猿的最大鼓励</p>
+  <img src="/images/ads/weixin-pay.png" width="220px" />
+-->
+<br />
+  <p class="asidetitle">欢迎关注微博</p>
+  <p>微博ID：<a href="https://weibo.com/u/5166488487" target="_blank">@devhitao</a></p>
+  <a href="https://weibo.com/u/5166488487" target="_blank"><img src="/images/ads/weibo.png" width="220px" /></a>
+  <!-- <p class="asidetitle">iOS交流群</p> -->
+  <!-- <p>Q群:326729317,暗号:小锅</p> -->
+  <!-- <a href="http://jq.qq.com/?_wv=1027&k=2BjVH4c" target="_blank"><img src="/ad/place-hold.png"  width="220px" /></a> -->
+<br />
+<br />
+  <p class="asidetitle">友情链接</p>
+  <p><a href="http://www.ituring.com.cn/" target="_blank">图灵社区</a></p>
+  <p><a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰的网络日志</a></p>
+  <p><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a></p>
+  <!-- 
+  <p>test</p>
+  <a href="http://www.test.com" target="_blank"><img src="/ad/weibo.png"  width="220px" height="100"/></a>
+-->
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+<!--cc 图标-->
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+	&nbsp;&nbsp;&nbsp;
+	Powered by <a href="https://hexo.io" target="_blank" title="hexo">Hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2022
+	
+	<a href="/about" target="_blank" title="郭工">郭工</a>
+	
+<!--	&nbsp;&nbsp;
+	原创内容，保留一切权利。-->
+<!--cnzz 统计图标-->
+&nbsp;&nbsp;&nbsp;
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261101034'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261101034%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6f3ed6f7016660f2922ad49dcee905e3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

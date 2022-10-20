@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<rss xmlns:wb="http://base.google.com/ns/1.0" version="2.0">
+	<channel>
+		<title>时下流行</title>
+		<link>https://blog.devhitao.com/site/rss/trending.xml</link>
+		<description>时下热点精选推荐，您值得拥有</description>
+
+		<generator>网播(https://wangbo.link)</generator>
+		<wb:author>小王</wb:author>
+
+		<copyright><![CDATA[Copyright © 2020 网播(https://wangbo.link). All rights reserved.]]></copyright>
+
+        <language>en-us</language>
+        <category>自拍</category>
+
+		<pubDate>2020-04-30 12:13:14</pubDate>
+		<lastBuildDate>2020-04-30 12:13:15</lastBuildDate>
+		<ttl>80</ttl>
+        <image>
+			<title>占位符</title>
+			<url>https://ci.xxx.com/www-static/images/xxx_logo.gif</url>
+			<link>https://wangbo.link</link>
+		</image>
+
+		
+        <wb:contact>
+            <wb:qq>qq</wb:qq>
+            <wb:wechat>wechat</wb:wechat>
+            <wb:telegram>telegram</wb:telegram>
+            <wb:weibo>weibo</wb:weibo>
+            <wb:email>email</wb:email>
+            <wb:url>email</wb:url>
+        </wb:contact>
+        
+		<item>
+            <guid>9812</guid>
+            <title>华南卫视</title>
+            <link>http://xxx.m3u8</link>
+            <description>描述</description>
+            <enclosure url="http://www.w3school.com.cn/media/movie.wmv"
+    length="856329" type="video/wmv" />
+            <pubDate>Wed, 18 Jun 2008</pubDate>
+            <wb:lastBuildDate>Thu, 23 Apr 2020 14:32:37 +0000</wb:lastBuildDate>
+
+			<wb:logo>https://ci.xxx.com/www-static/images/xxx_logo.gif</wb:logo>
+
+			<wb:embed><![CDATA[<iframe src="https://www.xxx.com/embed/ph5ea02a60caf70" frameborder="0" width="560" height="340" scrolling="no" allowfullscreen></iframe>]]></wb:embed>
+
+            <!-- <wb:ts>1025</wb:ts> -->
+            <category>卫视</category>
+            <author>email@email.com</author>
+		</item>
+	</channel>
+</rss>

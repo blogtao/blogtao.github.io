@@ -1,0 +1,513 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>在 Xcode 中使用 Git 对代码进行管理 - 郭工笔记</title>
+    <!--  <meta name="robots" content="nofollow" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="郭工">
+    
+
+    
+    <meta name="description" content="0、创建代码库的方式有两种：0、新建工程时创建；1、把现有的工程复制到代码库下，再初始化代码库。 　　0、新建工程时创建，勾选住 “Create Git repository on”    打开存储目录，目录的结构为：  　　1、新建的工程不勾选 “Create Git repository on”，目录应为：    将其复制到代码库下，切换到工程目录下进行初始化代码库 git init，使得工程">
+<meta name="keywords" content="Xcode,git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 Xcode 中使用 Git 对代码进行管理">
+<meta property="og:url" content="https://blog.devhitao.com/2015/03/16/git-for-xcode/index.html">
+<meta property="og:site_name" content="郭工笔记">
+<meta property="og:description" content="0、创建代码库的方式有两种：0、新建工程时创建；1、把现有的工程复制到代码库下，再初始化代码库。 　　0、新建工程时创建，勾选住 “Create Git repository on”    打开存储目录，目录的结构为：  　　1、新建的工程不勾选 “Create Git repository on”，目录应为：    将其复制到代码库下，切换到工程目录下进行初始化代码库 git init，使得工程">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.devhitao.com/images/create-git-reposity.png">
+<meta property="og:image" content="https://blog.devhitao.com/images/Xcode-project-document.png">
+<meta property="og:image" content="https://blog.devhitao.com/images/unuse-git-for-xcode.png">
+<meta property="og:updated_time" content="2020-12-03T15:11:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在 Xcode 中使用 Git 对代码进行管理">
+<meta name="twitter:description" content="0、创建代码库的方式有两种：0、新建工程时创建；1、把现有的工程复制到代码库下，再初始化代码库。 　　0、新建工程时创建，勾选住 “Create Git repository on”    打开存储目录，目录的结构为：  　　1、新建的工程不勾选 “Create Git repository on”，目录应为：    将其复制到代码库下，切换到工程目录下进行初始化代码库 git init，使得工程">
+<meta name="twitter:image" content="https://blog.devhitao.com/images/create-git-reposity.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+<!-- </script> -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-5819327586326271",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="郭工笔记">郭工笔记</a></h1>
+				<h2 class="blog-motto">业精于勤，荒于嬉；行成于思，毁于随。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.devhitao.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/16/git-for-xcode/" title="在 Xcode 中使用 Git 对代码进行管理" itemprop="url">在 Xcode 中使用 Git 对代码进行管理</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2015-03-16T14:42:02.000Z" itemprop="datePublished"> 发表于 2015-03-16</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#FAQ"><span class="toc-number">1.</span> <span class="toc-text">FAQ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pbxproj-冲突"><span class="toc-number">1.1.</span> <span class="toc-text">.pbxproj 冲突</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">2.</span> <span class="toc-text">文档信息</span></a></li></ol>
+		
+		</div>
+		
+		<p>0、创建代码库的方式有两种：0、新建工程时创建；1、把现有的工程复制到代码库下，再初始化代码库。</p>
+<p>　　0、新建工程时创建，勾选住 “Create Git repository on”</p>
+<p><img src="/images/create-git-reposity.png" alt="图片"></p>
+<p>  打开存储目录，目录的结构为：</p>
+<p><img src="/images/Xcode-project-document.png" alt="image"></p>
+<p>　　1、新建的工程不勾选 “Create Git repository on”，目录应为：</p>
+<p><img src="/images/unuse-git-for-xcode.png" alt="image"></p>
+<p>  将其复制到代码库下，切换到工程目录下进行初始化代码库 <code>git init</code>，使得工程目录为一个代码库。</p>
+<p>1、进行版本控制管理</p>
+<hr>
+<p>　　0、添加远程代码库，在终端切换到工程目录下，执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin SSH/HTTPS....git</span><br></pre></td></tr></table></figure>
+<p>　　１、在工程目录下存在版本库的配置信息 <code>.git/config</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat .git/config   //可以查看版本库的相关配置信息</span><br></pre></td></tr></table></figure>
+<p>可以对单个文件进行 <code>commit</code> ,也可以对多个文件进行 <code>commit</code></p>
+<p>参考资料</p>
+<hr>
+<p>1、<a href="http://stackoverflow.com/questions/658885/how-do-you-get-git-to-always-pull-from-a-specific-branch" target="_blank" rel="noopener">How do you get git to always pull from a specific branch?</a></p>
+<h3 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h3><hr>
+<h4 id="pbxproj-冲突"><a href="#pbxproj-冲突" class="headerlink" title=".pbxproj 冲突"></a>.pbxproj 冲突</h4><hr>
+<blockquote>
+<p>both modified: <em>.xcodeproj/project.pbxproj<br>方法一：<br>在开发中当两个人用<code>命令行</code>同时往远程仓库上 push 代码时，我们可能上述情况，<code>project.pbxproj</code> 这个文件，是记录我们项目中文件结构的，当我们每建一次文件时，该文件都会发生改变。<br>解决方法：<br>在命令行中，<code>cd</code> 到项目的 <code>.git</code> 目录下，<code>vim .gitattributes</code> 在文件中添加 `</em>.pbxproj binary merge=union` 这行文字，即可解决此问题。</p>
+</blockquote>
+<p><a href="http://www.vaseltior.com/blog/20151212-fixing-the-conflicts-with-git-xcode-and-pbxproj" target="_blank" rel="noopener">FQA：Fixing the conflict resolution of .pbxproj files with GIT and XCode</a></p>
+<blockquote>
+<p>1、Go to the root directory of your git repository, where the .git directory is,<br>2、edit or create the .gitattributes file,<br>3、add the following line: *.pbxproj binary merge=union</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Telling GIT that Xcode pbxproj remote and local files</span><br><span class="line"># should be merged using union of differences</span><br><span class="line">*.pbxproj binary merge=union</span><br></pre></td></tr></table></figure>
+<p>方法二：<br>人工编辑 <code>project.pbxproj</code> 这个文件，根据实际情况去除冲突符 或 里面的代码。</p>
+<p>方法三（待验证）：<br>在终端运行 ./file.sh 文件，删除 *.xcodeproj 文件中的冲突提示标识<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">    projectfile=`find -d . -name &apos;project.pbxproj&apos;`</span><br><span class="line">    projectdir=`echo *.xcodeproj`</span><br><span class="line">    projectfile=&quot;$&#123;projectdir&#125;/project.pbxproj&quot;</span><br><span class="line">    tempfile=&quot;$&#123;projectdir&#125;/project.pbxproj.out&quot;</span><br><span class="line">    savefile=&quot;$&#123;projectdir&#125;/project.pbxproj.mergesave&quot;</span><br><span class="line"></span><br><span class="line">    cat $projectfile | grep -v &quot;&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD&quot; | grep -v &quot;=======&quot; | grep -v &quot;^&gt;&gt;&gt;&gt;&gt;&gt;&gt; &quot; &gt; $tempfile</span><br><span class="line">    cp $projectfile $savefile</span><br><span class="line">    mv $tempfile $projectfile</span><br><span class="line">    mv $savefile</span><br></pre></td></tr></table></figure></p>
+<h3 id="文档信息"><a href="#文档信息" class="headerlink" title="文档信息"></a>文档信息</h3><hr>
+<ul>
+<li>版权声明：自由转载-保持署名-非商用-非衍生 ( <a rel="noopener" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a> )</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Git/">Git</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Xcode/">Xcode</a><a href="/tags/git/">git</a>
+  </div>
+
+</div>
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://blog.devhitao.com/2015/03/16/git-for-xcode/" data-title="在 Xcode 中使用 Git 对代码进行管理 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/03/21/ssh-usage/" title="macOS 配置 SSH 方法">
+  <strong>上一篇：</strong><br/>
+  <span>
+  macOS 配置 SSH 方法</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/03/05/git-faq/"  title="Git-FQA">
+ <strong>下一篇：</strong><br/> 
+ <span>Git-FQA
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#FAQ"><span class="toc-number">1.</span> <span class="toc-text">FAQ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pbxproj-冲突"><span class="toc-number">1.1.</span> <span class="toc-text">.pbxproj 冲突</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">2.</span> <span class="toc-text">文档信息</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Git/" title="Git">Git<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PostgreSQL/" title="PostgreSQL">PostgreSQL<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>53</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/jekyll/" title="jekyll">jekyll<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linux-Unix-Centos/" title="linux &amp; Unix &amp; Centos">linux &amp; Unix &amp; Centos<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/security/" title="security">security<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开发工具/" title="开发工具">开发工具<sup>15</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>16</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="weixin">
+  <br />
+<!--
+  <p class="asidetitle">微信打赏，赞助小猿</p>
+  <p>你的支持，是对小猿的最大鼓励</p>
+  <img src="/images/ads/weixin-pay.png" width="220px" />
+-->
+<br />
+  <p class="asidetitle">欢迎关注微博</p>
+  <p>微博ID：<a href="https://weibo.com/u/5166488487" target="_blank">@devhitao</a></p>
+  <a href="https://weibo.com/u/5166488487" target="_blank"><img src="/images/ads/weibo.png" width="220px" /></a>
+  <!-- <p class="asidetitle">iOS交流群</p> -->
+  <!-- <p>Q群:326729317,暗号:小锅</p> -->
+  <!-- <a href="http://jq.qq.com/?_wv=1027&k=2BjVH4c" target="_blank"><img src="/ad/place-hold.png"  width="220px" /></a> -->
+<br />
+<br />
+  <p class="asidetitle">友情链接</p>
+  <p><a href="http://www.ituring.com.cn/" target="_blank">图灵社区</a></p>
+  <p><a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰的网络日志</a></p>
+  <p><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a></p>
+  <!-- 
+  <p>test</p>
+  <a href="http://www.test.com" target="_blank"><img src="/ad/weibo.png"  width="220px" height="100"/></a>
+-->
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+<!--cc 图标-->
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+	&nbsp;&nbsp;&nbsp;
+	Powered by <a href="https://hexo.io" target="_blank" title="hexo">Hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2022
+	
+	<a href="/about" target="_blank" title="郭工">郭工</a>
+	
+<!--	&nbsp;&nbsp;
+	原创内容，保留一切权利。-->
+<!--cnzz 统计图标-->
+&nbsp;&nbsp;&nbsp;
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261101034'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261101034%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6f3ed6f7016660f2922ad49dcee905e3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

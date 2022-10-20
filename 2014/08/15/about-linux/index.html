@@ -1,0 +1,513 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>类 UNIX（Linux or Centos）基本操作 - 郭工笔记</title>
+    <!--  <meta name="robots" content="nofollow" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="郭工">
+    
+
+    
+    <meta name="description" content="更新 epel如果系统中安装的是 epel7, 则使用12$ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  //下载最新 epel7 安装包$ rpm -Uvh epel-release*rpm // 升级安装 epel-release 软件包 若系统中为 epel6 ，则需要对 epel6">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类 UNIX（Linux or Centos）基本操作">
+<meta property="og:url" content="https://blog.devhitao.com/2014/08/15/about-linux/index.html">
+<meta property="og:site_name" content="郭工笔记">
+<meta property="og:description" content="更新 epel如果系统中安装的是 epel7, 则使用12$ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  //下载最新 epel7 安装包$ rpm -Uvh epel-release*rpm // 升级安装 epel-release 软件包 若系统中为 epel6 ，则需要对 epel6">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-12T13:57:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="类 UNIX（Linux or Centos）基本操作">
+<meta name="twitter:description" content="更新 epel如果系统中安装的是 epel7, 则使用12$ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  //下载最新 epel7 安装包$ rpm -Uvh epel-release*rpm // 升级安装 epel-release 软件包 若系统中为 epel6 ，则需要对 epel6">
+
+    
+    <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+<!-- </script> -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-5819327586326271",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="郭工笔记">郭工笔记</a></h1>
+				<h2 class="blog-motto">业精于勤，荒于嬉；行成于思，毁于随。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.devhitao.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/08/15/about-linux/" title="类 UNIX（Linux or Centos）基本操作" itemprop="url">类 UNIX（Linux or Centos）基本操作</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2014-08-15T15:11:40.000Z" itemprop="datePublished"> 发表于 2014-08-15</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#更新-epel"><span class="toc-number">1.</span> <span class="toc-text">更新 epel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看架构"><span class="toc-number">2.</span> <span class="toc-text">查看架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解压"><span class="toc-number">3.</span> <span class="toc-text">解压</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看命令"><span class="toc-number">4.</span> <span class="toc-text">查看命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FTP-命令"><span class="toc-number">5.</span> <span class="toc-text">FTP 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sftp"><span class="toc-number">6.</span> <span class="toc-text">sftp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定时启动"><span class="toc-number">7.</span> <span class="toc-text">定时启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">8.</span> <span class="toc-text">文档信息</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="更新-epel"><a href="#更新-epel" class="headerlink" title="更新 epel"></a>更新 epel</h3><p>如果系统中安装的是 epel7, 则使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  //下载最新 epel7 安装包</span><br><span class="line">$ rpm -Uvh epel-release*rpm // 升级安装 epel-release 软件包</span><br></pre></td></tr></table></figure></p>
+<p>若系统中为 epel6 ，则需要对 epel6 进行升级安装:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm</span><br><span class="line">$ rpm -Uvh epel-release*rpm</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://pkgs.org/download/epel-release" target="_blank" rel="noopener">Epel-release Download for Linux (rpm, noarch)</a><br><a href="https://fedoraproject.org/wiki/EPEL" target="_blank" rel="noopener">EPEL</a></p>
+<h3 id="查看架构"><a href="#查看架构" class="headerlink" title="查看架构"></a>查看架构</h3><p>查看 Linux 架构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ uname -a</span><br></pre></td></tr></table></figure></p>
+<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvzf fileName.tgz</span><br><span class="line">$ upzip fileName.zip</span><br><span class="line">$ zip FileName.zip fileDirName</span><br></pre></td></tr></table></figure>
+<h3 id="查看命令"><a href="#查看命令" class="headerlink" title="查看命令"></a>查看命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat hitao.m //显示全部内容</span><br><span class="line">$ more hitao.m //分页查看内容</span><br></pre></td></tr></table></figure>
+<h3 id="FTP-命令"><a href="#FTP-命令" class="headerlink" title="FTP 命令"></a>FTP 命令</h3><p>1、连接远程 FTP 服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ftp 域名 或者 IP地址 // eg： ftp devhitao.com</span><br></pre></td></tr></table></figure>
+<p>接下来 FTP 服务器会询问你用户名和密码，输入用户名和密码即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Name (devhitao.com:guohaitao):    //此处输入 FTP 账号 eg：xg@devhitao.com  </span><br><span class="line">331 User xg@devhitao.com OK. Password required</span><br><span class="line">Password:    //此处输入 FTP 密码</span><br></pre></td></tr></table></figure>
+<p>2、下载文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ftp &gt; get  //单个文件</span><br><span class="line">or</span><br><span class="line">$ ftp &gt; mget  //多个文件</span><br></pre></td></tr></table></figure>
+<p>3、上传文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ftp &gt; put  //单个文件</span><br><span class="line">or</span><br><span class="line">$ ftp &gt; mput  //多个文件</span><br></pre></td></tr></table></figure></p>
+<p>4、断开连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ftp&gt; bye</span><br></pre></td></tr></table></figure>
+<p>查看命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ftp &gt; ?</span><br></pre></td></tr></table></figure></p>
+<p>查看命令格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ftp&gt; help mput</span><br><span class="line">mput       	send multiple files</span><br></pre></td></tr></table></figure></p>
+<p>查看本地路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lcd //查看本地路径 pwd</span><br></pre></td></tr></table></figure></p>
+<p>参考资料</p>
+<hr>
+<ul>
+<li><a href="http://www.cnblogs.com/weafer/archive/2011/06/13/2079509.html" target="_blank" rel="noopener">linux远程下载文件 的两种方法之 ftp命令和scp命令</a></li>
+</ul>
+<h3 id="sftp"><a href="#sftp" class="headerlink" title="sftp"></a>sftp</h3><p>vsftpd<br>Available commands:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">bye                                Quit sftp</span><br><span class="line">cd path                            Change remote directory to &apos;path&apos;</span><br><span class="line">chgrp grp path                     Change group of file &apos;path&apos; to &apos;grp&apos;</span><br><span class="line">chmod mode path                    Change permissions of file &apos;path&apos; to &apos;mode&apos;</span><br><span class="line">chown own path                     Change owner of file &apos;path&apos; to &apos;own&apos;</span><br><span class="line">df [-hi] [path]                    Display statistics for current directory or</span><br><span class="line">                                   filesystem containing &apos;path&apos;</span><br><span class="line">exit                               Quit sftp</span><br><span class="line">get [-afPpRr] remote [local]       Download file</span><br><span class="line">reget [-fPpRr] remote [local]      Resume download file</span><br><span class="line">reput [-fPpRr] [local] remote      Resume upload file</span><br><span class="line">help                               Display this help text</span><br><span class="line">lcd path                           Change local directory to &apos;path&apos;</span><br><span class="line">lls [ls-options [path]]            Display local directory listing</span><br><span class="line">lmkdir path                        Create local directory</span><br><span class="line">ln [-s] oldpath newpath            Link remote file (-s for symlink)</span><br><span class="line">lpwd                               Print local working directory</span><br><span class="line">ls [-1afhlnrSt] [path]             Display remote directory listing</span><br><span class="line">lumask umask                       Set local umask to &apos;umask&apos;</span><br><span class="line">mkdir path                         Create remote directory</span><br><span class="line">progress                           Toggle display of progress meter</span><br><span class="line">put [-afPpRr] local [remote]       Upload file</span><br><span class="line">pwd                                Display remote working directory</span><br><span class="line">quit                               Quit sftp</span><br><span class="line">rename oldpath newpath             Rename remote file</span><br><span class="line">rm path                            Delete remote file</span><br><span class="line">rmdir path                         Remove remote directory</span><br><span class="line">symlink oldpath newpath            Symlink remote file</span><br><span class="line">version                            Show SFTP version</span><br><span class="line">!command                           Execute &apos;command&apos; in local shell</span><br><span class="line">!                                  Escape to local shell</span><br><span class="line">?                                  Synonym for help</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><a href="https://www.kancloud.cn/chandler/bc-linux/52710" target="_blank" rel="noopener">CentOS下的FTP设置</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server" target="_blank" rel="noopener">How To Use SFTP to Securely Transfer Files with a Remote Server</a></li>
+</ul>
+<h3 id="定时启动"><a href="#定时启动" class="headerlink" title="定时启动"></a>定时启动</h3><hr>
+<p>crontab 工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">分钟(0-59) 小时(0-23) 天(1-31) 月份(1-12) 工作日(0-6) 命令(cmd)</span><br></pre></td></tr></table></figure></p>
+<p>编辑添加 crontab -e<br>查看 crontab -l</p>
+<p>or</p>
+<p>编辑 crontab，最后添加一个执行命令，eg: <code>30 04 * * * root reboot</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi /etc/crontab</span><br></pre></td></tr></table></figure></p>
+<p>注：root /sbin/reboot</p>
+<h3 id="文档信息"><a href="#文档信息" class="headerlink" title="文档信息"></a>文档信息</h3><hr>
+<ul>
+<li>版权声明：自由转载-保持署名-非商用-非衍生 ( <a rel="noopener" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a> )</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/linux-Unix-Centos/">linux & Unix & Centos</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/linux/">linux</a>
+  </div>
+
+</div>
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://blog.devhitao.com/2014/08/15/about-linux/" data-title="类 UNIX（Linux or Centos）基本操作 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/09/13/install-php-mysql-apache-on-centos/" title="在Centos上搭建PHP5.6、MySQL5.5、Apache">
+  <strong>上一篇：</strong><br/>
+  <span>
+  在Centos上搭建PHP5.6、MySQL5.5、Apache</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/08/11/domain-name-record/"  title="DNS 域名解析记录说明">
+ <strong>下一篇：</strong><br/> 
+ <span>DNS 域名解析记录说明
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#更新-epel"><span class="toc-number">1.</span> <span class="toc-text">更新 epel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看架构"><span class="toc-number">2.</span> <span class="toc-text">查看架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解压"><span class="toc-number">3.</span> <span class="toc-text">解压</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看命令"><span class="toc-number">4.</span> <span class="toc-text">查看命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FTP-命令"><span class="toc-number">5.</span> <span class="toc-text">FTP 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sftp"><span class="toc-number">6.</span> <span class="toc-text">sftp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定时启动"><span class="toc-number">7.</span> <span class="toc-text">定时启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">8.</span> <span class="toc-text">文档信息</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Git/" title="Git">Git<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PostgreSQL/" title="PostgreSQL">PostgreSQL<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>53</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/jekyll/" title="jekyll">jekyll<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linux-Unix-Centos/" title="linux &amp; Unix &amp; Centos">linux &amp; Unix &amp; Centos<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/security/" title="security">security<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开发工具/" title="开发工具">开发工具<sup>15</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>16</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="weixin">
+  <br />
+<!--
+  <p class="asidetitle">微信打赏，赞助小猿</p>
+  <p>你的支持，是对小猿的最大鼓励</p>
+  <img src="/images/ads/weixin-pay.png" width="220px" />
+-->
+<br />
+  <p class="asidetitle">欢迎关注微博</p>
+  <p>微博ID：<a href="https://weibo.com/u/5166488487" target="_blank">@devhitao</a></p>
+  <a href="https://weibo.com/u/5166488487" target="_blank"><img src="/images/ads/weibo.png" width="220px" /></a>
+  <!-- <p class="asidetitle">iOS交流群</p> -->
+  <!-- <p>Q群:326729317,暗号:小锅</p> -->
+  <!-- <a href="http://jq.qq.com/?_wv=1027&k=2BjVH4c" target="_blank"><img src="/ad/place-hold.png"  width="220px" /></a> -->
+<br />
+<br />
+  <p class="asidetitle">友情链接</p>
+  <p><a href="http://www.ituring.com.cn/" target="_blank">图灵社区</a></p>
+  <p><a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰的网络日志</a></p>
+  <p><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a></p>
+  <!-- 
+  <p>test</p>
+  <a href="http://www.test.com" target="_blank"><img src="/ad/weibo.png"  width="220px" height="100"/></a>
+-->
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+<!--cc 图标-->
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+	&nbsp;&nbsp;&nbsp;
+	Powered by <a href="https://hexo.io" target="_blank" title="hexo">Hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2022
+	
+	<a href="/about" target="_blank" title="郭工">郭工</a>
+	
+<!--	&nbsp;&nbsp;
+	原创内容，保留一切权利。-->
+<!--cnzz 统计图标-->
+&nbsp;&nbsp;&nbsp;
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261101034'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261101034%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6f3ed6f7016660f2922ad49dcee905e3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

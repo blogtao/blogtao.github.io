@@ -1,0 +1,666 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>关于学习iOS的资源 - 郭工笔记</title>
+    <!--  <meta name="robots" content="nofollow" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="郭工">
+    
+
+    
+    <meta name="description" content="目录 iOS开发相关  iOS基础 UITableView UICollectionView CoreText 证书及推送 缓存 Block GCD RAC/MVVM Runtime iOS Animation 扫码 Swift CocoaPods iOS代码库 调试 XCode插件 Blog 其他   Git相关  git教程   Markdown相关  markdown相关   Mac相关">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于学习iOS的资源">
+<meta property="og:url" content="https://blog.devhitao.com/2014/02/21/apple-resources/index.html">
+<meta property="og:site_name" content="郭工笔记">
+<meta property="og:description" content="目录 iOS开发相关  iOS基础 UITableView UICollectionView CoreText 证书及推送 缓存 Block GCD RAC/MVVM Runtime iOS Animation 扫码 Swift CocoaPods iOS代码库 调试 XCode插件 Blog 其他   Git相关  git教程   Markdown相关  markdown相关   Mac相关">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2016-04-11T09:56:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于学习iOS的资源">
+<meta name="twitter:description" content="目录 iOS开发相关  iOS基础 UITableView UICollectionView CoreText 证书及推送 缓存 Block GCD RAC/MVVM Runtime iOS Animation 扫码 Swift CocoaPods iOS代码库 调试 XCode插件 Blog 其他   Git相关  git教程   Markdown相关  markdown相关   Mac相关">
+
+    
+    <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+<!-- </script> -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-5819327586326271",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="郭工笔记">郭工笔记</a></h1>
+				<h2 class="blog-motto">业精于勤，荒于嬉；行成于思，毁于随。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.devhitao.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/02/21/apple-resources/" title="关于学习iOS的资源" itemprop="url">关于学习iOS的资源</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2014-02-21T06:00:52.000Z" itemprop="datePublished"> 发表于 2014-02-21</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内容"><span class="toc-number">2.</span> <span class="toc-text">内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS开发相关"><span class="toc-number">2.1.</span> <span class="toc-text">iOS开发相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#iOS基础"><span class="toc-number">2.1.1.</span> <span class="toc-text">iOS基础</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UITableView"><span class="toc-number">2.1.2.</span> <span class="toc-text">UITableView</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UICollectionView"><span class="toc-number">2.1.3.</span> <span class="toc-text">UICollectionView</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CoreText"><span class="toc-number">2.1.4.</span> <span class="toc-text">CoreText</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#证书及推送"><span class="toc-number">2.1.5.</span> <span class="toc-text">证书及推送</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存"><span class="toc-number">2.1.6.</span> <span class="toc-text">缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Block"><span class="toc-number">2.1.7.</span> <span class="toc-text">Block</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GCD"><span class="toc-number">2.1.8.</span> <span class="toc-text">GCD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RAC-MVVM"><span class="toc-number">2.1.9.</span> <span class="toc-text">RAC/MVVM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Runtime"><span class="toc-number">2.1.10.</span> <span class="toc-text">Runtime</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iOS-Animation"><span class="toc-number">2.1.11.</span> <span class="toc-text">iOS Animation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#扫码"><span class="toc-number">2.1.12.</span> <span class="toc-text">扫码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Swift"><span class="toc-number">2.1.13.</span> <span class="toc-text">Swift</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CocoaPods"><span class="toc-number">2.1.14.</span> <span class="toc-text">CocoaPods</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iOS代码库"><span class="toc-number">2.1.15.</span> <span class="toc-text">iOS代码库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#调试"><span class="toc-number">2.1.16.</span> <span class="toc-text">调试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XCode插件"><span class="toc-number">2.1.17.</span> <span class="toc-text">XCode插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Blog"><span class="toc-number">2.1.18.</span> <span class="toc-text">Blog</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他"><span class="toc-number">2.1.19.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git相关"><span class="toc-number">2.2.</span> <span class="toc-text">Git相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#git教程"><span class="toc-number">2.2.1.</span> <span class="toc-text">git教程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Markdown相关"><span class="toc-number">2.3.</span> <span class="toc-text">Markdown相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#markdown相关"><span class="toc-number">2.3.1.</span> <span class="toc-text">markdown相关</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac相关"><span class="toc-number">2.4.</span> <span class="toc-text">Mac相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mac配置"><span class="toc-number">2.4.1.</span> <span class="toc-text">mac配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mac工具"><span class="toc-number">2.4.2.</span> <span class="toc-text">mac工具</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资源"><span class="toc-number">2.5.</span> <span class="toc-text">资源</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#图标资源"><span class="toc-number">2.5.1.</span> <span class="toc-text">图标资源</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><p><a href="#iOS开发相关">iOS开发相关</a></p>
+<ul>
+<li><a href="#iOS基础">iOS基础</a></li>
+<li><a href="#UITableView">UITableView</a></li>
+<li><a href="#UICollectionView">UICollectionView</a></li>
+<li><a href="#CoreText">CoreText</a></li>
+<li><a href="#证书及推送">证书及推送</a></li>
+<li><a href="#缓存">缓存</a></li>
+<li><a href="#Block">Block</a></li>
+<li><a href="#GCD">GCD</a></li>
+<li><a href="#RAC/MVVM">RAC/MVVM</a></li>
+<li><a href="#Runtime">Runtime</a></li>
+<li><a href="#iOS Animation">iOS Animation</a></li>
+<li><a href="#扫码">扫码</a></li>
+<li><a href="#Swift">Swift</a></li>
+<li><a href="#CocoaPods">CocoaPods</a></li>
+<li><a href="#iOS代码库">iOS代码库</a></li>
+<li><a href="#调试">调试</a></li>
+<li><a href="#XCode插件">XCode插件</a></li>
+<li><a href="#Blog">Blog</a></li>
+<li><a href="#其他">其他</a></li>
+</ul>
+</li>
+<li><p><a href="#Git相关">Git相关</a></p>
+<ul>
+<li><a href="#git教程">git教程</a></li>
+</ul>
+</li>
+<li><p><a href="#Markdown相关">Markdown相关</a></p>
+<ul>
+<li><a href="#markdown相关">markdown相关</a></li>
+</ul>
+</li>
+<li><p><a href="#Mac相关">Mac相关</a></p>
+<ul>
+<li><a href="#mac配置">mac配置</a></li>
+<li><a href="#mac工具">mac工具</a></li>
+</ul>
+</li>
+<li><p><a href="#资源">资源</a></p>
+</li>
+<li><ul>
+<li><a href="#图标资源">图标资源</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><h3 id="iOS开发相关"><a href="#iOS开发相关" class="headerlink" title="iOS开发相关"></a>iOS开发相关</h3><h4 id="iOS基础"><a href="#iOS基础" class="headerlink" title="iOS基础"></a>iOS基础</h4><ul>
+<li><a href="http://blog.csdn.net/jiangwei0910410003/article/category/2745191" target="_blank" rel="noopener">OC语法基础</a></li>
+<li><a href="http://www.jianshu.com/p/4ef06ec81414" target="_blank" rel="noopener">Objective-C代码规范</a></li>
+<li><a href="http://www.jianshu.com/p/8472ba0f2bb6" target="_blank" rel="noopener">从零开始学iOS开发的15条建议</a></li>
+<li><a href="http://www.jianshu.com/p/52f136a3df1a" target="_blank" rel="noopener">浅谈 Objective - C 内存管理（上）</a></li>
+<li><a href="http://www.jianshu.com/p/1d9f6fc2a1b7" target="_blank" rel="noopener">浅谈 Objective - C 内存管理（中）</a></li>
+<li><a href="http://www.jianshu.com/p/36d5d98c9d3a" target="_blank" rel="noopener">浅谈 Objective - C 内存管理（下）</a></li>
+<li><a href="http://www.jianshu.com/p/aa50e5350852?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=writer_share&amp;utm_source=weibo" target="_blank" rel="noopener">iOS应用程序的生命周期</a></li>
+<li><a href="http://www.cocoachina.com/industry/20131203/7462.html" target="_blank" rel="noopener">开始iOS 7中自动布局教程(一)</a></li>
+<li><a href="http://www.cnblogs.com/zer0Black/p/3977288.html" target="_blank" rel="noopener">开始iOS 7中自动布局教程(二)</a></li>
+</ul>
+<h4 id="UITableView"><a href="#UITableView" class="headerlink" title="UITableView"></a>UITableView</h4><ul>
+<li><a href="http://blog.sina.com.cn/s/blog_4669f1cd0101qyp9.html" target="_blank" rel="noopener">UITableView和UITableViewCell的几种样式</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_9693f61a01016lv5.html" target="_blank" rel="noopener">UITableView使用详解</a></li>
+<li><a href="http://longxdragon.github.io/2015/05/26/UITableView%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7/" target="_blank" rel="noopener">UITableView优化技巧</a> </li>
+<li><a href="http://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank" rel="noopener">iOS 保持界面流畅的技巧</a></li>
+<li><a href="https://segmentfault.com/a/1190000002776279" target="_blank" rel="noopener">iOS 异步图片加载优化与常用开源库分析</a></li>
+<li><a href="http://www.cocoachina.com/swift/20141124/10298.html" target="_blank" rel="noopener">AsyncDisplayKit 教程：达到 60 FPS 的滚动帧率</a></li>
+<li><a href="http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/" target="_blank" rel="noopener">优化UITableViewCell高度计算的那些事</a></li>
+<li><a href="http://www.samirchen.com/ios-performance-optimization/" target="_blank" rel="noopener">iOS 程序性能优化</a></li>
+<li><a href="http://pingguohe.net/2016/01/31/lazyscroll.html?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="noopener">iOS 高性能异构滚动视图构建方案</a></li>
+</ul>
+<h4 id="UICollectionView"><a href="#UICollectionView" class="headerlink" title="UICollectionView"></a>UICollectionView</h4><ul>
+<li><a href="http://objccn.io/issue-5-2/" target="_blank" rel="noopener">UICollectionView + UIKit Dynamics</a></li>
+<li><a href="http://blog.vars.me/blog/2015/04/26/UICollectionView-Optimizing/" target="_blank" rel="noopener">UICollectionView的数据预加载及图片加载逻辑的优化</a></li>
+</ul>
+<h4 id="CoreText"><a href="#CoreText" class="headerlink" title="CoreText"></a>CoreText</h4><ul>
+<li><a href="http://geeklu.com/2013/03/core-text/" target="_blank" rel="noopener">CoreText入门</a></li>
+<li><a href="http://longxdragon.github.io/2015/03/14/CoreText-Notes-Part-1/" target="_blank" rel="noopener">CoreText笔记 Part 1</a></li>
+</ul>
+<h4 id="证书及推送"><a href="#证书及推送" class="headerlink" title="证书及推送"></a>证书及推送</h4><ul>
+<li><a href="http://docs.apicloud.com/APICloud/%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/iOS-License-Application-Guidance" target="_blank" rel="noopener">iOS证书及描述文件制作流程</a></li>
+<li><a href="http://docs.getui.com/pages/viewpage.action?pageId=1934165#id-创建Apple应用并创建APNS推送证书-APNSPush证书创建" target="_blank" rel="noopener">创建Apple应用并创建APNS推送证书</a></li>
+<li><a href="http://www.cocoachina.com/industry/20140528/8582.html" target="_blank" rel="noopener">细说 iOS 消息推送</a></li>
+<li><a href="http://blog.csdn.net/jiajiayouba/article/details/39926017" target="_blank" rel="noopener">iOS消息推送之APNS</a></li>
+<li><a href="http://zhidao.baidu.com/link?url=QuZ9WZqZdHngaTSnao6-oZggHIw_f2KoSBj1-wu7cRZg2S7ytMATyGp-PnwtQOp90QgqKJ_Lk7e6lSmhf03tb-GIKgWmW9Zsu6sG2chMk3O" target="_blank" rel="noopener">ios 如何判断是点击推送信息进入还是点击app图标进入程序</a></li>
+</ul>
+<h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><ul>
+<li><a href="https://www.v2ex.com/t/252955?from=singlemessage&amp;isappinstalled=1" target="_blank" rel="noopener">iOS 网络缓存扫盲篇</a></li>
+<li><a href="http://blog.jobbole.com/30940/" target="_blank" rel="noopener">缓存、缓存算法和缓存框架简介</a></li>
+</ul>
+<h4 id="Block"><a href="#Block" class="headerlink" title="Block"></a>Block</h4><ul>
+<li><a href="http://blog.csdn.net/enuola/article/details/8674063" target="_blank" rel="noopener">Block简介与用法</a></li>
+<li><a href="https://www.zhihu.com/question/34593410" target="_blank" rel="noopener">Block深入问答</a></li>
+</ul>
+<h4 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h4><ul>
+<li><a href="https://github.com/nixzhu/dev-blog/blob/master/2014-04-19-grand-central-dispatch-in-depth-part-1.md" target="_blank" rel="noopener">GCD 深入理解：第一部分</a></li>
+<li><a href="https://github.com/nixzhu/dev-blog/blob/master/2014-05-14-grand-central-dispatch-in-depth-part-2.md" target="_blank" rel="noopener">GCD 深入理解：第二部分</a></li>
+<li><a href="http://www.jianshu.com/p/f9e01c69a46f" target="_blank" rel="noopener">关于GCD开发的一些事儿</a></li>
+<li><a href="http://www.jianshu.com/p/ae786a4cf3b1" target="_blank" rel="noopener">iOS中GCD的使用小结</a></li>
+</ul>
+<h4 id="RAC-MVVM"><a href="#RAC-MVVM" class="headerlink" title="RAC/MVVM"></a>RAC/MVVM</h4><ul>
+<li><a href="http://www.jianshu.com/p/2cfed74789db" target="_blank" rel="noopener">RAC/MVVM个人学习资源汇总</a></li>
+</ul>
+<h4 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h4><ul>
+<li><a href="http://justsee.iteye.com/blog/2163777" target="_blank" rel="noopener">Objective-C Runtime</a></li>
+<li><a href="http://lastdays.cn/2016/02/20/runtime1/" target="_blank" rel="noopener">Runtime 学习笔记(一)</a></li>
+<li><a href="http://lastdays.cn/2016/02/20/runtime2/" target="_blank" rel="noopener">Runtime 学习笔记(二)</a></li>
+</ul>
+<h4 id="iOS-Animation"><a href="#iOS-Animation" class="headerlink" title="iOS Animation"></a>iOS Animation</h4><ul>
+<li><a href="https://github.com/yixiangboy/IOSAnimationDemo?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="noopener">iOS Animation</a></li>
+<li><a href="http://www.cocoachina.com/industry/20140704/9034.html" target="_blank" rel="noopener">Facebook POP 进阶指南</a></li>
+<li><a href="http://www.jianshu.com/p/ea0132738057?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="noopener">iOS自定义转场动画实战讲解</a></li>
+<li><a href="http://www.jianshu.com/p/90d6cd355b14" target="_blank" rel="noopener">iOS使用Quartzcode设计动画，快速得到Object-C 和 Swift 代码</a></li>
+</ul>
+<h4 id="扫码"><a href="#扫码" class="headerlink" title="扫码"></a>扫码</h4><ul>
+<li><a href="http://my.oschina.net/u/2340880/blog/405847?fromerr=TWrCF6HG" target="_blank" rel="noopener">iOS7使用原生API进行二维码和条形码的扫描</a></li>
+<li><a href="http://c0ming.me/qr-code-scan/" target="_blank" rel="noopener">iOS 原生扫 QR 码的那些事</a></li>
+</ul>
+<h4 id="Swift"><a href="#Swift" class="headerlink" title="Swift"></a>Swift</h4><ul>
+<li><a href="https://swift.org/" target="_blank" rel="noopener">swift.org</a></li>
+<li><a href="https://numbbbbb.gitbooks.io/-the-swift-programming-language-/content/index.html" target="_blank" rel="noopener">swift中文文档</a></li>
+</ul>
+<h4 id="CocoaPods"><a href="#CocoaPods" class="headerlink" title="CocoaPods"></a>CocoaPods</h4><ul>
+<li><a href="https://cocoapods.org/" target="_blank" rel="noopener">CocoaPods官网</a></li>
+<li><a href="https://github.com/Damonvvong/DWCategory/blob/master/README.md?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="noopener">借助GitHub托管Category,利用CocoaPods集成到项目中</a></li>
+<li><a href="http://objccn.io/issue-6-4/" target="_blank" rel="noopener">深入理解 CocoaPods</a></li>
+<li><a href="http://blog.csdn.net/ralbatr/article/details/39082937" target="_blank" rel="noopener"> CocoaPods pod install/pod update更新慢的问题</a></li>
+</ul>
+<h4 id="iOS代码库"><a href="#iOS代码库" class="headerlink" title="iOS代码库"></a>iOS代码库</h4><ul>
+<li><a href="https://developer.apple.com/library/ios/samplecode/" target="_blank" rel="noopener">apple官方sample</a></li>
+<li><a href="https://github.com/search?utf8=%E2%9C%93&amp;q=awesome-ios" target="_blank" rel="noopener">awesome-ios</a></li>
+<li><a href="https://github.com/iamdaiyuan/ios_top_1000" target="_blank" rel="noopener">ios_top_1000</a></li>
+<li><a href="https://github.com/Tim9Liu9/TimLiu-iOS#%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0" target="_blank" rel="noopener">TimLiu-iOS</a></li>
+<li><a href="http://code.cocoachina.com/" target="_blank" rel="noopener">cocoachina</a></li>
+<li><a href="http://code4app.com/category" target="_blank" rel="noopener">code4app</a></li>
+<li><a href="http://ios.b2mp.cn/" target="_blank" rel="noopener">iOS走马观花</a></li>
+<li><a href="http://www.douban.com/note/276160185/?plg_nld=1&amp;plg_uin=1&amp;plg_auth=1&amp;plg_usr=1&amp;plg_dev=1&amp;plg_vkey=1&amp;plg_nld=1&amp;type=like#!/i!/ckDefault" target="_blank" rel="noopener">iOS开源库</a></li>
+<li><a href="http://blog.rpplusplus.me/blog/2014/02/11/facebook-paper-used-3rd/" target="_blank" rel="noopener">Facebook Paper使用的第三方库</a></li>
+<li><a href="http://www.jianshu.com/p/da65e54a55fc" target="_blank" rel="noopener">适合新人学习的iOS官方Demo</a></li>
+</ul>
+<h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><ul>
+<li><a href="http://www.oneapm.com/" target="_blank" rel="noopener">oneapm.com</a></li>
+<li><a href="http://bughd.com/" target="_blank" rel="noopener">BugHD</a></li>
+<li><a href="http://www.infoq.com/cn/articles/ios-unit-test-1" target="_blank" rel="noopener">iOS开发中的单元测试</a></li>
+<li><a href="http://www.jianshu.com/p/75a2b63106ff" target="_blank" rel="noopener">iOS 开发者旅途中的指南针 - LLDB 调试技术</a></li>
+<li><a href="http://www.jianshu.com/p/70ed36cf8a98?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=writer_share&amp;utm_source=weibo" target="_blank" rel="noopener">Xcode7中你一定要知道的炸裂调试神技</a></li>
+</ul>
+<h4 id="XCode插件"><a href="#XCode插件" class="headerlink" title="XCode插件"></a>XCode插件</h4><ul>
+<li><a href="http://www.cocoachina.com/industry/20130918/7022.html" target="_blank" rel="noopener">那些不能错过的Xcode插件</a></li>
+</ul>
+<h4 id="Blog"><a href="#Blog" class="headerlink" title="Blog"></a>Blog</h4><ul>
+<li><a href="http://blog.fir.im/" target="_blank" rel="noopener">fir.im 飞行日志</a></li>
+<li><a href="http://blog.devtang.com/" target="_blank" rel="noopener">唐巧的技术博客</a></li>
+<li><a href="http://blog.ibireme.com/" target="_blank" rel="noopener">ibireme的技术博客</a></li>
+<li><a href="http://tech.meituan.com/" target="_blank" rel="noopener">美团点评技术团队</a></li>
+<li><a href="http://blog.sunnyxx.com/" target="_blank" rel="noopener">百度知道技术团队</a></li>
+<li><a href="http://onevcat.com/" target="_blank" rel="noopener">王巍的技术博客</a></li>
+<li><a href="http://yulingtianxia.com/" target="_blank" rel="noopener">玉令天下的博客</a></li>
+<li><a href="https://github.com/nixzhu/dev-blog" target="_blank" rel="noopener">nixzhu/dev-blog</a></li>
+<li><a href="http://weibo.com/u/1438670852/" target="_blank" rel="noopener">叶孤城___ 的微博主页</a></li>
+<li><a href="https://github.com/ChenYilong" target="_blank" rel="noopener">ChenYilong的Github主页</a></li>
+</ul>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
+<li><a href="http://www.cocoachina.com/cms/wap.php?action=article&amp;id=10823" target="_blank" rel="noopener">Limboy：自学 iOS 开发的一些经验</a></li>
+<li><a href="http://api.ineal.me/tss/status" target="_blank" rel="noopener">TSS</a></li>
+<li><a href="http://forums.bignerdranch.com/" target="_blank" rel="noopener">Big Nerd Ranch Books</a></li>
+<li><a href="https://www.jetbrains.com/objc/" target="_blank" rel="noopener">AppCode</a></li>
+<li><a href="http://blog.csdn.net/xyxjn/article/details/46049313" target="_blank" rel="noopener">使用j2objc实现iOS调java</a></li>
+<li><a href="http://www.jianshu.com/p/8edc728a0444" target="_blank" rel="noopener">VC之间的数据传递方式小结</a></li>
+<li><a href="http://blog.csdn.net/shaobo8910/article/details/47789027" target="_blank" rel="noopener">获取当前AppDelegate 正在显示的UIViewController</a></li>
+<li><a href="http://www.cnblogs.com/zanglitao/p/4036667.html" target="_blank" rel="noopener">iOS图像处理</a></li>
+<li><a href="http://blog.jobbole.com/61044/" target="_blank" rel="noopener">iOS KVC &amp; KVO</a></li>
+<li><a href="http://www.cnblogs.com/YouXianMing/p/3785876.html" target="_blank" rel="noopener">能产生粒子效果的CAEmitterLayer</a></li>
+<li><a href="http://www.cnblogs.com/dsxniubility/p/4699352.html" target="_blank" rel="noopener">一文让你彻底了解iOS字体相关知识</a></li>
+<li><a href="http://www.jianshu.com/p/d70a51be5af1" target="_blank" rel="noopener">iOS静态库的制作</a></li>
+<li><a href="https://itunesconnect.apple.com" target="_blank" rel="noopener">itunes</a></li>
+<li><a href="http://www.niaogebiji.com/article-5703-1.html" target="_blank" rel="noopener">2015年最新苹果开发者账号注册流程详解</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/11/gaussian_blur.html?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="noopener">高斯模糊算法</a></li>
+<li><a href="http://www.jianshu.com/p/9f094ce31075" target="_blank" rel="noopener">可以免费自学编程的12个网站</a></li>
+<li><a href="http://www.jianshu.com/p/e5353a1a752c" target="_blank" rel="noopener">我常常浏览的博客和网站</a></li>
+</ul>
+<h3 id="Git相关"><a href="#Git相关" class="headerlink" title="Git相关"></a>Git相关</h3><h4 id="git教程"><a href="#git教程" class="headerlink" title="git教程"></a>git教程</h4><ul>
+<li><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰git教程</a></li>
+</ul>
+<h3 id="Markdown相关"><a href="#Markdown相关" class="headerlink" title="Markdown相关"></a>Markdown相关</h3><h4 id="markdown相关"><a href="#markdown相关" class="headerlink" title="markdown相关"></a>markdown相关</h4><ul>
+<li><a href="http://www.jianshu.com/p/1e402922ee32" target="_blank" rel="noopener">Markdown——入门指南</a></li>
+</ul>
+<h3 id="Mac相关"><a href="#Mac相关" class="headerlink" title="Mac相关"></a>Mac相关</h3><h4 id="mac配置"><a href="#mac配置" class="headerlink" title="mac配置"></a>mac配置</h4><ul>
+<li><a href="https://github.com/macdao/ocds-guide-to-setting-up-mac?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="noopener">如何配置一个高效的 Mac 工作环境</a></li>
+</ul>
+<h4 id="mac工具"><a href="#mac工具" class="headerlink" title="mac工具"></a>mac工具</h4><ul>
+<li><a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="noopener">Homebrew</a></li>
+<li><a href="https://developer.apple.com/downloads/" target="_blank" rel="noopener">apple.com/downloads</a></li>
+<li><a href="https://support.apple.com/kb/DL1572?viewlocale=en_US&amp;locale=en_US" target="_blank" rel="noopener">Java for OS X 2015-001</a></li>
+<li><a href="http://swiftcafe.io/2015/07/25/iterm/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="noopener">iTerm</a></li>
+<li><a href="http://mozhenhau.com/2016/01/11/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E5%A4%87%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95---MAC/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="noopener">iOS程序员必备常用工具</a></li>
+<li><a href="http://nshipster.com/network-link-conditioner/" target="_blank" rel="noopener">Network Link Conditioner(Xcode插件,网络调节工具)</a></li>
+</ul>
+<h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><h4 id="图标资源"><a href="#图标资源" class="headerlink" title="图标资源"></a>图标资源</h4><ul>
+<li><a href="http://www.iconfont.cn/" target="_blank" rel="noopener">iconfont.cn</a></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://blog.devhitao.com/2014/02/21/apple-resources/" data-title="关于学习iOS的资源 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/03/10/about-mac/" title="macOS 操作，必知必会">
+  <strong>上一篇：</strong><br/>
+  <span>
+  macOS 操作，必知必会</span>
+</a>
+</div>
+
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内容"><span class="toc-number">2.</span> <span class="toc-text">内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS开发相关"><span class="toc-number">2.1.</span> <span class="toc-text">iOS开发相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#iOS基础"><span class="toc-number">2.1.1.</span> <span class="toc-text">iOS基础</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UITableView"><span class="toc-number">2.1.2.</span> <span class="toc-text">UITableView</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UICollectionView"><span class="toc-number">2.1.3.</span> <span class="toc-text">UICollectionView</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CoreText"><span class="toc-number">2.1.4.</span> <span class="toc-text">CoreText</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#证书及推送"><span class="toc-number">2.1.5.</span> <span class="toc-text">证书及推送</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存"><span class="toc-number">2.1.6.</span> <span class="toc-text">缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Block"><span class="toc-number">2.1.7.</span> <span class="toc-text">Block</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GCD"><span class="toc-number">2.1.8.</span> <span class="toc-text">GCD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RAC-MVVM"><span class="toc-number">2.1.9.</span> <span class="toc-text">RAC/MVVM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Runtime"><span class="toc-number">2.1.10.</span> <span class="toc-text">Runtime</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iOS-Animation"><span class="toc-number">2.1.11.</span> <span class="toc-text">iOS Animation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#扫码"><span class="toc-number">2.1.12.</span> <span class="toc-text">扫码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Swift"><span class="toc-number">2.1.13.</span> <span class="toc-text">Swift</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CocoaPods"><span class="toc-number">2.1.14.</span> <span class="toc-text">CocoaPods</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iOS代码库"><span class="toc-number">2.1.15.</span> <span class="toc-text">iOS代码库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#调试"><span class="toc-number">2.1.16.</span> <span class="toc-text">调试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XCode插件"><span class="toc-number">2.1.17.</span> <span class="toc-text">XCode插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Blog"><span class="toc-number">2.1.18.</span> <span class="toc-text">Blog</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他"><span class="toc-number">2.1.19.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git相关"><span class="toc-number">2.2.</span> <span class="toc-text">Git相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#git教程"><span class="toc-number">2.2.1.</span> <span class="toc-text">git教程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Markdown相关"><span class="toc-number">2.3.</span> <span class="toc-text">Markdown相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#markdown相关"><span class="toc-number">2.3.1.</span> <span class="toc-text">markdown相关</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac相关"><span class="toc-number">2.4.</span> <span class="toc-text">Mac相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mac配置"><span class="toc-number">2.4.1.</span> <span class="toc-text">mac配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mac工具"><span class="toc-number">2.4.2.</span> <span class="toc-text">mac工具</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资源"><span class="toc-number">2.5.</span> <span class="toc-text">资源</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#图标资源"><span class="toc-number">2.5.1.</span> <span class="toc-text">图标资源</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Git/" title="Git">Git<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PostgreSQL/" title="PostgreSQL">PostgreSQL<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>53</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/jekyll/" title="jekyll">jekyll<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linux-Unix-Centos/" title="linux &amp; Unix &amp; Centos">linux &amp; Unix &amp; Centos<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/security/" title="security">security<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开发工具/" title="开发工具">开发工具<sup>15</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>16</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="weixin">
+  <br />
+<!--
+  <p class="asidetitle">微信打赏，赞助小猿</p>
+  <p>你的支持，是对小猿的最大鼓励</p>
+  <img src="/images/ads/weixin-pay.png" width="220px" />
+-->
+<br />
+  <p class="asidetitle">欢迎关注微博</p>
+  <p>微博ID：<a href="https://weibo.com/u/5166488487" target="_blank">@devhitao</a></p>
+  <a href="https://weibo.com/u/5166488487" target="_blank"><img src="/images/ads/weibo.png" width="220px" /></a>
+  <!-- <p class="asidetitle">iOS交流群</p> -->
+  <!-- <p>Q群:326729317,暗号:小锅</p> -->
+  <!-- <a href="http://jq.qq.com/?_wv=1027&k=2BjVH4c" target="_blank"><img src="/ad/place-hold.png"  width="220px" /></a> -->
+<br />
+<br />
+  <p class="asidetitle">友情链接</p>
+  <p><a href="http://www.ituring.com.cn/" target="_blank">图灵社区</a></p>
+  <p><a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰的网络日志</a></p>
+  <p><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a></p>
+  <!-- 
+  <p>test</p>
+  <a href="http://www.test.com" target="_blank"><img src="/ad/weibo.png"  width="220px" height="100"/></a>
+-->
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+<!--cc 图标-->
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+	&nbsp;&nbsp;&nbsp;
+	Powered by <a href="https://hexo.io" target="_blank" title="hexo">Hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2025
+	
+	<a href="/about" target="_blank" title="郭工">郭工</a>
+	
+<!--	&nbsp;&nbsp;
+	原创内容，保留一切权利。-->
+<!--cnzz 统计图标-->
+&nbsp;&nbsp;&nbsp;
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261101034'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261101034%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6f3ed6f7016660f2922ad49dcee905e3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

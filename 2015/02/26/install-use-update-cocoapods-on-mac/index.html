@@ -1,0 +1,545 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>CocoaPods 安装、使用、更新和卸载 - 郭工笔记</title>
+    <!--  <meta name="robots" content="nofollow" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="郭工">
+    
+
+    
+    <meta name="description" content="引言 What is CocoaPods  CocoaPods manages library dependencies for your Xcode projects.   The dependencies for your projects are specified in a single text file called a Podfile. CocoaPods will resolve">
+<meta name="keywords" content="CocoaPods">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CocoaPods 安装、使用、更新和卸载">
+<meta property="og:url" content="https://blog.devhitao.com/2015/02/26/install-use-update-cocoapods-on-mac/index.html">
+<meta property="og:site_name" content="郭工笔记">
+<meta property="og:description" content="引言 What is CocoaPods  CocoaPods manages library dependencies for your Xcode projects.   The dependencies for your projects are specified in a single text file called a Podfile. CocoaPods will resolve">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2022-07-13T14:21:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CocoaPods 安装、使用、更新和卸载">
+<meta name="twitter:description" content="引言 What is CocoaPods  CocoaPods manages library dependencies for your Xcode projects.   The dependencies for your projects are specified in a single text file called a Podfile. CocoaPods will resolve">
+
+    
+    <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+<!-- </script> -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-5819327586326271",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="郭工笔记">郭工笔记</a></h1>
+				<h2 class="blog-motto">业精于勤，荒于嬉；行成于思，毁于随。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.devhitao.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/02/26/install-use-update-cocoapods-on-mac/" title="CocoaPods 安装、使用、更新和卸载" itemprop="url">CocoaPods 安装、使用、更新和卸载</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2015-02-26T05:02:52.000Z" itemprop="datePublished"> 发表于 2015-02-26</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">2.</span> <span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#升级-Gems"><span class="toc-number">2.1.</span> <span class="toc-text">升级 Gems</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更改-RubyGems-源"><span class="toc-number">2.2.</span> <span class="toc-text">更改 RubyGems 源</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">3.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-number">4.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第三方类库"><span class="toc-number">4.1.</span> <span class="toc-text">第三方类库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更改-Spec-镜像源"><span class="toc-number">4.2.</span> <span class="toc-text">更改 Spec 镜像源</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新升级"><span class="toc-number">5.</span> <span class="toc-text">更新升级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#卸载"><span class="toc-number">6.</span> <span class="toc-text">卸载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FQA"><span class="toc-number">7.</span> <span class="toc-text">FQA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">8.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">9.</span> <span class="toc-text">文档信息</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><hr>
+<p>What is CocoaPods</p>
+<blockquote>
+<p>CocoaPods manages library dependencies for your Xcode projects.</p>
+</blockquote>
+<blockquote>
+<p>The dependencies for your projects are specified in a single text file called a Podfile. CocoaPods will resolve dependencies between libraries, fetch the resulting source code, then link it together in an Xcode workspace to build your project</p>
+</blockquote>
+<p>有兴趣的小伙伴，可以研究一下官方文档，附赠下面几个链接。<br><a href="https://guides.cocoapods.org/using/getting-started.html" target="_blank" rel="noopener">Getting Started</a>、<a href="https://blog.cocoapods.org" target="_blank" rel="noopener">CocosPods Blog</a>、 <a href="https://github.com/CocoaPods/CocoaPods/releases/tag/1.1.1" target="_blank" rel="noopener">CocosPods Source Code on Github</a></p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><hr>
+<h4 id="升级-Gems"><a href="#升级-Gems" class="headerlink" title="升级 Gems"></a>升级 Gems</h4><hr>
+<p>0、查看 gem 系统版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem -v //查看系统版本</span><br></pre></td></tr></table></figure></p>
+<p>1、升级 gem<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem update --system //进行升级</span><br></pre></td></tr></table></figure></p>
+<h4 id="更改-RubyGems-源"><a href="#更改-RubyGems-源" class="headerlink" title="更改 RubyGems 源"></a>更改 RubyGems 源</h4><hr>
+<blockquote>
+<p>RubyGems 是 Ruby 的高级软件包管理器</p>
+</blockquote>
+<p>0、查看系统 RubyGems 的安装源，一般系统默认镜像源为 <a href="https://rubygems.org/" target="_blank" rel="noopener">https://rubygems.org/</a> 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources -l</span><br></pre></td></tr></table></figure></p>
+<p>1、若电脑环境访问外网吃力，可用国内镜像源，目前国内可靠镜像源有： <a href="https://ruby-china.org/" target="_blank" rel="noopener">Ruby China</a> 的 <code>https://gems.ruby-china.com/</code>。</p>
+<p>1.1、将镜像源改为 <code>https://gems.ruby-china.com/</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ gem source --remove https://rubygems.org/</span><br><span class="line">$ gem sources --add https://gems.ruby-china.com/</span><br></pre></td></tr></table></figure></p>
+<p>上面两行代码可以合并成一行代码进行处理，即：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在使用国外镜像时，如果遇到 SSL 证书问题，你又无法解决，请直接用 <a href="https://gems.ruby-china.com" target="_blank" rel="noopener">https://gems.ruby-china.com</a> 避免 SSL 的问题。</p>
+</blockquote>
+<p>更改之后后悔怎么办，可以通过下面命令重置为官方源：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem sources -a https://rubygems.org/ -r https://gems.ruby-china.com/</span><br></pre></td></tr></table></figure></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><hr>
+<p>1、使用 gem 安装 Cocoapods , 输入管理员密码，回车。（注：这里指的安装是系统全局安装，不是专为某个用户安装）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo gem install cocoapods </span><br><span class="line">or</span><br><span class="line">$ sudo gem install cocoapods -v 版本号(1.1.0) //指定版本安装</span><br><span class="line">or</span><br><span class="line">$ sudo gem install cocoapods --pre  //安装最新版本，包括 beta 版</span><br></pre></td></tr></table></figure></p>
+<p>如系统 10.11 later 以后<a href="https://github.com/CocoaPods/CocoaPods/issues/3680" target="_blank" rel="noopener">安装方法</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo gem install -n /usr/local/bin cocoapods</span><br><span class="line">or</span><br><span class="line">$ sudo gem install -n /usr/local/bin cocoapods -v 1.7.2 //指定版本安装</span><br></pre></td></tr></table></figure></p>
+<p>2、执行 <code>pod setup</code> 配置 CocoaPods 的环境，实际上是更新本地类库（注：更新可能需要一些时间，请耐心等待）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod setup //配置 cocoapods 环境</span><br></pre></td></tr></table></figure></p>
+<p>3、搜索查看类库，如果显示查找结果，则安装成功。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ pod env //查看本地 Cocoapods 安装情况</span><br><span class="line">$ gem which cocoapods //查看 Cocoapods 安装路径</span><br><span class="line">$ pod search YYKit(类库名)</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><hr>
+<h4 id="第三方类库"><a href="#第三方类库" class="headerlink" title="第三方类库"></a>第三方类库</h4><hr>
+<p>0、<code>$ cd 项目目录</code>,在项目目录下输入 <code>pod init</code> ,快速生成 Podfile 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod search YYKit</span><br></pre></td></tr></table></figure></p>
+<p>1、打开 Podfile 文件，在其中输入想要插入的类库，比如: <code>pod &#39;YYKit&#39;, &#39;~&gt; 1.0.1&#39;</code><br>2、第一次使用 <code>pod install</code> 命令进行插入相应的类库，以后输入 <code>pod update</code> 命令即可。</p>
+<p>可参考官方 <a href="https://guides.cocoapods.org/using/the-podfile.html" target="_blank" rel="noopener">Podfile</a> 文件使用说明</p>
+<p>1、输入 <code>pod install</code>，终端无响应, 可以添加相应的参数忽略 specs 库的升级：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pod install --verbose --no-repo-update # --verbose 可以查看到内部情况</span><br><span class="line">$ pod update --verbose --no-repo-update</span><br></pre></td></tr></table></figure></p>
+<h4 id="更改-Spec-镜像源"><a href="#更改-Spec-镜像源" class="headerlink" title="更改 Spec 镜像源"></a>更改 Spec 镜像源</h4><hr>
+<p>由于 specs 镜像在 <a href="https://github.com/CocoaPods/Specs" target="_blank" rel="noopener">GitHub</a> 上，可能会导致输入 <code>pod install</code> 终端很长时间无响应，假如国内有个 Specs 源且访问比国外快，可进行更换 CocoaPods 镜像地址，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ pod repo remove master //移除本地分支</span><br><span class="line">$ pod repo add master https://blog.devhitao.com/CocoaPods/Specs.git //添加镜像源</span><br><span class="line">$ pod repo update //更新本地 pod 类库</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>由于 pod 新版本更新会导致重复 clone 一份 pod 文件下来，解决方法 Podfile 第一行加入 <code>source &#39;https://blog.devhitao.com/CocoaPods/Specs.git&#39;</code></p>
+</blockquote>
+<h3 id="更新升级"><a href="#更新升级" class="headerlink" title="更新升级"></a>更新升级</h3><hr>
+<p>更新一般有 2 种方法，第一种方法：先卸载后安装；第二种方法：覆盖安装；第一种方法，请参考卸载和安装方法，第二种方法同样参考安装方法。</p>
+<h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pod env //查看本地 Cocoapods 安装情况</span><br><span class="line">$ sudo gem uninstall cocoapods -v 1.6.0 //指定版本号卸载</span><br></pre></td></tr></table></figure>
+<h3 id="FQA"><a href="#FQA" class="headerlink" title="FQA"></a>FQA</h3><hr>
+<p>0、在生成 <code>Podfile</code> 文件时，输入 <code>pod init</code>，报错信息为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xcrun: error: active developer path (&quot;/Volumes/Xcode/Xcode.app/Contents/Developer&quot;) does not exist, </span><br><span class="line">use `xcode-select --switch path/to/Xcode.app` to specify the Xcode that you wish to use for command line developer tools (or see `man xcode-select`)</span><br></pre></td></tr></table></figure></p>
+<p>或遇到 <code>pod setup</code> ,提示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[!] The `master` repo is not a git repo</span><br></pre></td></tr></table></figure></p>
+<p>解决方法：在终端中输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo  xcode-select -s  /Applications/Xcode.app</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>3、通过 <code>pod search 类库名</code> 命令搜索出来的仓库版本低于 GitHub 上现有的版本号，或者出现 <code>xxx (~&gt; x.y.z)</code> required by <code>Podfile</code> 错误提示方法，目前我所知的解决方法有 2 种，第一种是重新安装 CocoaPods，进而升级 CocoaPods 版本号；第二种方法是升级本地的 specs 仓库。我们这里介绍一下第二种方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod setup //不要添加任何参数，静静的等待，期间可以看个电影什么的</span><br></pre></td></tr></table></figure>
+<p>查看更新进度，新建终端窗口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/.cocoapods  //切换到本地仓库源路径</span><br><span class="line">$ du -sh * //可以查看文件大小的变化</span><br></pre></td></tr></table></figure></p>
+<p>据说，还可以在 GitHub 上下载镜像源进行替换，无聊的小伙伴可以试试。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//如果本地存在 cocoapods 文件的话，请将其移除 rm -fr ~/.cocoapods 然后在创建。</span><br><span class="line">$ mkdir -p ~/.cocoapods/repos </span><br><span class="line">$ git init</span><br><span class="line">$ git remote add origin https://github.com/CocoaPods/Specs.git</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>4、当我们在安装 or 升级的过程中，遇到类似错误：Operation not permitted - /usr/bin/pod、 Operation not permitted - /usr/bin/xcodeproj，执行 <code>sudo gem install -n /usr/local/bin cocoapods</code> 进行安装即可。eg: 指定版本安装：sudo gem install -n /usr/local/bin cocoapods -v 1.3.0</p>
+<p>Q5: 若在 Apple M1 芯片电脑上通过 gem 进行安装可能会报错，可通过下面命令解决：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Did you try:</span><br><span class="line">$ sudo arch -x86_64 gem install ffi</span><br><span class="line"></span><br><span class="line"># And run: arch -x86_64 pod install instead of pod install.</span><br><span class="line">arch -x86_64 pod install</span><br></pre></td></tr></table></figure></p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><hr>
+<ul>
+<li><a href="http://blog.devtang.com/2014/05/25/use-cocoapod-to-manage-ios-lib-dependency/" target="_blank" rel="noopener">用CocoaPods做iOS程序的依赖管理</a></li>
+<li><a href="http://www.exiatian.com/cocoapods%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E5%8F%8A%E9%85%8D%E7%BD%AE%E7%A7%81%E6%9C%89%E5%BA%93/" target="_blank" rel="noopener">CocoaPods安装使用及配置私有库</a></li>
+<li><a href="http://code4app.com/article/cocoapods-install-usage#install" target="_blank" rel="noopener">如何下载和安装CocoaPods？</a></li>
+<li><a href="https://www.cocoanetics.com/2012/07/you-dont-need-the-xcode-command-line-tools/" target="_blank" rel="noopener">You Don’t Need The Xcode “Command Line Tools”</a></li>
+<li><a href="https://github.com/CocoaPods/CocoaPods/issues/6223" target="_blank" rel="noopener">pod setup taking a long time #6223</a></li>
+</ul>
+<h3 id="文档信息"><a href="#文档信息" class="headerlink" title="文档信息"></a>文档信息</h3><hr>
+<ul>
+<li>版权声明：自由转载-保持署名-非商用-非衍生 ( <a rel="noopener" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a> )</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/开发工具/">开发工具</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/CocoaPods/">CocoaPods</a>
+  </div>
+
+</div>
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://blog.devhitao.com/2015/02/26/install-use-update-cocoapods-on-mac/" data-title="CocoaPods 安装、使用、更新和卸载 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/02/26/install-use-uninstall-upgrade-fastlane-on-mac/" title="fastlane 安装、使用、更新和卸载">
+  <strong>上一篇：</strong><br/>
+  <span>
+  fastlane 安装、使用、更新和卸载</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/01/12/app-online-process/"  title="App 证书和上线相关知识">
+ <strong>下一篇：</strong><br/> 
+ <span>App 证书和上线相关知识
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">2.</span> <span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#升级-Gems"><span class="toc-number">2.1.</span> <span class="toc-text">升级 Gems</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更改-RubyGems-源"><span class="toc-number">2.2.</span> <span class="toc-text">更改 RubyGems 源</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">3.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-number">4.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第三方类库"><span class="toc-number">4.1.</span> <span class="toc-text">第三方类库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更改-Spec-镜像源"><span class="toc-number">4.2.</span> <span class="toc-text">更改 Spec 镜像源</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新升级"><span class="toc-number">5.</span> <span class="toc-text">更新升级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#卸载"><span class="toc-number">6.</span> <span class="toc-text">卸载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FQA"><span class="toc-number">7.</span> <span class="toc-text">FQA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">8.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">9.</span> <span class="toc-text">文档信息</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Git/" title="Git">Git<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PostgreSQL/" title="PostgreSQL">PostgreSQL<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>53</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/jekyll/" title="jekyll">jekyll<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linux-Unix-Centos/" title="linux &amp; Unix &amp; Centos">linux &amp; Unix &amp; Centos<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/security/" title="security">security<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开发工具/" title="开发工具">开发工具<sup>15</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>16</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="weixin">
+  <br />
+<!--
+  <p class="asidetitle">微信打赏，赞助小猿</p>
+  <p>你的支持，是对小猿的最大鼓励</p>
+  <img src="/images/ads/weixin-pay.png" width="220px" />
+-->
+<br />
+  <p class="asidetitle">欢迎关注微博</p>
+  <p>微博ID：<a href="https://weibo.com/u/5166488487" target="_blank">@devhitao</a></p>
+  <a href="https://weibo.com/u/5166488487" target="_blank"><img src="/images/ads/weibo.png" width="220px" /></a>
+  <!-- <p class="asidetitle">iOS交流群</p> -->
+  <!-- <p>Q群:326729317,暗号:小锅</p> -->
+  <!-- <a href="http://jq.qq.com/?_wv=1027&k=2BjVH4c" target="_blank"><img src="/ad/place-hold.png"  width="220px" /></a> -->
+<br />
+<br />
+  <p class="asidetitle">友情链接</p>
+  <p><a href="http://www.ituring.com.cn/" target="_blank">图灵社区</a></p>
+  <p><a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰的网络日志</a></p>
+  <p><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a></p>
+  <!-- 
+  <p>test</p>
+  <a href="http://www.test.com" target="_blank"><img src="/ad/weibo.png"  width="220px" height="100"/></a>
+-->
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+<!--cc 图标-->
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+	&nbsp;&nbsp;&nbsp;
+	Powered by <a href="https://hexo.io" target="_blank" title="hexo">Hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2025
+	
+	<a href="/about" target="_blank" title="郭工">郭工</a>
+	
+<!--	&nbsp;&nbsp;
+	原创内容，保留一切权利。-->
+<!--cnzz 统计图标-->
+&nbsp;&nbsp;&nbsp;
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261101034'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261101034%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6f3ed6f7016660f2922ad49dcee905e3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

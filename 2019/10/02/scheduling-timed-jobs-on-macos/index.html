@@ -1,0 +1,542 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>在 macOS 系统上定时执行任务 - 郭工笔记</title>
+    <!--  <meta name="robots" content="nofollow" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="郭工">
+    
+
+    
+    <meta name="description" content="前言 在 macOS 系统中，你能够通过两种方式定时完成后台执行任务：launchd 和 cron 。虽然系统支持 cron 方式，但是并不推荐使用，它将被废弃，由 launchd 代替。 launchd  macOS 使用 launchd 进程来管理守护进程和代理，而您还可以用它来运行 shell 脚本。您不与 launchd 直接交互，而是使用 launchctl 命令来载入或卸载 launc">
+<meta name="keywords" content="launchd,cron">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 macOS 系统上定时执行任务">
+<meta property="og:url" content="https://blog.devhitao.com/2019/10/02/scheduling-timed-jobs-on-macos/index.html">
+<meta property="og:site_name" content="郭工笔记">
+<meta property="og:description" content="前言 在 macOS 系统中，你能够通过两种方式定时完成后台执行任务：launchd 和 cron 。虽然系统支持 cron 方式，但是并不推荐使用，它将被废弃，由 launchd 代替。 launchd  macOS 使用 launchd 进程来管理守护进程和代理，而您还可以用它来运行 shell 脚本。您不与 launchd 直接交互，而是使用 launchctl 命令来载入或卸载 launc">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.devhitao.com/images/schedulingtimedjobs/system_setting_no_computer_asleep.png">
+<meta property="og:image" content="https://blog.devhitao.com/images/launch/System_Policy_deny(1)_file-read-data.png">
+<meta property="og:updated_time" content="2020-01-12T03:45:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在 macOS 系统上定时执行任务">
+<meta name="twitter:description" content="前言 在 macOS 系统中，你能够通过两种方式定时完成后台执行任务：launchd 和 cron 。虽然系统支持 cron 方式，但是并不推荐使用，它将被废弃，由 launchd 代替。 launchd  macOS 使用 launchd 进程来管理守护进程和代理，而您还可以用它来运行 shell 脚本。您不与 launchd 直接交互，而是使用 launchctl 命令来载入或卸载 launc">
+<meta name="twitter:image" content="https://blog.devhitao.com/images/schedulingtimedjobs/system_setting_no_computer_asleep.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+<!-- </script> -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-5819327586326271",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="郭工笔记">郭工笔记</a></h1>
+				<h2 class="blog-motto">业精于勤，荒于嬉；行成于思，毁于随。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.devhitao.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/10/02/scheduling-timed-jobs-on-macos/" title="在 macOS 系统上定时执行任务" itemprop="url">在 macOS 系统上定时执行任务</a>
+  </h1>
+  
+  <p class="article-time">
+    <time datetime="2019-10-02T11:30:25.000Z" itemprop="datePublished"> 发表于 2019-10-02</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#launchd"><span class="toc-number">2.</span> <span class="toc-text">launchd</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文件配置"><span class="toc-number">2.1.</span> <span class="toc-text">文件配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Example"><span class="toc-number">2.2.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#加载命令"><span class="toc-number">2.3.</span> <span class="toc-text">加载命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#断电和睡眠的影响"><span class="toc-number">3.</span> <span class="toc-text">断电和睡眠的影响</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FQA"><span class="toc-number">4.</span> <span class="toc-text">FQA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">5.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">6.</span> <span class="toc-text">文档信息</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><hr>
+<p>在 macOS 系统中，你能够通过两种方式定时完成后台执行任务：launchd 和 cron 。虽然系统支持 cron 方式，但是并不推荐使用，它将被废弃，由 launchd 代替。</p>
+<h3 id="launchd"><a href="#launchd" class="headerlink" title="launchd"></a>launchd</h3><hr>
+<blockquote>
+<p>macOS 使用 launchd 进程来管理守护进程和代理，而您还可以用它来运行 shell 脚本。您不与 launchd 直接交互，而是使用 launchctl 命令来载入或卸载 launchd 守护进程和代理。</p>
+</blockquote>
+<blockquote>
+<p>在系统启动期间，launchd 是内核在设置电脑时首先运行的进程。若您想要 shell 脚本作为守护进程运行，应由 launchd 来启动它。其他用于启动守护进程和代理的机制可能会被 Apple 酌情移除。</p>
+</blockquote>
+<blockquote>
+<p>Property list files describing daemons are installed in /Library/LaunchDaemons, and those describing agents are installed in /Library/LaunchAgents or in the LaunchAgents subdirectory of an individual user’s Library directory</p>
+</blockquote>
+<p>FILES PATH:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">仅适用于登录用户的第三方代理:</span><br><span class="line">~/Library/LaunchAgents         Per-user agents provided by the user.</span><br><span class="line"></span><br><span class="line">基于每个用户且所有用户适用的第三方代理:</span><br><span class="line">/Library/LaunchAgents          Per-user agents provided by the administrator.</span><br><span class="line">	</span><br><span class="line">第三方系统守护进程:</span><br><span class="line">/Library/LaunchDaemons         System-wide daemons provided by the administrator.	</span><br><span class="line">Apple 提供的基于每个用户且所有用户适用的代理:</span><br><span class="line">/System/Library/LaunchAgents   Per-user agents provided by OS X.</span><br><span class="line"></span><br><span class="line">Apple 提供的系统守护进程:</span><br><span class="line">/System/Library/LaunchDaemons  System-wide daemons provided by OS X.</span><br></pre></td></tr></table></figure></p>
+<h4 id="文件配置"><a href="#文件配置" class="headerlink" title="文件配置"></a>文件配置</h4><hr>
+<p>下面仅列出 Example Plist 中用到的主要的 Property Keys，您可以在终端中运行 <a href="x-man-page://launchd.plist" target="_blank" rel="noopener">man launchd.plist</a> 查看全部参数和用法。</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Label &lt;string&gt; (必须，独一无二)</span><br><span class="line">Program &lt;string&gt; (必须)</span><br><span class="line">ProgramArguments &lt;array of strings&gt;</span><br><span class="line">StartInterval &lt;integer&gt;</span><br><span class="line">StartCalendarInterval &lt;dictionary of integers or array of dictionaries of integers&gt;</span><br><span class="line">StandardOutPath &lt;string&gt;</span><br><span class="line">StandardErrorPath &lt;string&gt;</span><br></pre></td></tr></table></figure>
+<p>关于 StartCalendarInterval：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Minute &lt;integer&gt;</span><br><span class="line">The minute (0-59) on which this job will be run.</span><br><span class="line"></span><br><span class="line">Hour &lt;integer&gt;</span><br><span class="line">The hour (0-23) on which this job will be run.</span><br><span class="line"></span><br><span class="line">Day &lt;integer&gt;</span><br><span class="line">The day of the month (1-31) on which this job will be run.</span><br><span class="line"></span><br><span class="line">Weekday &lt;integer&gt;</span><br><span class="line">The weekday on which this job will be run (0 and 7 are Sunday). If both Day and Weekday are specificed, then the job will be started if either</span><br><span class="line">one matches the current date.</span><br><span class="line"></span><br><span class="line">Month &lt;integer&gt;</span><br><span class="line">The month (1-12) on which this job will be run.</span><br></pre></td></tr></table></figure></p>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><hr>
+<p>一、使用 <code>StartInterval</code> 键可设置 每隔 N 秒执行定时任务<br>com.devhitao.blog.plist<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span><br><span class="line">&lt;plist version=&quot;1.0&quot;&gt;</span><br><span class="line">&lt;dict&gt;</span><br><span class="line">	&lt;key&gt;Label&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;com.devhitao.blog&lt;/string&gt;</span><br><span class="line">	&lt;key&gt;ProgramArguments&lt;/key&gt;</span><br><span class="line">	&lt;array&gt;</span><br><span class="line">		&lt;string&gt;touch&lt;/string&gt;</span><br><span class="line">		&lt;string&gt;/Users/devhitao/Desktop/launchd/xx.sh&lt;/string&gt;</span><br><span class="line">	&lt;/array&gt;</span><br><span class="line">	&lt;key&gt;StartInterval&lt;/key&gt;</span><br><span class="line">	&lt;integer&gt;15&lt;/integer&gt;</span><br><span class="line">	&lt;key&gt;StandardOutPath&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;/Users/devhitao/Desktop/logs/xktlog&lt;/string&gt;</span><br><span class="line">	&lt;key&gt;StandardErrorPath&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;/Users/devhitao/Desktop/logs/xkterr&lt;/string&gt;</span><br><span class="line">&lt;/dict&gt;</span><br><span class="line">&lt;/plist&gt;</span><br></pre></td></tr></table></figure></p>
+<p>二、使用 <code>StartCalendarInterval</code> 键可设置 某个时刻执行任务<br>blog.devhitao.com.plist<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span><br><span class="line">&lt;plist version=&quot;1.0&quot;&gt;</span><br><span class="line">&lt;dict&gt;</span><br><span class="line">	&lt;key&gt;Label&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;blog.devhitao.com&lt;/string&gt;</span><br><span class="line">	&lt;key&gt;ProgramArguments&lt;/key&gt;</span><br><span class="line">	&lt;array&gt;</span><br><span class="line">		&lt;string&gt;/Users/devhitao/Desktop/launchd/xx.sh&lt;/string&gt;</span><br><span class="line">	&lt;/array&gt;</span><br><span class="line">	&lt;key&gt;StartCalendarInterval&lt;/key&gt;</span><br><span class="line">	&lt;dict&gt;</span><br><span class="line">        &lt;key&gt;Minute&lt;/key&gt;</span><br><span class="line">        &lt;integer&gt;14&lt;/integer&gt;</span><br><span class="line">        &lt;key&gt;Hour&lt;/key&gt;</span><br><span class="line">        &lt;integer&gt;13&lt;/integer&gt;</span><br><span class="line">    &lt;/dict&gt;</span><br><span class="line">	&lt;key&gt;StandardOutPath&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;/Users/devhitao/Desktop/logs/xktlog&lt;/string&gt;</span><br><span class="line">	&lt;key&gt;StandardErrorPath&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;/Users/devhitao/Desktop/logs/xkterr&lt;/string&gt;</span><br><span class="line">&lt;/dict&gt;</span><br><span class="line">&lt;/plist&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="加载命令"><a href="#加载命令" class="headerlink" title="加载命令"></a>加载命令</h4><hr>
+<p>将上述 plist 文件放到 <code>/Library/LaunchAgents</code> 或 <code>/Library/LaunchDaemons</code> 等路径下，这里我放在 <code>~/Library/LaunchAgents</code> 下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ launchctl load blog.devhitao.com.plist  #加载的系统中</span><br><span class="line">$ launchctl unload blog.devhitao.com.plist  #从系统中卸载</span><br><span class="line">$ launchctl list # 查看 launchctl 列表</span><br></pre></td></tr></table></figure>
+<p>为了检测 定时任务 是否能够正常运行，可以使用 <code>start</code> 进行测试，eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ launchctl start blog.devhitao.com     #立即执行，无需等待触发条件成立</span><br><span class="line">$ launchctl stop blog.devhitao.com      #停止执行或触发</span><br></pre></td></tr></table></figure></p>
+<p>注意：一定要对应关系顺序执行命令，不然有意想不到的事情发生哦！先 load, 后 unload；先 load，后 start；先 start，后 stop；先 load，后 start。</p>
+<h3 id="断电和睡眠的影响"><a href="#断电和睡眠的影响" class="headerlink" title="断电和睡眠的影响"></a>断电和睡眠的影响</h3><hr>
+<p>为了让定时任务顺利执行，在不关机的情况下，我们可以阻止电脑自动进入睡眠状态。勾选“当显示器关闭时，防止电脑自动进入睡眠” 选框，同时接上 电源适配器 来阻止电脑睡眠。</p>
+<center><img src="/images/schedulingtimedjobs/system_setting_no_computer_asleep.png" width="50%" height="50%" alt="当关闭显示器时，阻止电脑进入睡眠。"><br>当显示器关闭时，接上电源适配器防止电脑自动进入睡眠。<br></center>
+
+<p><strong>所以，可以将这个方法 与 <code>StartCalendarInterval</code> 键设置的定时任务结合起来，让定时任务在某个时刻顺利执行。</strong></p>
+<p>原文：</p>
+<blockquote>
+<p>If the system is turned off or asleep, cron jobs do not execute; they will not run until the next designated time occurs.</p>
+</blockquote>
+<p>如果系统处于关闭或睡眠，cron 作业不能给执行；在下一个触发之前，他们也不会运行。</p>
+<blockquote>
+<p>If you schedule a launchd job by setting the StartCalendarInterval key and the computer is asleep when the job should have run, your job will run when the computer wakes up. However, if the machine is off when the job should have run, the job does not execute until the next designated time occurs.</p>
+</blockquote>
+<p><strong>如果通过 <code>StartCalendarInterval</code> 键设置 launchd 调度作业，当作业将要运行而电脑处于睡眠时，该作业将在电脑唤醒时执行</strong>。然而，如果将运行作业的机器被关闭，该作业任务在下个时间触发才会运行。</p>
+<blockquote>
+<p>All other launchd jobs are skipped when the computer is turned off or asleep; they will not run until the next designated time occurs.</p>
+</blockquote>
+<p>关闭电脑或使其进入睡眠状态时，所有 lanuchd 作业被跳过，它们将在下个时间触发时运行。</p>
+<blockquote>
+<p>Consequently, if the computer is always off at the job’s scheduled time, both cron jobs and launchd jobs never run. For example, if you always turn your computer off at night, a job scheduled to run at 1 A.M. will never be run.</p>
+</blockquote>
+<p>所以，如果电脑始终在任务预定时间关闭，cron 和 launchd 作业都不会运行。例如：如果你总是在晚上关闭电脑，而计划在凌晨 1 点运行该作业，它将永远不会运行。</p>
+<h3 id="FQA"><a href="#FQA" class="headerlink" title="FQA"></a>FQA</h3><hr>
+<p>1、如果遇到类似这样的问题 <code>Sandbox: bash(xxxx) System Policy: deny(1) file-read-data /path/blog.devhitao.com.sh</code>， 是权限不够，需要赋予访问权限。在 <code>系统偏好设置</code> -&gt; <code>安全与隐私</code> -&gt; <code>隐私</code> 可以找到，这里我将 <code>bash</code> 赋予 <code>完全磁盘访问权限</code> 。如果点击 <code>+</code> 没有找到想要的，可以使用拖拽方式。eg:</p>
+<center><img src="/images/launch/System_Policy_deny(1)_file-read-data.png" width="50%" height="50%" alt="安全与隐私 -> 隐私"><br>赋予磁盘访问权限<br></center>
+
+
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><hr>
+<ul>
+<li><a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/ScheduledJobs.html#//apple_ref/doc/uid/10000172i-CH1-SW1" target="_blank" rel="noopener">Scheduling Timed Jobs</a></li>
+<li><a href="https://support.apple.com/zh-cn/guide/terminal/apdc6c1077b-5d5d-4d35-9c19-60f2397b2369/mac" target="_blank" rel="noopener">在 Mac 上的“终端”中使用 launchd 管理脚本</a></li>
+<li><a href="https://www.launchd.info/" target="_blank" rel="noopener">launchd.info</a></li>
+<li><a href="https://honglu.me/2014/09/20/OSX%E7%B3%BB%E7%BB%9F%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" target="_blank" rel="noopener">OSX系统添加定时任务</a></li>
+</ul>
+<h3 id="文档信息"><a href="#文档信息" class="headerlink" title="文档信息"></a>文档信息</h3><hr>
+<ul>
+<li>版权声明：自由转载-保持署名-非商用-非衍生 ( <a rel="noopener" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a> )</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/macOS/">macOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/launchd/">launchd</a><a href="/tags/cron/">cron</a>
+  </div>
+
+</div>
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://blog.devhitao.com/2019/10/02/scheduling-timed-jobs-on-macos/" data-title="在 macOS 系统上定时执行任务 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/10/20/reset-mysql-root-password/" title="重置 MySQL Root 用户密码">
+  <strong>上一篇：</strong><br/>
+  <span>
+  重置 MySQL Root 用户密码</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/09/07/openssl-mac/"  title="OpenSSL 安装 on macOS">
+ <strong>下一篇：</strong><br/> 
+ <span>OpenSSL 安装 on macOS
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#launchd"><span class="toc-number">2.</span> <span class="toc-text">launchd</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文件配置"><span class="toc-number">2.1.</span> <span class="toc-text">文件配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Example"><span class="toc-number">2.2.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#加载命令"><span class="toc-number">2.3.</span> <span class="toc-text">加载命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#断电和睡眠的影响"><span class="toc-number">3.</span> <span class="toc-text">断电和睡眠的影响</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FQA"><span class="toc-number">4.</span> <span class="toc-text">FQA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">5.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档信息"><span class="toc-number">6.</span> <span class="toc-text">文档信息</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Git/" title="Git">Git<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PostgreSQL/" title="PostgreSQL">PostgreSQL<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>53</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/jekyll/" title="jekyll">jekyll<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linux-Unix-Centos/" title="linux &amp; Unix &amp; Centos">linux &amp; Unix &amp; Centos<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/security/" title="security">security<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开发工具/" title="开发工具">开发工具<sup>15</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>16</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="weixin">
+  <br />
+<!--
+  <p class="asidetitle">微信打赏，赞助小猿</p>
+  <p>你的支持，是对小猿的最大鼓励</p>
+  <img src="/images/ads/weixin-pay.png" width="220px" />
+-->
+<br />
+  <p class="asidetitle">欢迎关注微博</p>
+  <p>微博ID：<a href="https://weibo.com/u/5166488487" target="_blank">@devhitao</a></p>
+  <a href="https://weibo.com/u/5166488487" target="_blank"><img src="/images/ads/weibo.png" width="220px" /></a>
+  <!-- <p class="asidetitle">iOS交流群</p> -->
+  <!-- <p>Q群:326729317,暗号:小锅</p> -->
+  <!-- <a href="http://jq.qq.com/?_wv=1027&k=2BjVH4c" target="_blank"><img src="/ad/place-hold.png"  width="220px" /></a> -->
+<br />
+<br />
+  <p class="asidetitle">友情链接</p>
+  <p><a href="http://www.ituring.com.cn/" target="_blank">图灵社区</a></p>
+  <p><a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰的网络日志</a></p>
+  <p><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a></p>
+  <!-- 
+  <p>test</p>
+  <a href="http://www.test.com" target="_blank"><img src="/ad/weibo.png"  width="220px" height="100"/></a>
+-->
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+	<p class="copyright" style="margin-top: 10px;">
+<!--cc 图标-->
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+	&nbsp;&nbsp;&nbsp;
+	Powered by <a href="https://hexo.io" target="_blank" title="hexo">Hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2025
+	
+	<a href="/about" target="_blank" title="郭工">郭工</a>
+	
+<!--	&nbsp;&nbsp;
+	原创内容，保留一切权利。-->
+<!--cnzz 统计图标-->
+&nbsp;&nbsp;&nbsp;
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261101034'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261101034%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+	</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6f3ed6f7016660f2922ad49dcee905e3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -16,7 +16,7 @@
 <meta name="keywords" content="虚拟主机,多站点,多域名">
 <meta property="og:type" content="article">
 <meta property="og:title" content="虚拟主机绑定多域名多站点方案">
-<meta property="og:url" content="https://blog.devhitao.com/2018/12/25/virtual-host-multi-domain-site/index.html">
+<meta property="og:url" content="https://blog.imsoeasy.com/2018/12/25/virtual-host-multi-domain-site/index.html">
 <meta property="og:site_name" content="郭工笔记">
 <meta property="og:description" content="前言 因为最近需要用到域名备案，感觉买个 VPS 或 ECS 不划算，虚拟主机比较便宜，有些厂商提供虚拟主机还可以免费使用，但是免费的商品终究有些或多或少的限制，比如：不支持多站点多域名绑定等。为了在一个虚拟主机上实现多站点多域名的需求，经过多方查找资料，就有了这篇文章。 需求：  一个虚拟主机上实现多站点，多域名绑定； 一个域名对应一个站点，禁止其他域名访问站点； 当访问一个域名时，浏览器中ur">
 <meta property="og:locale" content="zh-CN">
@@ -67,7 +67,7 @@
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
 						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:blog.devhitao.com">
+						<input type="hidden" name="q" value="site:blog.imsoeasy.com">
 					</form>
 					
 					</li>
@@ -115,7 +115,7 @@
 </ol>
 <h3 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h3><hr>
 <p>在站点根目录使用 .htaccess 文件实现，需要开启伪静态设置，有些虚拟主机是默认关闭的，需要手动开启，若未开启，可能会出现 500 内部配置错误等问题。在虚拟主机根节点 <code>.htaccess</code> 文件中添加如下配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">RewriteEngine On</span><br><span class="line">RewriteBase /</span><br><span class="line"></span><br><span class="line"># 绑定域名 devhitao.com 及 www.devhitao.com 到 hitao 目录 </span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125; ^(www\.)?devhitao\.com$ [NC]</span><br><span class="line">RewriteCond %&#123;REQUEST_URI&#125; !^/devhitao.com/</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">RewriteRule ^(.*)$ devhitao.com/$1</span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125; ^(www\.)?devhitao\.com$ [NC]</span><br><span class="line">RewriteRule ^(/)?$ hitao/index.html [L]</span><br><span class="line"></span><br><span class="line"># 绑定域名 domain1.com 及 www.domain1.com 到 domain1Site 目录 </span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125; ^(www\.)?domain1\.com$ [NC]</span><br><span class="line">RewriteCond %&#123;REQUEST_URI&#125; !^/domain1.com/</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">RewriteRule ^(.*)$ domain1.com/$1</span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125; ^(www\.)?domain1\.com$ [NC]</span><br><span class="line">RewriteRule ^(/)?$ domain1Site/index.html [L]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">RewriteEngine On</span><br><span class="line">RewriteBase /</span><br><span class="line"></span><br><span class="line"># 绑定域名 imsoeasy.com 及 www.imsoeasy.com 到 hitao 目录 </span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125; ^(www\.)?devhitao\.com$ [NC]</span><br><span class="line">RewriteCond %&#123;REQUEST_URI&#125; !^/imsoeasy.com/</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">RewriteRule ^(.*)$ imsoeasy.com/$1</span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125; ^(www\.)?devhitao\.com$ [NC]</span><br><span class="line">RewriteRule ^(/)?$ hitao/index.html [L]</span><br><span class="line"></span><br><span class="line"># 绑定域名 domain1.com 及 www.domain1.com 到 domain1Site 目录 </span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125; ^(www\.)?domain1\.com$ [NC]</span><br><span class="line">RewriteCond %&#123;REQUEST_URI&#125; !^/domain1.com/</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">RewriteRule ^(.*)$ domain1.com/$1</span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125; ^(www\.)?domain1\.com$ [NC]</span><br><span class="line">RewriteRule ^(/)?$ domain1Site/index.html [L]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
 <p>为了防止其他域名进行访问 <em>domain1</em> 目录，可以在其子站根目录下 .htaccess 文件中，添加如下配置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">RewriteEngine On</span><br><span class="line"></span><br><span class="line"># 禁止通过非本网站域名访问</span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125; !^(www.)?domain1.com$ [NC]</span><br><span class="line">RewriteRule ^.*$ [L,r=404]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
 <p>切记：不要添加 [R] 标识，R=301 会让浏览器进行再次跳转请求，所以将其去掉。</p>
@@ -161,7 +161,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://blog.devhitao.com/2018/12/25/virtual-host-multi-domain-site/" data-title="虚拟主机绑定多域名多站点方案 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  <div data-url="https://blog.imsoeasy.com/2018/12/25/virtual-host-multi-domain-site/" data-title="虚拟主机绑定多域名多站点方案 | 郭工笔记" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -474,7 +474,7 @@ $(document).ready(function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('create', 'UA-79883090-2', 'blog.imsoeasy.com');  
 ga('send', 'pageview');
 </script>
 

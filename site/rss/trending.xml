@@ -2,7 +2,7 @@
 <rss xmlns:wb="http://base.google.com/ns/1.0" version="2.0">
 	<channel>
 		<title>时下流行</title>
-		<link>https://blog.devhitao.com/site/rss/trending.xml</link>
+		<link>https://blog.imsoeasy.com/site/rss/trending.xml</link>
 		<description>时下热点精选推荐，您值得拥有</description>
         <generator>网播(https://wangbo.link)</generator>
 		<copyright><![CDATA[Copyright © 2020 网播(https://wangbo.link). All rights reserved.]]></copyright>
@@ -34,7 +34,7 @@
 		<item>
             <guid>9812</guid>
             <title>车模日常摆拍</title>
-            <link>https://blog.devhitao.com/media/x/video52689815_low.mp4</link>
+            <link>https://blog.imsoeasy.com/media/x/video52689815_low.mp4</link>
             <description>描述</description>
             <pubDate>2020-04-30 12:13:14</pubDate>
 			<wb:logo>https://ci.xxx.com/www-static/images/xxx_logo.gif</wb:logo>

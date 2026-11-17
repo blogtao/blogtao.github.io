@@ -16,7 +16,7 @@
 <meta name="keywords" content="gunicorn,flask,pip,virtualenv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Python 搭建 API 服务器">
-<meta property="og:url" content="https://blog.devhitao.com/2018/05/20/python-virtualenv-flask-gunicorn/index.html">
+<meta property="og:url" content="https://blog.imsoeasy.com/2018/05/20/python-virtualenv-flask-gunicorn/index.html">
 <meta property="og:site_name" content="郭工笔记">
 <meta property="og:description" content="前言 最近由于业务需要在服务器上操作，所以记录一下搭建过程。 经过多方的查找资料，最终选中 Flask Web 框架. 准备 检测或安装项目环境所需要的 Python 版本、安装 virtualenv、Flask、gunicorn 等模块。 安装 Python根据需要安装 Python 版本环境。 1pip freeze 安装 virtualenv ，并创建环境 12virtualenv --ve">
 <meta property="og:locale" content="zh-CN">
@@ -67,7 +67,7 @@
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
 						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:blog.devhitao.com">
+						<input type="hidden" name="q" value="site:blog.imsoeasy.com">
 					</form>
 					
 					</li>
@@ -121,7 +121,7 @@
 <p>退出Gunicorn任务</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 28097 //退出主线程任务</span><br></pre></td></tr></table></figure>
 <p>结合 Nginx 进行反向代理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  api.devhitao.com;</span><br><span class="line">    access_log  /var/log/nginx/example.log;</span><br><span class="line">    </span><br><span class="line">    location / &#123;</span><br><span class="line">		proxy_pass http://127.0.0.1:9045;</span><br><span class="line">		</span><br><span class="line">		# Set some HTTP headers so that our app knows where the request really came from</span><br><span class="line">		proxy_set_header Host $host;</span><br><span class="line">		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; </span><br><span class="line">		# proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  api.imsoeasy.com;</span><br><span class="line">    access_log  /var/log/nginx/example.log;</span><br><span class="line">    </span><br><span class="line">    location / &#123;</span><br><span class="line">		proxy_pass http://127.0.0.1:9045;</span><br><span class="line">		</span><br><span class="line">		# Set some HTTP headers so that our app knows where the request really came from</span><br><span class="line">		proxy_set_header Host $host;</span><br><span class="line">		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; </span><br><span class="line">		# proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a href="https://flask-restful.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://flask-restful.readthedocs.io/en/latest/</a></p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><hr>
 <ul>
@@ -159,7 +159,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://blog.devhitao.com/2018/05/20/python-virtualenv-flask-gunicorn/" data-title="使用 Python 搭建 API 服务器 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  <div data-url="https://blog.imsoeasy.com/2018/05/20/python-virtualenv-flask-gunicorn/" data-title="使用 Python 搭建 API 服务器 | 郭工笔记" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -472,7 +472,7 @@ $(document).ready(function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('create', 'UA-79883090-2', 'blog.imsoeasy.com');  
 ga('send', 'pageview');
 </script>
 

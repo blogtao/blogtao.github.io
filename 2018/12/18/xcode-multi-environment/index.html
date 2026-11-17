@@ -16,21 +16,21 @@
 <meta name="keywords" content="target,多环境">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Xcode 多环境与多Target 配置">
-<meta property="og:url" content="https://blog.devhitao.com/2018/12/18/xcode-multi-environment/index.html">
+<meta property="og:url" content="https://blog.imsoeasy.com/2018/12/18/xcode-multi-environment/index.html">
 <meta property="og:site_name" content="郭工笔记">
 <meta property="og:description" content="前言 因为开发过程中需要测试，而Bundle Identifier又是惟一的，相同的 Bundle Identifier 在一个机子上运行会进行覆盖。因此有了这篇基于 Xcode 10.1 多环境和多 Target 配置。同时感谢前辈们资料分享，自己在实践的过程中，特定记录一下以备参考。 多环境 Duplicate 相应的 Configurate，在此基础上进行修改。   设置相应的宏值，并移除多">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog.devhitao.com/images/xcode/xcode-duplicate-configurations.png">
-<meta property="og:image" content="https://blog.devhitao.com/images/xcode/xcode-target-buildsettings-macros.jpg">
-<meta property="og:image" content="https://blog.devhitao.com/images/xcode/xode-run-archive-environment.jpg">
-<meta property="og:image" content="https://blog.devhitao.com/images/xcode/xcode-duplicate-targets.jpg">
-<meta property="og:image" content="https://blog.devhitao.com/images/xcode/xcode-info-targets.jpg">
-<meta property="og:image" content="https://blog.devhitao.com/images/xcode/xcode-duplicate-scheme.jpg">
+<meta property="og:image" content="https://blog.imsoeasy.com/images/xcode/xcode-duplicate-configurations.png">
+<meta property="og:image" content="https://blog.imsoeasy.com/images/xcode/xcode-target-buildsettings-macros.jpg">
+<meta property="og:image" content="https://blog.imsoeasy.com/images/xcode/xode-run-archive-environment.jpg">
+<meta property="og:image" content="https://blog.imsoeasy.com/images/xcode/xcode-duplicate-targets.jpg">
+<meta property="og:image" content="https://blog.imsoeasy.com/images/xcode/xcode-info-targets.jpg">
+<meta property="og:image" content="https://blog.imsoeasy.com/images/xcode/xcode-duplicate-scheme.jpg">
 <meta property="og:updated_time" content="2019-01-18T15:08:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Xcode 多环境与多Target 配置">
 <meta name="twitter:description" content="前言 因为开发过程中需要测试，而Bundle Identifier又是惟一的，相同的 Bundle Identifier 在一个机子上运行会进行覆盖。因此有了这篇基于 Xcode 10.1 多环境和多 Target 配置。同时感谢前辈们资料分享，自己在实践的过程中，特定记录一下以备参考。 多环境 Duplicate 相应的 Configurate，在此基础上进行修改。   设置相应的宏值，并移除多">
-<meta name="twitter:image" content="https://blog.devhitao.com/images/xcode/xcode-duplicate-configurations.png">
+<meta name="twitter:image" content="https://blog.imsoeasy.com/images/xcode/xcode-duplicate-configurations.png">
 
     
     <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
@@ -74,7 +74,7 @@
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
 						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:blog.devhitao.com">
+						<input type="hidden" name="q" value="site:blog.imsoeasy.com">
 					</form>
 					
 					</li>
@@ -161,7 +161,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://blog.devhitao.com/2018/12/18/xcode-multi-environment/" data-title="Xcode 多环境与多Target 配置 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  <div data-url="https://blog.imsoeasy.com/2018/12/18/xcode-multi-environment/" data-title="Xcode 多环境与多Target 配置 | 郭工笔记" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -474,7 +474,7 @@ $(document).ready(function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('create', 'UA-79883090-2', 'blog.imsoeasy.com');  
 ga('send', 'pageview');
 </script>
 

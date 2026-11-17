@@ -1,4 +1,4 @@
-# 该文件存放在根目录下，eg: http://blog.devhitao.com/robots.txt
+# 该文件存放在根目录下，eg: http://blog.imsoeasy.com/robots.txt
 # 阻止爬取 page、archives、tags、categories 文件和目录
 
 User-agent: *

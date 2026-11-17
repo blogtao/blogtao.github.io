@@ -16,7 +16,7 @@
 <meta name="keywords" content="centos">
 <meta property="og:type" content="article">
 <meta property="og:title" content="install Java、Tomcat、MySQL On Centos Server">
-<meta property="og:url" content="https://blog.devhitao.com/2017/05/25/install-java-tomcat-mysql-on-centos-server/index.html">
+<meta property="og:url" content="https://blog.imsoeasy.com/2017/05/25/install-java-tomcat-mysql-on-centos-server/index.html">
 <meta property="og:site_name" content="郭工笔记">
 <meta property="og:description" content="Java 1、下载 JDK 安装包1$ wget --no-check-certificate --no-cookies --header &amp;quot;Cookie: oraclelicense=accept-securebackup-cookie&amp;quot; http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff">
 <meta property="og:locale" content="zh-CN">
@@ -67,7 +67,7 @@
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
 						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:blog.devhitao.com">
+						<input type="hidden" name="q" value="site:blog.imsoeasy.com">
 					</form>
 					
 					</li>
@@ -114,7 +114,7 @@
 <p>系统告诉我们需要安装 libaio 和 numactl 这两个依赖组件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install libaio</span><br><span class="line">$ yum -y install numactl</span><br></pre></td></tr></table></figure></p>
 <p>注：如提示缺少其他依赖关系，可到 <a href="http://rpm.pbone.net/index.php3/stat/4/idpl/36494595/dir/redhat_el_6/com/MySQL-server-5.6.36-1.el6.x86_64.rpm.html" target="_blank" rel="noopener">MySQL-server rpm build for : RedHat EL 6. For other distributions click MySQL-server.</a> 进行查找。</p>
 <p>3、启动、重启、停止服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ service mysql start  //启动</span><br><span class="line">$ service mysql restart //重启</span><br><span class="line">$ service mysql stop //停止</span><br></pre></td></tr></table></figure></p>
-<p>4、首次安装成功，MySQL 会自动生成一个 root 账号的密码，并告诉你密码存放的位置（<code>root/.mysql_secre</code>），并提示首次登录需通过 ‘SET PASSWORD’ 命令对密码进行修改。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root -p  //登录 输入此命令按回车，提示输入密码（系统提供给的 or 自己设置的密码）</span><br><span class="line">Enter password: </span><br><span class="line">$ mysql&gt; set password=password(&apos;devhitao.com&apos;) //登录成功 重设密码</span><br></pre></td></tr></table></figure></p>
+<p>4、首次安装成功，MySQL 会自动生成一个 root 账号的密码，并告诉你密码存放的位置（<code>root/.mysql_secre</code>），并提示首次登录需通过 ‘SET PASSWORD’ 命令对密码进行修改。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root -p  //登录 输入此命令按回车，提示输入密码（系统提供给的 or 自己设置的密码）</span><br><span class="line">Enter password: </span><br><span class="line">$ mysql&gt; set password=password(&apos;imsoeasy.com&apos;) //登录成功 重设密码</span><br></pre></td></tr></table></figure></p>
 <p>5、卸载 MySQL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ rpm -qa | grep -i mysql //查找安装的 MySQL</span><br><span class="line">MySQL-client-5.6.36-1.el6.x86_64</span><br><span class="line">MySQL-server-5.6.36-1.el6.x86_64</span><br><span class="line">$ rpm -e MySQL-client-5.6.36-1.el6.x86_64 // 通过此命令进行卸载</span><br></pre></td></tr></table></figure></p>
 <h3 id="更新-EPEL"><a href="#更新-EPEL" class="headerlink" title="更新 EPEL"></a>更新 EPEL</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install epel-release</span><br></pre></td></tr></table></figure>
 <p><a href="https://support.rackspace.com/how-to/install-epel-and-additional-repositories-on-centos-and-red-hat/" target="_blank" rel="noopener">Install EPEL, IUS, and Remi repositories on CentOS and Red Hat</a></p>
@@ -149,7 +149,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://blog.devhitao.com/2017/05/25/install-java-tomcat-mysql-on-centos-server/" data-title="install Java、Tomcat、MySQL On Centos Server | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  <div data-url="https://blog.imsoeasy.com/2017/05/25/install-java-tomcat-mysql-on-centos-server/" data-title="install Java、Tomcat、MySQL On Centos Server | 郭工笔记" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -462,7 +462,7 @@ $(document).ready(function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('create', 'UA-79883090-2', 'blog.imsoeasy.com');  
 ga('send', 'pageview');
 </script>
 

@@ -16,7 +16,7 @@
 <meta name="keywords" content="Heroku">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Heroku 部署笔记">
-<meta property="og:url" content="https://blog.devhitao.com/2020/03/20/heroku-guide/index.html">
+<meta property="og:url" content="https://blog.imsoeasy.com/2020/03/20/heroku-guide/index.html">
 <meta property="og:site_name" content="郭工笔记">
 <meta property="og:description" content="前言 市场上的云应用托管平台有很多，之所以选择 Heroku ，主要原因是知名度比较高，口碑比较好。 首先，介绍一下 Heroku 是什么？官方给出的描述：  Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the">
 <meta property="og:locale" content="zh-CN">
@@ -67,7 +67,7 @@
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
 						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:blog.devhitao.com">
+						<input type="hidden" name="q" value="site:blog.imsoeasy.com">
 					</form>
 					
 					</li>
@@ -145,11 +145,11 @@
 <p>设置完成后，通过 Git 将代码推送到云平台，此过程会进行编译。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push heroku master</span><br></pre></td></tr></table></figure></p>
 <p>添加 ssh key:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku keys:add</span><br></pre></td></tr></table></figure></p>
 <p>查看 ssh key<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku keys</span><br></pre></td></tr></table></figure></p>
-<p>此命令输入已存在的keys，eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-rsa AAAAB3NzaC...JxPK272+Yx admin@devhitao.com</span><br><span class="line">ssh-rsa AAAAB3NzaC...UHfS9xgQ== blog@devhitao.com</span><br></pre></td></tr></table></figure></p>
-<p>移除添加过的 ssh key:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku keys:remove blog@devhitao.com</span><br></pre></td></tr></table></figure></p>
+<p>此命令输入已存在的keys，eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-rsa AAAAB3NzaC...JxPK272+Yx admin@imsoeasy.com</span><br><span class="line">ssh-rsa AAAAB3NzaC...UHfS9xgQ== blog@imsoeasy.com</span><br></pre></td></tr></table></figure></p>
+<p>移除添加过的 ssh key:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku keys:remove blog@imsoeasy.com</span><br></pre></td></tr></table></figure></p>
 <h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><hr>
-<p>添加自定义域名：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku domains:add blog.devhitao.com</span><br></pre></td></tr></table></figure></p>
-<p>若添加成功，记得查看对应的 target url，并在 DNS 中指向该 Target URL:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host blog.devhitao.com</span><br></pre></td></tr></table></figure></p>
+<p>添加自定义域名：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku domains:add blog.imsoeasy.com</span><br></pre></td></tr></table></figure></p>
+<p>若添加成功，记得查看对应的 target url，并在 DNS 中指向该 Target URL:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host blog.imsoeasy.com</span><br></pre></td></tr></table></figure></p>
 <p>注意：绑定自定义域名，前提是将信用卡绑定到账号上。</p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><hr>
 <ul>
@@ -179,7 +179,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://blog.devhitao.com/2020/03/20/heroku-guide/" data-title="Heroku 部署笔记 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  <div data-url="https://blog.imsoeasy.com/2020/03/20/heroku-guide/" data-title="Heroku 部署笔记 | 郭工笔记" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -492,7 +492,7 @@ $(document).ready(function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('create', 'UA-79883090-2', 'blog.imsoeasy.com');  
 ga('send', 'pageview');
 </script>
 

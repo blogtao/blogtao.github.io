@@ -12,18 +12,18 @@
     
 
     
-    <meta name="description" content="准备 检测 DNS 域名设置，将 devhitao.com 与 blog.devhitao.com 都指向一个 IP 地址。 查看 /etc/httpd/conf/httpd.conf 文件中重写模块/组件 LoadModule rewrite_module modules/mod_rewrite.so 是否打开，若没有请自行安装； 编辑 httpd.conf 文件1$ vi /etc/httpd">
+    <meta name="description" content="准备 检测 DNS 域名设置，将 imsoeasy.com 与 blog.imsoeasy.com 都指向一个 IP 地址。 查看 /etc/httpd/conf/httpd.conf 文件中重写模块/组件 LoadModule rewrite_module modules/mod_rewrite.so 是否打开，若没有请自行安装； 编辑 httpd.conf 文件1$ vi /etc/httpd">
 <meta name="keywords" content="apache 301,no-www">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在Apache上实现域名或URL 301 重定向">
-<meta property="og:url" content="https://blog.devhitao.com/2018/03/27/apache-301-on-centos/index.html">
+<meta property="og:url" content="https://blog.imsoeasy.com/2018/03/27/apache-301-on-centos/index.html">
 <meta property="og:site_name" content="郭工笔记">
-<meta property="og:description" content="准备 检测 DNS 域名设置，将 devhitao.com 与 blog.devhitao.com 都指向一个 IP 地址。 查看 /etc/httpd/conf/httpd.conf 文件中重写模块/组件 LoadModule rewrite_module modules/mod_rewrite.so 是否打开，若没有请自行安装； 编辑 httpd.conf 文件1$ vi /etc/httpd">
+<meta property="og:description" content="准备 检测 DNS 域名设置，将 imsoeasy.com 与 blog.imsoeasy.com 都指向一个 IP 地址。 查看 /etc/httpd/conf/httpd.conf 文件中重写模块/组件 LoadModule rewrite_module modules/mod_rewrite.so 是否打开，若没有请自行安装； 编辑 httpd.conf 文件1$ vi /etc/httpd">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-03-27T13:28:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Apache上实现域名或URL 301 重定向">
-<meta name="twitter:description" content="准备 检测 DNS 域名设置，将 devhitao.com 与 blog.devhitao.com 都指向一个 IP 地址。 查看 /etc/httpd/conf/httpd.conf 文件中重写模块/组件 LoadModule rewrite_module modules/mod_rewrite.so 是否打开，若没有请自行安装； 编辑 httpd.conf 文件1$ vi /etc/httpd">
+<meta name="twitter:description" content="准备 检测 DNS 域名设置，将 imsoeasy.com 与 blog.imsoeasy.com 都指向一个 IP 地址。 查看 /etc/httpd/conf/httpd.conf 文件中重写模块/组件 LoadModule rewrite_module modules/mod_rewrite.so 是否打开，若没有请自行安装； 编辑 httpd.conf 文件1$ vi /etc/httpd">
 
     
     <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
@@ -67,7 +67,7 @@
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
 						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:blog.devhitao.com">
+						<input type="hidden" name="q" value="site:blog.imsoeasy.com">
 					</form>
 					
 					</li>
@@ -100,19 +100,19 @@
 		</div>
 		
 		<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><hr>
-<p>检测 DNS 域名设置，将 <code>devhitao.com</code> 与 <code>blog.devhitao.com</code> 都指向一个 IP 地址。</p>
+<p>检测 DNS 域名设置，将 <code>imsoeasy.com</code> 与 <code>blog.imsoeasy.com</code> 都指向一个 IP 地址。</p>
 <p>查看 <code>/etc/httpd/conf/httpd.conf</code> 文件中重写模块/组件 <code>LoadModule rewrite_module modules/mod_rewrite.so</code> 是否打开，若没有请自行安装；</p>
 <p>编辑 httpd.conf 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/httpd/conf/httpd.conf</span><br></pre></td></tr></table></figure></p>
-<p>若用 <code>DocumentRoot</code> 指向 <code>/var/www/html/blog.devhitao.com</code>，则应在 httpd.conf 中添写一些配置。(注：为了配置简单，建议使用下面方法)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory &quot;/var/www/html/blog.devhitao.com&quot;&gt; # 指定目录下</span><br><span class="line"># ...</span><br><span class="line">	AllowOverride All </span><br><span class="line"># ...</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure></p>
+<p>若用 <code>DocumentRoot</code> 指向 <code>/var/www/html/blog.imsoeasy.com</code>，则应在 httpd.conf 中添写一些配置。(注：为了配置简单，建议使用下面方法)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory &quot;/var/www/html/blog.imsoeasy.com&quot;&gt; # 指定目录下</span><br><span class="line"># ...</span><br><span class="line">	AllowOverride All </span><br><span class="line"># ...</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure></p>
 <p>注：若嫌上面添加麻烦，直接可修改 httpd.conf 文件配置中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /&gt; # 代表根目录</span><br><span class="line">    Options FollowSymLinks</span><br><span class="line">    AllowOverride None  # 将 None 改为 All ，表示在根目录都允许重写</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure></p>
 <p>在  目录下编辑 <code>.htaccess</code> 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi .htaccess</span><br></pre></td></tr></table></figure></p>
 <p>下面，选择你需要的功能，例如： no-www to www 或 www to no-www，这里我使用的 blog 代替 www。</p>
 <h3 id="no-www-to-www"><a href="#no-www-to-www" class="headerlink" title="no-www to www"></a>no-www to www</h3><hr>
-<p>将不带 www 的域名 301 到带 www 的域名。eg: devhitao.com -&gt; blog.devhitao.com<br>切换到网站根目录 <code>/var/www/html/blog.devhitao.com</code> , 在此目录下编辑 <code>.htaccess</code> 文件，添加以下字符，退出保存（esc:wq）;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Options +FollowSymLinks  </span><br><span class="line">RewriteEngine on  </span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125;  ^devhitao.com [NC]  </span><br><span class="line">RewriteRule ^(.*)$  https://blog.devhitao.com/$1 [L,R=301]</span><br></pre></td></tr></table></figure></p>
+<p>将不带 www 的域名 301 到带 www 的域名。eg: imsoeasy.com -&gt; blog.imsoeasy.com<br>切换到网站根目录 <code>/var/www/html/blog.imsoeasy.com</code> , 在此目录下编辑 <code>.htaccess</code> 文件，添加以下字符，退出保存（esc:wq）;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Options +FollowSymLinks  </span><br><span class="line">RewriteEngine on  </span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125;  ^imsoeasy.com [NC]  </span><br><span class="line">RewriteRule ^(.*)$  https://blog.imsoeasy.com/$1 [L,R=301]</span><br></pre></td></tr></table></figure></p>
 <p>注：可将上面 https，可换成 http，具体看自己需求支持</p>
 <p>重启 apache 服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ service httpd restart</span><br></pre></td></tr></table></figure></p>
-<p>验证<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -I http://devhitao.com</span><br></pre></td></tr></table></figure></p>
-<p>返回一下部分内容即为配置成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 301 Moved Permanently     # 重点在这里</span><br><span class="line">Date: Tue, 27 Mar 2018 12:45:22 GMT</span><br><span class="line">...</span><br><span class="line">Location: https://blog.devhitao.com/</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>验证<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -I http://imsoeasy.com</span><br></pre></td></tr></table></figure></p>
+<p>返回一下部分内容即为配置成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 301 Moved Permanently     # 重点在这里</span><br><span class="line">Date: Tue, 27 Mar 2018 12:45:22 GMT</span><br><span class="line">...</span><br><span class="line">Location: https://blog.imsoeasy.com/</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
 <h3 id="www-to-no-www"><a href="#www-to-no-www" class="headerlink" title="www to no-www"></a>www to no-www</h3><hr>
 <p>参考上面部分操作，在 <code>.htaccess</code> 中添加以下配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine On</span><br><span class="line">RewriteBase /</span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125; ^www\.(.*)$ [NC]</span><br><span class="line">RewriteRule ^(.*)$ http://%1/$1 [R=301,L]</span><br></pre></td></tr></table></figure></p>
 <p>验证方式，请参考上面。</p>
@@ -145,7 +145,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://blog.devhitao.com/2018/03/27/apache-301-on-centos/" data-title="在Apache上实现域名或URL 301 重定向 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  <div data-url="https://blog.imsoeasy.com/2018/03/27/apache-301-on-centos/" data-title="在Apache上实现域名或URL 301 重定向 | 郭工笔记" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -458,7 +458,7 @@ $(document).ready(function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('create', 'UA-79883090-2', 'blog.imsoeasy.com');  
 ga('send', 'pageview');
 </script>
 

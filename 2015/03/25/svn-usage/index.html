@@ -16,16 +16,16 @@
 <meta name="keywords" content="svn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SVN 版本控制">
-<meta property="og:url" content="https://blog.devhitao.com/2015/03/25/svn-usage/index.html">
+<meta property="og:url" content="https://blog.imsoeasy.com/2015/03/25/svn-usage/index.html">
 <meta property="og:site_name" content="郭工笔记">
 <meta property="og:description" content="引言 版本控制源代码管理工具：CVS 、 SVN（集中式） 、Git（分布式）, .svn 文件被隐藏。  Subversion  is  a version control system, which allows you to keep old versions of files and directories (usually source code), keep a log of who,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog.devhitao.com/images/SVN/cornerstone-set-ignore-file.png">
+<meta property="og:image" content="https://blog.imsoeasy.com/images/SVN/cornerstone-set-ignore-file.png">
 <meta property="og:updated_time" content="2020-12-04T15:36:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVN 版本控制">
 <meta name="twitter:description" content="引言 版本控制源代码管理工具：CVS 、 SVN（集中式） 、Git（分布式）, .svn 文件被隐藏。  Subversion  is  a version control system, which allows you to keep old versions of files and directories (usually source code), keep a log of who,">
-<meta name="twitter:image" content="https://blog.devhitao.com/images/SVN/cornerstone-set-ignore-file.png">
+<meta name="twitter:image" content="https://blog.imsoeasy.com/images/SVN/cornerstone-set-ignore-file.png">
 
     
     <link rel="alternative" href="/atom.xml" title="郭工笔记" type="application/atom+xml">
@@ -69,7 +69,7 @@
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
 						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:blog.devhitao.com">
+						<input type="hidden" name="q" value="site:blog.imsoeasy.com">
 					</form>
 					
 					</li>
@@ -133,7 +133,7 @@
 <p>5、回退以前的版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ svn revert devhitao.m //文件名 （仅适用于未提交到服务器上）</span><br><span class="line">$ svn update -r 1314 //版本号，已经提交到服务器根据版本号回退</span><br></pre></td></tr></table></figure></p>
 <p>6、删除文件，删除项目文件，不能直接在文件中删除，要通过命令行方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ svn delete devhitao.m //删除文件 delete(del, remove, rm)</span><br></pre></td></tr></table></figure></p>
 <h3 id="仓库地址"><a href="#仓库地址" class="headerlink" title="仓库地址"></a>仓库地址</h3><hr>
-<p>由于某些原因，我们可能需要变更项目中的远程仓库地址。首先需要将终端中切换到 svn 项目仓库目录，执行命令 <code>svn relocate &lt;new_url&gt;</code> 来修改本地仓库所对应的新远程仓库地址，修改过程中可能需要用户认证。eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">svn relocate https://admin@svn.devhitao.com:12306/blog/trunk</span><br><span class="line">...</span><br><span class="line">(R)eject, accept (t)emporarily or accept (p)ermanently? t</span><br><span class="line">Authentication realm: &lt;https://svn.devhitao.com:12306&gt; Authorization SVN</span><br><span class="line">Password for &apos;hitao&apos;: **********</span><br><span class="line"></span><br><span class="line">Authentication realm: &lt;https://svn.devhitao.com:12306&gt; Authorization SVN</span><br><span class="line">Username: guohaitao</span><br><span class="line">Password for &apos;hitao&apos;: ******</span><br></pre></td></tr></table></figure></p>
+<p>由于某些原因，我们可能需要变更项目中的远程仓库地址。首先需要将终端中切换到 svn 项目仓库目录，执行命令 <code>svn relocate &lt;new_url&gt;</code> 来修改本地仓库所对应的新远程仓库地址，修改过程中可能需要用户认证。eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">svn relocate https://admin@svn.imsoeasy.com:12306/blog/trunk</span><br><span class="line">...</span><br><span class="line">(R)eject, accept (t)emporarily or accept (p)ermanently? t</span><br><span class="line">Authentication realm: &lt;https://svn.imsoeasy.com:12306&gt; Authorization SVN</span><br><span class="line">Password for &apos;hitao&apos;: **********</span><br><span class="line"></span><br><span class="line">Authentication realm: &lt;https://svn.imsoeasy.com:12306&gt; Authorization SVN</span><br><span class="line">Username: guohaitao</span><br><span class="line">Password for &apos;hitao&apos;: ******</span><br></pre></td></tr></table></figure></p>
 <p>在当前 svn 项目仓库下，可通过 <code>svn info</code> 查看 svn 仓库信息。</p>
 <h3 id="图形化工具"><a href="#图形化工具" class="headerlink" title="图形化工具"></a>图形化工具</h3><hr>
 <ul>
@@ -223,7 +223,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://blog.devhitao.com/2015/03/25/svn-usage/" data-title="SVN 版本控制 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  <div data-url="https://blog.imsoeasy.com/2015/03/25/svn-usage/" data-title="SVN 版本控制 | 郭工笔记" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -536,7 +536,7 @@ $(document).ready(function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('create', 'UA-79883090-2', 'blog.imsoeasy.com');  
 ga('send', 'pageview');
 </script>
 

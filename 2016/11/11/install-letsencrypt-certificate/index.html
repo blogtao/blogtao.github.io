@@ -16,7 +16,7 @@
 <meta name="keywords" content="SSL,HTTPS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安装 Let&#39;s Encrypt 证书">
-<meta property="og:url" content="https://blog.devhitao.com/2016/11/11/install-letsencrypt-certificate/index.html">
+<meta property="og:url" content="https://blog.imsoeasy.com/2016/11/11/install-letsencrypt-certificate/index.html">
 <meta property="og:site_name" content="郭工笔记">
 <meta property="og:description" content="引言  Let’s Encrypt is a free, automated, and open certificate authority brought to you by the non-profit Internet Security Research Group (ISRG).  Let’s Encrypt 是由非盈性利互联网安全研究小组(ISRG)向您提供的一个免费，自动化和开放的证书">
 <meta property="og:locale" content="zh-CN">
@@ -67,7 +67,7 @@
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
 						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:blog.devhitao.com">
+						<input type="hidden" name="q" value="site:blog.imsoeasy.com">
 					</form>
 					
 					</li>
@@ -123,10 +123,10 @@
 <h5 id="输入信息"><a href="#输入信息" class="headerlink" title="输入信息"></a>输入信息</h5><hr>
 <p>在安装过程中，系统会提示我们输入一下信息或者取消操作</p>
 <ul>
-<li>提示输入邮箱：Enter email address (used for urgent renewal and security notices) (Enter ‘c’ to cancel):<a href="mailto:dev@devhitao.com" target="_blank" rel="noopener">dev@devhitao.com</a></li>
+<li>提示输入邮箱：Enter email address (used for urgent renewal and security notices) (Enter ‘c’ to cancel):<a href="mailto:dev@imsoeasy.com" target="_blank" rel="noopener">dev@imsoeasy.com</a></li>
 <li>阅读服务条款，是否同意注册：…register with the ACME server … (A)gree/(C)ancel: A</li>
 <li>是否同意分享邮箱地址：…share your email address… (Y)es/(N)o: N </li>
-<li>输入域名，多个用空格隔开：…Please enter in your domain<br>name(s) (comma and/or space separated)… :devhitao.com</li>
+<li>输入域名，多个用空格隔开：…Please enter in your domain<br>name(s) (comma and/or space separated)… :imsoeasy.com</li>
 <li>选择是否必须 https 访问，还是可选</li>
 </ul>
 <h5 id="重新续签"><a href="#重新续签" class="headerlink" title="重新续签"></a>重新续签</h5><hr>
@@ -144,11 +144,11 @@
 <p>1、Create and copy acme.sh to your home dir ($HOME): ~/.acme.sh/. All certs will be placed in this folder too.<br>2、Create alias for: acme.sh=~/.acme.sh/acme.sh.<br>3、Create daily cron job to check and renew the certs if needed.</p>
 </blockquote>
 <h5 id="生成证书"><a href="#生成证书" class="headerlink" title="生成证书"></a>生成证书</h5><hr>
-<p>单域名单证书<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --issue -d devhitao.com -w ~/public_html  // ~/public_html 是webRoot的路径，也是网站主路径</span><br></pre></td></tr></table></figure></p>
-<p>多域名单证书<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ acme.sh --issue -d devhitao.com -d www.devhitao.com -d blog.devhitao.com -w ~/public_html</span><br></pre></td></tr></table></figure></p>
-<p>上面命令会生成类似的 devhitao.com.cer、devhitao.com.key、ca.cer 文件，当然还有 fullchain.cer 文件；fullchain.cer 文件中包括 ca.cer 和 devhitao.com.cer 中的内容。</p>
+<p>单域名单证书<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --issue -d imsoeasy.com -w ~/public_html  // ~/public_html 是webRoot的路径，也是网站主路径</span><br></pre></td></tr></table></figure></p>
+<p>多域名单证书<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ acme.sh --issue -d imsoeasy.com -d www.imsoeasy.com -d blog.imsoeasy.com -w ~/public_html</span><br></pre></td></tr></table></figure></p>
+<p>上面命令会生成类似的 imsoeasy.com.cer、imsoeasy.com.key、ca.cer 文件，当然还有 fullchain.cer 文件；fullchain.cer 文件中包括 ca.cer 和 imsoeasy.com.cer 中的内容。</p>
 <h3 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h3><hr>
-<p>1、证书重置请求超过次数，一般 3 次，子域名除外。就会出现 Sign failed: “detail”:”Error creating new cert :: Too many certificates already issued for exact set of domains: devhitao.com, 5 天以后才可以再次重置。<a href="https://letsencrypt.org/docs/rate-limits/" target="_blank" rel="noopener">Rate Limits</a></p>
+<p>1、证书重置请求超过次数，一般 3 次，子域名除外。就会出现 Sign failed: “detail”:”Error creating new cert :: Too many certificates already issued for exact set of domains: imsoeasy.com, 5 天以后才可以再次重置。<a href="https://letsencrypt.org/docs/rate-limits/" target="_blank" rel="noopener">Rate Limits</a></p>
 <h3 id="文档信息"><a href="#文档信息" class="headerlink" title="文档信息"></a>文档信息</h3><hr>
 <ul>
 <li>版权声明：自由转载-保持署名-非商用-非衍生 ( <a rel="noopener" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a> )</li>
@@ -173,7 +173,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://blog.devhitao.com/2016/11/11/install-letsencrypt-certificate/" data-title="安装 Let&#39;s Encrypt 证书 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  <div data-url="https://blog.imsoeasy.com/2016/11/11/install-letsencrypt-certificate/" data-title="安装 Let&#39;s Encrypt 证书 | 郭工笔记" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -486,7 +486,7 @@ $(document).ready(function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('create', 'UA-79883090-2', 'blog.imsoeasy.com');  
 ga('send', 'pageview');
 </script>
 

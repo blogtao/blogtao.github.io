@@ -16,7 +16,7 @@
 <meta name="keywords" content="CocoaPods">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CocoaPods 安装、使用、更新和卸载">
-<meta property="og:url" content="https://blog.devhitao.com/2015/02/26/install-use-update-cocoapods-on-mac/index.html">
+<meta property="og:url" content="https://blog.imsoeasy.com/2015/02/26/install-use-update-cocoapods-on-mac/index.html">
 <meta property="og:site_name" content="郭工笔记">
 <meta property="og:description" content="引言 What is CocoaPods  CocoaPods manages library dependencies for your Xcode projects.   The dependencies for your projects are specified in a single text file called a Podfile. CocoaPods will resolve">
 <meta property="og:locale" content="zh-CN">
@@ -67,7 +67,7 @@
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
 						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:blog.devhitao.com">
+						<input type="hidden" name="q" value="site:blog.imsoeasy.com">
 					</form>
 					
 					</li>
@@ -137,9 +137,9 @@
 <p>可参考官方 <a href="https://guides.cocoapods.org/using/the-podfile.html" target="_blank" rel="noopener">Podfile</a> 文件使用说明</p>
 <p>1、输入 <code>pod install</code>，终端无响应, 可以添加相应的参数忽略 specs 库的升级：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pod install --verbose --no-repo-update # --verbose 可以查看到内部情况</span><br><span class="line">$ pod update --verbose --no-repo-update</span><br></pre></td></tr></table></figure></p>
 <h4 id="更改-Spec-镜像源"><a href="#更改-Spec-镜像源" class="headerlink" title="更改 Spec 镜像源"></a>更改 Spec 镜像源</h4><hr>
-<p>由于 specs 镜像在 <a href="https://github.com/CocoaPods/Specs" target="_blank" rel="noopener">GitHub</a> 上，可能会导致输入 <code>pod install</code> 终端很长时间无响应，假如国内有个 Specs 源且访问比国外快，可进行更换 CocoaPods 镜像地址，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ pod repo remove master //移除本地分支</span><br><span class="line">$ pod repo add master https://blog.devhitao.com/CocoaPods/Specs.git //添加镜像源</span><br><span class="line">$ pod repo update //更新本地 pod 类库</span><br></pre></td></tr></table></figure></p>
+<p>由于 specs 镜像在 <a href="https://github.com/CocoaPods/Specs" target="_blank" rel="noopener">GitHub</a> 上，可能会导致输入 <code>pod install</code> 终端很长时间无响应，假如国内有个 Specs 源且访问比国外快，可进行更换 CocoaPods 镜像地址，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ pod repo remove master //移除本地分支</span><br><span class="line">$ pod repo add master https://blog.imsoeasy.com/CocoaPods/Specs.git //添加镜像源</span><br><span class="line">$ pod repo update //更新本地 pod 类库</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>由于 pod 新版本更新会导致重复 clone 一份 pod 文件下来，解决方法 Podfile 第一行加入 <code>source &#39;https://blog.devhitao.com/CocoaPods/Specs.git&#39;</code></p>
+<p>由于 pod 新版本更新会导致重复 clone 一份 pod 文件下来，解决方法 Podfile 第一行加入 <code>source &#39;https://blog.imsoeasy.com/CocoaPods/Specs.git&#39;</code></p>
 </blockquote>
 <h3 id="更新升级"><a href="#更新升级" class="headerlink" title="更新升级"></a>更新升级</h3><hr>
 <p>更新一般有 2 种方法，第一种方法：先卸载后安装；第二种方法：覆盖安装；第一种方法，请参考卸载和安装方法，第二种方法同样参考安装方法。</p>
@@ -189,7 +189,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://blog.devhitao.com/2015/02/26/install-use-update-cocoapods-on-mac/" data-title="CocoaPods 安装、使用、更新和卸载 | 郭工笔记" data-tsina="undefined" class="share clearfix">
+	  <div data-url="https://blog.imsoeasy.com/2015/02/26/install-use-update-cocoapods-on-mac/" data-title="CocoaPods 安装、使用、更新和卸载 | 郭工笔记" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -502,7 +502,7 @@ $(document).ready(function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79883090-2', 'blog.devhitao.com');  
+ga('create', 'UA-79883090-2', 'blog.imsoeasy.com');  
 ga('send', 'pageview');
 </script>
 
